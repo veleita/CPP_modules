@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 13:47:18 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/12 14:40:15 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/12 15:03:20 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,11 @@ fclean: clean
 re: fclean all
 
 
-test: re
+test: $(NAME)
 	./megaphone "shhhhh... I think the students are asleep..."
+	@echo ""
 	./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
+	@echo ""
 	./megaphone
 
 
