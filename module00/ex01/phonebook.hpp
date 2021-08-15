@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:19:24 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 17:28:57 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 20:39:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Phonebook
 
 		void	add_contact(void);
 		void	display_contact_table(void);
+		void	search_error(void);
 		void	search_contact(void);
 };
 

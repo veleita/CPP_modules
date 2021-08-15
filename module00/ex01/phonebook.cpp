@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 18:37:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 20:58:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 #include <ctype.h>
 #include <string>
-using namespace std;
 
 Phonebook::Phonebook()
 {
@@ -52,28 +51,42 @@ void Phonebook::display_contact_table(void)
 	}
 }
 
+void Phonebook::search_error(void)
+{
+	cout << "Enter a valid input! >:(" << endl << endl;
+	this->search_contact();
+}
+
 void Phonebook::search_contact(void)
 {
+	if (this->n_contacts == 0)
+	{
+		cout << "Contact table is empty, add some entries first!" << endl << endl;
+		return;
+	}
+
 	this->display_contact_table();
 
 	int		index;
 	string	input;
 
+
 	cout << "Which entry are you searching for? [Enter index]:" << endl;
 	cout << "> ";
 	getline(cin, input);
+	
+	if (input.length() > 1 || isalpha(input[0]))
+		return (this->search_error());
 
-	if (!isdigit(input[0]))
+	index = std::stoi(input) - 1;	
+	if (index >= 0 && index < this->n_contacts)
 	{
-		cout << "Enter a valid input! >:(" << endl;
-		this->search_contact();
-	}
-	else
-	{
-		index = stoi(input) - 1;
-		for (int i = 0; i < 6; i++)
+		for (int i = 1; i < 6; i++)
 		{
 			cout << this->contacts[index].info[i] << endl;
 		}
+		return;
 	}
+	else
+		this->search_error();
 }
