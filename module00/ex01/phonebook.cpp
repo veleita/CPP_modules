@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 15:49:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 16:32:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Phonebook::~Phonebook()
 
 void Phonebook::add_contact(void)
 {
-	this->contacts[this->n_contacts].fill_info();
 	if (this->n_contacts < 7)
 		this->n_contacts++;
+	this->contacts[this->n_contacts].fill_info(n_contacts);
 }
