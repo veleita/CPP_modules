@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:33:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 16:42:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 17:22:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void Contact::fill_info(int n_contacts)
 	this->info[0] = index;
 	for (int i = 1; i < 6; i++)
 	{
-		cout << "Enter " << fields[i] << ":" << endl;
+		cout << "Enter " << fields[i - 1] << ":" << endl;
 		cout << "> ";
 		getline(cin, input);
 		this->info[i] = input;

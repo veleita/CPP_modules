@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 17:50:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 15:48:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 17:17:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 		if (input == "ADD")
 			phonebook.add_contact();
 		else if (input == "SEARCH")
-			cout << "Searching contact" << endl;
+			phonebook.search_contact();
 		else if (input == "EXIT")
 			exit = true;
 	}
