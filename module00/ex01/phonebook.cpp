@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:50:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 15:48:45 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/15 15:49:02 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "phonebook.hpp"
-using namespace std;
 
-int main(void)
+Phonebook::Phonebook()
 {
-	string		input;
-	Phonebook	phonebook;
-	bool		exit = false;
+	this->n_contacts = 0;
+}
 
-	while (exit == false)
-	{
-		cout << "What would you like to do?" << endl;
-		cout << "> ";
-		getline(cin, input);
+Phonebook::~Phonebook()
+{
+}
 
-		if (input == "ADD")
-			phonebook.add_contact();
-		else if (input == "SEARCH")
-			cout << "Searching contact" << endl;
-		else if (input == "EXIT")
-			exit = true;
-	}
+void Phonebook::add_contact(void)
+{
+	this->contacts[this->n_contacts].fill_info();
+	if (this->n_contacts < 7)
+		this->n_contacts++;
 }

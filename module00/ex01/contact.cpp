@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:50:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 15:48:45 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/15 13:33:26 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/15 15:48:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "phonebook.hpp"
+#include "contact.hpp"
 using namespace std;
 
-int main(void)
-{
-	string		input;
-	Phonebook	phonebook;
-	bool		exit = false;
+Contact::Contact(){
+}
 
-	while (exit == false)
+Contact::~Contact()
+{
+}
+
+void Contact::fill_info()
+{
+	string	fields[5] = {
+	"first name",
+	"last name",
+	"nickname",
+	"phone number",
+	"darkest secret",
+	};
+	string	input;
+
+	for (int i = 0; i < 5; i++)
 	{
-		cout << "What would you like to do?" << endl;
+		cout << "Enter " << fields[i] << ":" << endl;
 		cout << "> ";
 		getline(cin, input);
-
-		if (input == "ADD")
-			phonebook.add_contact();
-		else if (input == "SEARCH")
-			cout << "Searching contact" << endl;
-		else if (input == "EXIT")
-			exit = true;
+		this->info.insert(pair<string, string>(fields[i], input));
 	}
+	cout << "Contact registered!" << endl << endl;
 }

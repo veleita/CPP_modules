@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:50:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 15:48:45 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/15 12:28:45 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/15 15:49:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "phonebook.hpp"
+#ifndef CONTACT_H
+# define CONTACT_H
+
+# include <iostream>
+# include <map>
 using namespace std;
 
-int main(void)
+class Contact
 {
-	string		input;
-	Phonebook	phonebook;
-	bool		exit = false;
+	public:
 
-	while (exit == false)
-	{
-		cout << "What would you like to do?" << endl;
-		cout << "> ";
-		getline(cin, input);
+		Contact();
+		~Contact();
+	
+		map<string, string> info;
 
-		if (input == "ADD")
-			phonebook.add_contact();
-		else if (input == "SEARCH")
-			cout << "Searching contact" << endl;
-		else if (input == "EXIT")
-			exit = true;
-	}
-}
+
+		void	fill_info();
+};
+
+#endif

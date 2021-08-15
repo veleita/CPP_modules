@@ -6,16 +6,16 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 17:48:05 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/12 17:50:02 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/15 15:40:49 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = PhoneBook
 
-SRCS = main.cpp
+SRCS = main.cpp phonebook.cpp contact.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
