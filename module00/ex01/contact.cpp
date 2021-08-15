@@ -6,13 +6,12 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:33:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 17:25:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 21:07:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 #include <string>
-using namespace std;
 
 Contact::Contact(){
 }
@@ -23,23 +22,23 @@ Contact::~Contact()
 
 void Contact::fill_info(int n_contacts)
 {
-	string	fields[5] = {
+	std::string	fields[5] = {
 	"first name",
 	"last name",
 	"nickname",
 	"phone number",
 	"darkest secret",
 	};
-	string	input;
-	string	index = to_string(n_contacts);
+	std::string	input;
+	std::string	index = std::to_string(n_contacts);
 
 	this->info[0] = index;
 	for (int i = 1; i < 6; i++)
 	{
-		cout << "Enter " << fields[i - 1] << ":" << endl;
-		cout << "> ";
-		getline(cin, input);
+		std::cout << "Enter " << fields[i - 1] << ":" << std::endl;
+		std::cout << "> ";
+		getline(std::cin, input);
 		this->info[i] = input;
 	}
-	cout << "Contact registered!" << endl << endl;
+	std::cout << "Contact registered!" << std::endl << std::endl;
 }

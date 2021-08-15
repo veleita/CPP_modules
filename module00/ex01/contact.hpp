@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:28:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 16:43:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 21:02:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONTACT_H
 
 # include <iostream>
-using namespace std;
 
 class Contact
 {
@@ -23,7 +22,7 @@ class Contact
 		Contact();
 		~Contact();
 	
-		string info[6];
+		std::string info[6];
 
 		void	fill_info(int n_contact);
 };

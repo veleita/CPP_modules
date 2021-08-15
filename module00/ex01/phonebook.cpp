@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 20:58:57 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/15 21:05:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ void Phonebook::add_contact(void)
 
 void Phonebook::display_contact_table(void)
 {
-	cout << "|     Index|First Name| Last Name|  Nickname|" << endl;
-	cout << "|-------------------------------------------|" << endl;
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "|-------------------------------------------|" << std::endl;
 
 	for (int i = 0; i < n_contacts; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			cout << "|";
+			std::cout << "|";
 			if (this->contacts[i].info[j].length() > 10)
-				cout << this->contacts[i].info[j].substr(0, 9) << ".";
+				std::cout << this->contacts[i].info[j].substr(0, 9) << ".";
 			else
-				cout << setw(10) << this->contacts[i].info[j];
+				std::cout << std::setw(10) << this->contacts[i].info[j];
 		}
-		cout << "|" << endl;
+		std::cout << "|" << std::endl;
 	}
 }
 
 void Phonebook::search_error(void)
 {
-	cout << "Enter a valid input! >:(" << endl << endl;
+	std::cout << "Enter a valid input! >:(" << std::endl << std::endl;
 	this->search_contact();
 }
 
@@ -61,19 +61,19 @@ void Phonebook::search_contact(void)
 {
 	if (this->n_contacts == 0)
 	{
-		cout << "Contact table is empty, add some entries first!" << endl << endl;
+		std::cout << "Contact table is empty, add some entries first!" << std::endl << std::endl;
 		return;
 	}
 
 	this->display_contact_table();
 
 	int		index;
-	string	input;
+	std::string	input;
 
 
-	cout << "Which entry are you searching for? [Enter index]:" << endl;
-	cout << "> ";
-	getline(cin, input);
+	std::cout << "Which entry are you searching for? [Enter index]:" << std::endl;
+	std::cout << "> ";
+	getline(std::cin, input);
 	
 	if (input.length() > 1 || isalpha(input[0]))
 		return (this->search_error());
@@ -83,7 +83,7 @@ void Phonebook::search_contact(void)
 	{
 		for (int i = 1; i < 6; i++)
 		{
-			cout << this->contacts[index].info[i] << endl;
+			std::cout << this->contacts[index].info[i] << std::endl;
 		}
 		return;
 	}
