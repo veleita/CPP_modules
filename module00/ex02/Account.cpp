@@ -7,9 +7,10 @@
 //                                                                            //
 // ************************************************************************** //
 
+#include <iostream>
 #include "Account.hpp"
 
-// Initialize static variables
+// Initialize  variables
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -19,7 +20,7 @@ int	Account::_totalNbWithdrawals = 0;
 
 // The account can be initialized with or without an initial deposit
 
-Account( int initial_deposit )
+Account::Account( int initial_deposit )
 {
 	this->_accountIndex = this->_nbAccounts++;
 	this->_amount = initial_deposit;
@@ -32,7 +33,7 @@ Account( int initial_deposit )
 	std::cout << "created" << std::endl;
 }
 
-Account( void )
+Account::Account( void )
 {
 	this->_accountIndex = this->_nbAccounts++;
 	this->_amount = 0;
@@ -45,56 +46,58 @@ Account( void )
 }
 
 
-~Account( void )
+Account::~Account( void )
 {
 }
 
-static int	Account::getNbAccounts( void )
-{
-	return (0);
-}
-
-static int	Account::getTotalAmount( void )
+ int	Account::getNbAccounts( void )
 {
 	return (0);
 }
 
-static int	Account::getNbDeposits( void )
+ int	Account::getTotalAmount( void )
 {
 	return (0);
 }
 
-static int	Account::getNbWithdrawals( void )
+ int	Account::getNbDeposits( void )
 {
 	return (0);
 }
 
-static void	Account::displayAccountsInfos( void )
+ int	Account::getNbWithdrawals( void )
+{
+	return (0);
+}
+
+ void	Account::displayAccountsInfos( void )
 {
 	return;
 }
 
-void	makeDeposit( int deposit )
+void	Account::makeDeposit( int deposit )
 {
+	(void)deposit;
 	return;
 }
 
-bool	makeWithdrawal( int withdrawal )
+bool	Account::makeWithdrawal( int withdrawal )
 {
+	(void)withdrawal;
 	return (true);
 }
 
-int		checkAmount( void ) const
+int		Account::checkAmount( void ) const
 {
 	return (0);
 }
 
-void	displayStatus( void ) const
+void	Account::displayStatus( void ) const
 {
 	return;
 }
 
-static void	_displayTimestamp( void );
+ void	Account::_displayTimestamp( void )
 {
 	std::cout << "[20210816_140232]";
 }
