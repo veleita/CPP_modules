@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 17:48:05 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/15 15:40:49 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/16 11:36:44 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = PhoneBook
 
-SRCS = main.cpp phonebook.cpp contact.cpp
+SRCS = main.cpp Phonebook.cpp Contact.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 

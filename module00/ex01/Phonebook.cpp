@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 21:05:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/16 11:41:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 #include <iomanip>
 #include <iostream>
 #include <ctype.h>
@@ -25,14 +25,14 @@ Phonebook::~Phonebook()
 {
 }
 
-void Phonebook::add_contact(void)
+void Phonebook::add_contact(void) 
 {
 	if (this->n_contacts < 7)
 		this->n_contacts++;
 	this->contacts[this->n_contacts - 1].fill_info(n_contacts);
 }
 
-void Phonebook::display_contact_table(void)
+void Phonebook::display_contact_table(void) const
 {
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
@@ -51,13 +51,13 @@ void Phonebook::display_contact_table(void)
 	}
 }
 
-void Phonebook::search_error(void)
+void Phonebook::search_error(void) const
 {
 	std::cout << "Enter a valid input! >:(" << std::endl << std::endl;
 	this->search_contact();
 }
 
-void Phonebook::search_contact(void)
+void Phonebook::search_contact(void) const
 {
 	if (this->n_contacts == 0)
 	{

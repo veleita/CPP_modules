@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:33:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 21:07:29 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/16 11:44:26 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#include "Contact.hpp"
 #include <string>
 
 Contact::Contact(){

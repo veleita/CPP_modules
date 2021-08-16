@@ -6,14 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:19:24 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/15 21:01:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/16 11:45:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
 class Phonebook
 {
@@ -21,13 +21,13 @@ class Phonebook
 		Phonebook();
 		~Phonebook();
 
-		Contact contacts[8];
+		Contact	contacts[8];
 		int		n_contacts;
 
 		void	add_contact(void);
-		void	display_contact_table(void);
-		void	search_error(void);
-		void	search_contact(void);
+		void	display_contact_table(void) const;
+		void	search_error(void) const;
+		void	search_contact(void) const;
 };
 
 #endif
