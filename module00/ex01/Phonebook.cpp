@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 13:19:53 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/16 11:41:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/16 11:50:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void Phonebook::search_contact(void) const
 		{
 			std::cout << this->contacts[index].info[i] << std::endl;
 		}
-		return;
+		std::cout << std::endl;
 	}
 	else
 		this->search_error();
