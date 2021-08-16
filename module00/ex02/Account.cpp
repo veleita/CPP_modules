@@ -8,6 +8,8 @@
 // ************************************************************************** //
 
 #include <iostream>
+#include <chrono>
+#include <iomanip>
 #include "Account.hpp"
 
 // Initialize  variables
@@ -99,5 +101,8 @@ void	Account::displayStatus( void ) const
 
  void	Account::_displayTimestamp( void )
 {
-	std::cout << "[20210816_140232]";
+	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+	std::time_t time_now = std::chrono::system_clock::to_time_t(now);
+
+	std::cout << std::put_time(std::localtime(&time_now), "[%G%m%d_%H%M%S]");
 }
