@@ -86,7 +86,7 @@ Account::~Account()
  void	Account::displayAccountsInfos( void )
 {
 	Account::_displayTimestamp();
-	std::cout << "acounts:" << Account::getNbAccounts() << ";";
+	std::cout << "accounts:" << Account::getNbAccounts() << ";";
 	std::cout << "total:" << Account::getTotalAmount() << ";";
 	std::cout << "deposits:" << Account::getNbDeposits() << ";";
 	std::cout << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
@@ -152,8 +152,10 @@ void	Account::displayStatus( void ) const
 
  void	Account::_displayTimestamp( void )
 {
-	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-	std::time_t time_now = std::chrono::system_clock::to_time_t(now);
+//	FOR TESTING:
+//	std::cout << "[19920104_091532] ";
 
+	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+	std::time_t time_now = std::chrono::system_clock::to_time_t(now);/
 	std::cout << std::put_time(std::localtime(&time_now), "[%G%m%d_%H%M%S]");
 }
