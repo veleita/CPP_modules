@@ -50,26 +50,31 @@ Account::Account( void )
 
 Account::~Account( void )
 {
+	this->_nbAccounts--;
+	Account::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "amount:" << this->_amount << ";";
+	std::cout << "closed" << std::endl;
 }
 
  int	Account::getNbAccounts( void )
 {
-	return (0);
+	return (Account::_nbAccounts);
 }
 
  int	Account::getTotalAmount( void )
 {
-	return (0);
+	return (Account::_totalAmount);
 }
 
  int	Account::getNbDeposits( void )
 {
-	return (0);
+	return (Account::_nbDeposits);
 }
 
  int	Account::getNbWithdrawals( void )
 {
-	return (0);
+	return (Account::_ndWithdrawals);
 }
 
  void	Account::displayAccountsInfos( void )
