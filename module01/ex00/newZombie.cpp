@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/19 17:21:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/19 18:44:16 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/19 18:34:33 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/19 18:48:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+Zombie	*newZombie(std::string name)
 {
-	Zombie	zombie;
-   	zombie	= *newZombie("zome");
-	return (0);
+	return new Zombie(name);
 }

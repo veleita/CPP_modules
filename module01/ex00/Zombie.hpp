@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 17:11:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/19 17:26:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/19 18:40:46 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ class Zombie
 		~Zombie();
 		void	announce(void);
 };
+
+Zombie* newZombie( std::string name );
 
 #endif
