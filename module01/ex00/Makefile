@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 17:09:00 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/19 17:10:38 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/19 17:27:16 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = Zombie
 
-SRCS = main.cpp Zombie.cpp Zombie.hpp, newZombie.cpp randomChump.cpp
+SRCS = main.cpp Zombie.cpp
+#, newZombie.cpp randomChump.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
