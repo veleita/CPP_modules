@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 17:09:00 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/19 17:27:16 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/19 17:34:45 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,4 +40,7 @@ fclean: clean
 re: fclean all
 
 
-.PHONY: all clean fclean re
+test: re
+	./$(NAME)
+
+.PHONY: all clean fclean re test
