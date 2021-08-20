@@ -6,28 +6,27 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 12:52:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 16:38:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/20 16:57:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
-	this->_name = name;
 }
 
 HumanB::~HumanB()
 {
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
-	this->_weapon = weapon;
+	this->_weapon = &weapon;
 }
 
 void	HumanB::attack()
 {
-	std::cout << this->_name << " attacks with his " << this->_weapon.getType() \
+	std::cout << this->_name << " attacks with his " << this->_weapon->getType() \
 		<< std::endl;
 }
