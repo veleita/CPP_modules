@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 17:34:29 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/20 17:49:36 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/20 19:43:48 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = replace
 
-SRCS = main.cpp
+SRCS = main.cpp Replace.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 

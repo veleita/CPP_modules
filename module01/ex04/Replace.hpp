@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/20 17:48:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 17:49:25 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/20 17:58:12 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/20 19:42:47 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
+#ifndef DEFINE_H
+# define DEFINE_H
+
+#include <fstream>
+
+class Replace
 {
-	return (0);
-}
+	private:
+
+	public:
+		Replace();
+		~Replace();
+
+		void	replace(std::string const &filename, \
+				std::string const search, std::string const replace);
+		void	Replace::lineReplace(std::string const &line, \
+				std::string const &search, std::string const &replace);
+};
+
+#endif
