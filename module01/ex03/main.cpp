@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/19 20:52:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 16:42:23 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/20 13:20:40 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/20 16:24:46 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-Weapon::Weapon(std::string type)
+int main()
 {
-	this->_type = type;
-}
+	Weapon clubA = Weapon("crude spiked club");
 
-Weapon::~Weapon()
-{
-}
+	HumanA bob("Bob", clubA);
+	bob.attack();
+	clubA.setType("pink unicorn club");
+	bob.attack();
 
-void		Weapon::setType(std::string type)
-{
-	this->_type = type;
-}
-
-std::string&	Weapon::getType(void)
-{
-	return this->_type;
+	Weapon	clubB = Weapon("crude spiked club");
+	HumanB jim("Jim");
+	jim.setWeapon(clubB);
+	jim.attack();
+	clubB.setType("jelly club");
+	jim.attack();
 }

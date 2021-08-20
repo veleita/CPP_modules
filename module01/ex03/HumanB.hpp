@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/19 20:52:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 16:42:23 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/20 12:44:27 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/20 16:36:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMANB_H
+# define HUMANB_H
+
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type)
+class HumanB
 {
-	this->_type = type;
-}
+	private:
+		std::string	_name;
+		Weapon		_weapon;
 
-Weapon::~Weapon()
-{
-}
+	public:
+		HumanB(std::string name = "Paco");
+		~HumanB();
 
-void		Weapon::setType(std::string type)
-{
-	this->_type = type;
-}
+		void	setWeapon(Weapon weapon);
+		void	attack();
+};
 
-std::string&	Weapon::getType(void)
-{
-	return this->_type;
-}
+#endif

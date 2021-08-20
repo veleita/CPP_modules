@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:49:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/19 20:55:53 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/20 16:42:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class Weapon
 		std::string	_type;
 
 	public:
-		Weapon();
+		Weapon(std::string type = "trashy club");
 		~Weapon();
 
-		void		setType(std::string type);
-		std::string	getType(void);
+		void			setType(std::string type);
+		std::string&	getType(void);
 };
 
 #endif
