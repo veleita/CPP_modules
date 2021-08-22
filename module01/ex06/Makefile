@@ -6,14 +6,15 @@
 #    By: zome </var/spool/mail/zome>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/22 19:09:34 by zome              #+#    #+#              #
-#    Updated: 2021/08/22 19:12:40 by zome             ###   ########.fr        #
+#    Updated: 2021/08/22 19:35:44 by zome             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OMPILER = clang++
+COMPILER = clang++
 FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = karenFilter
+ARGS = INFO
 
 SRCS = main.cpp Karen.cpp
 OBJS = $(SRCS:.cpp=.o)
@@ -40,6 +41,6 @@ re: fclean all
 
 
 test: re
-	        @./$(NAME)
+	        @./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re test
