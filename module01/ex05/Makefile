@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/22 15:14:59 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/22 15:28:35 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/22 15:45:26 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = KarenComplains
 
-SRCS = main.cpp
+SRCS = main.cpp Karen.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
