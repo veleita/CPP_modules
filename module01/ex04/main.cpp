@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 17:48:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 13:24:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 14:59:52 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ int main(int argc, char **argv)
 	if (argc != 4)
 		return (0);
 
-	replace(argv[1], argv[2], argv[3]);
-	return (0);
+	return (replace(argv[1], argv[2], argv[3]));
 }

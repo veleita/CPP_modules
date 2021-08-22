@@ -6,12 +6,42 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 18:01:29 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 14:37:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 15:12:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Replace.hpp"
-#include <string>
+
+int		errorHandling(std::string const &filename, \
+		std::string const search, std::string const replace, \
+		std::ifstream &infile, std::ofstream &outfile)
+{
+	if (filename.length() == 0)
+		return (-1);
+
+	if (search.length() == 0)
+		return (-1);
+
+	if (replace.length() == 0)
+		return (-1);
+
+	infile.open(filename, std::ios::in);
+	if (!infile.is_open())
+	{
+		std::cout << "Error: Input File couldn't be opened.";
+		return (-1);
+	}
+
+	outfile.open(filename + ".replace", std::ios::out);
+	if (!outfile.is_open())
+	{
+		infile.close();
+		std::cout << "Error: Output File couldn't be opened.";
+		return (-1);
+	}
+
+	return (0);
+}
 
 std::string	lineReplace(std::string line, \
 			std::string const &search, std::string const &replace)
@@ -42,15 +72,14 @@ std::string	lineReplace(std::string line, \
 	return result + "\n";	
 }
 
-void	replace(std::string const &filename, \
+int		replace(std::string const &filename, \
 		std::string const search, std::string const replace)
 {
 	std::ifstream	infile;
 	std::ofstream	outfile;
 
-	infile.open(filename);
-	outfile.open(filename + ".replace");
-
+	if (errorHandling(filename, search, replace, infile, outfile))
+		return (-1);
 
 	std::string	line;
 
@@ -61,4 +90,5 @@ void	replace(std::string const &filename, \
 
 	infile.close();
 	outfile.close();
+	return (0);
 }

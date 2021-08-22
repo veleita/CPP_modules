@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 17:34:29 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/22 14:33:20 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/22 15:05:37 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,21 +36,21 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -f $(OBJS) *.replace
+	@rm -f $(OBJS) *.replace
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 
 re: fclean all
 
 
 test: re
-	./$(NAME) $(TEST_FILE) $(TEST_SEARCH) $(TEST_REPLACE)
-	@echo "Original:"
-	@cat $(TEST_FILE)
-	@echo ""
-	@echo "Replaced:"
-	@cat $(TEST_FILE).replace
+	@./$(NAME) $(TEST_FILE) $(TEST_SEARCH) $(TEST_REPLACE) && \
+	echo "Original:" && \
+	cat $(TEST_FILE) && \
+	echo "" && \
+	echo "Replaced:" && \
+	cat $(TEST_FILE).replace
 
 .PHONY: all clean fclean re test
