@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 17:58:12 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 19:42:47 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 11:50:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ class Replace
 		Replace();
 		~Replace();
 
-		void	replace(std::string const &filename, \
-				std::string const search, std::string const replace);
-		void	Replace::lineReplace(std::string const &line, \
-				std::string const &search, std::string const &replace);
+		static void			replace(std::string const &filename, \
+								std::string const search, \
+								std::string const replace);
+
+		static std::string	lineReplace(std::string line, \
+								std::string const &search, \
+								std::string const &replace);
 };
 
 #endif

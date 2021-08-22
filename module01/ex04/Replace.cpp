@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 18:01:29 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 19:42:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 11:51:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,25 @@ Replace::~Replace()
 {
 }
 
-void	Replace::lineReplace(std::string const &line, \
-		std::string const &search, std::string const &replace)
+std::string	Replace::lineReplace(std::string line, \
+			std::string const &search, std::string const &replace)
 {
 	std::string result = "";
+	std::string	lineCopy = line;
 
-	int found = line.find(search);
+	unsigned long found = line.find(search);
 
-	if (found == string::npos)
+	if (found == std::string::npos)
 	{
-		result = string;
+		result = line;
 		return result;
 	}
-	while (found != string::pos)
+	while (found != std::string::npos)
 	{
 		result += line.substr(0, found);
 		result += replace;
-		line = line.substr(found, string::npos);
+		lineCopy = line.substr(found, std::string::npos);
+		line = lineCopy;
 		found = line.find(search);
 	}
 

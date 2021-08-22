@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 17:48:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/20 19:43:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 11:58:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int main(int argc, char **argv)
 {
-	Replace::replace(argv[0], argv[1], argv[2]);
+	if (argc != 4)
+		return (0);
+
+	Replace::replace(argv[1], argv[2], argv[3]);
 	return (0);
 }
