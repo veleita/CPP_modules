@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 17:34:29 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/22 14:02:41 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/22 14:33:20 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,12 @@ NAME = replace
 
 SRCS = main.cpp Replace.cpp
 OBJS = $(SRCS:.cpp=.o)
+
+
+TEST_FILE 	= StraightOuttaCompton
+
+TEST_SEARCH		= "fuck"
+TEST_REPLACE	= "BEEEEP"
 
 
 all: $(NAME)
@@ -40,6 +46,11 @@ re: fclean all
 
 
 test: re
-	./$(NAME)
+	./$(NAME) $(TEST_FILE) $(TEST_SEARCH) $(TEST_REPLACE)
+	@echo "Original:"
+	@cat $(TEST_FILE)
+	@echo ""
+	@echo "Replaced:"
+	@cat $(TEST_FILE).replace
 
 .PHONY: all clean fclean re test
