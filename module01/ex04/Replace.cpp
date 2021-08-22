@@ -6,22 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 18:01:29 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 11:51:08 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 14:03:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Replace.hpp"
 #include <string>
 
-Replace::Replace()
-{
-}
-
-Replace::~Replace()
-{
-}
-
-std::string	Replace::lineReplace(std::string line, \
+std::string	lineReplace(std::string line, \
 			std::string const &search, std::string const &replace)
 {
 	std::string result = "";
@@ -32,21 +24,22 @@ std::string	Replace::lineReplace(std::string line, \
 	if (found == std::string::npos)
 	{
 		result = line;
-		return result;
+		return result + "\n";	
 	}
 	while (found != std::string::npos)
 	{
 		result += line.substr(0, found);
 		result += replace;
-		lineCopy = line.substr(found, std::string::npos);
+		lineCopy = line.substr(found + 1, std::string::npos);
+		found = lineCopy.find(search);
 		line = lineCopy;
-		found = line.find(search);
 	}
+	result += line;
 
-	return result;	
+	return result + "\n";	
 }
 
-void	Replace::replace(std::string const &filename, \
+void	replace(std::string const &filename, \
 		std::string const search, std::string const replace)
 {
 	std::ifstream	infile;
@@ -60,7 +53,7 @@ void	Replace::replace(std::string const &filename, \
 
 	while (std::getline(infile, line))
 	{
-		outfile << Replace::lineReplace(line, search, replace);
+		outfile << lineReplace(line, search, replace);
 	}
 
 	infile.close();

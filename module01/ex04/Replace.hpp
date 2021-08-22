@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 17:58:12 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 11:50:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 13:24:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,10 @@
 
 #include <fstream>
 
-class Replace
-{
-	private:
+std::string	lineReplace(std::string line, \
+			std::string const &search, std::string const &replace);
 
-	public:
-		Replace();
-		~Replace();
-
-		static void			replace(std::string const &filename, \
-								std::string const search, \
-								std::string const replace);
-
-		static std::string	lineReplace(std::string line, \
-								std::string const &search, \
-								std::string const &replace);
-};
+void	replace(std::string const &filename, \
+		std::string const search, std::string const replace);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 17:34:29 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/20 19:43:48 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/22 14:02:41 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) *.replace
 
 fclean: clean
 	rm -f $(NAME)
