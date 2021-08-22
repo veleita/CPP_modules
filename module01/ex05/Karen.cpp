@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 15:29:28 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 16:01:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 16:05:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	Karen::error()
 
 void	Karen::complain(std::string level)
 {
-	void (*levels [4])() = {debug(), info(), warning(), error()};
+	KarenFisher functions[4] = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
 	std::string labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
 	{
 		if (labels[i] == level)
-			(*levels[i])();
+			(this->*functions[i])();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 15:29:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/22 15:32:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/22 16:03:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ class Karen
 
 		void complain( std::string level );
 };
+
+typedef	void	(Karen::*KarenFisher)(void);
 
 #endif
