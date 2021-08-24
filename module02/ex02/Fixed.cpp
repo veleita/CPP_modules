@@ -6,7 +6,7 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 20:37:22 by zome             ###   ########.fr       */
+/*   Updated: 2021/08/24 21:09:17 by zome             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ Fixed	Fixed::operator*(Fixed const &rhs)
 {	
 	Fixed	result(*this);
 
-	result.setRawBits(this->_value * rhs.getRawBits());
+	result.setRawBits(((long)this->_value * (long)rhs.getRawBits()) / (1 << Fixed::_bits));
 	return (result);
 }
 
@@ -112,7 +112,7 @@ Fixed	Fixed::operator/(Fixed const &rhs)
 {
 	Fixed	result(*this);
 
-	result.setRawBits(this->_value / rhs.getRawBits());
+	result.setRawBits(((long)this->_value * (1 << Fixed::_bits) / (long)rhs.getRawBits()));
 	return (result);
 }
 
