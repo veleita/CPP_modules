@@ -6,7 +6,7 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 10:00:58 by zome             ###   ########.fr       */
+/*   Updated: 2021/08/24 12:32:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,20 @@ Fixed::Fixed() : _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed(int const value) : _value(value << Fixed::_bits)
+{
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(float const value) : _value(roundf(value * (1 << Fixed::_bits)))
+{					// This operation is basically a right shift
+	std::cout << "Float constructor called" << std::endl;
+}
+
 Fixed::Fixed(Fixed const &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;	
-	this->_value = copy.getRawBits();
+	*this = copy;
 }
 
 Fixed::~Fixed()
@@ -38,14 +48,25 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
-
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
-
 	this->_value = raw;
+}
+
+int	Fixed::toInt(void) const
+{
+	return (this->_value >> Fixed::_bits);
+}		// We are reversing the conversion we made in the int constructor
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->_value / (float)(1 << Fixed::_bits));
+}		// We are reversing the conversion we made in the float constructor
+
+std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
+{
+	return (lhs << rhs.toFloat());
 }
