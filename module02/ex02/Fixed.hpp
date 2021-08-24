@@ -6,7 +6,7 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:41:40 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 12:41:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/24 20:42:07 by zome             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ class Fixed
 		bool	operator==(Fixed const &rhs) const;
 		bool	operator!=(Fixed const &rhs) const;
 
-		Fixed 	&operator+(Fixed const &rhs);
-		Fixed 	&operator-(Fixed const &rhs);
-		Fixed 	&operator*(Fixed const &rhs);
-		Fixed 	&operator/(Fixed const &rhs);
+		Fixed 	operator+(Fixed const &rhs);
+		Fixed 	operator-(Fixed const &rhs);
+		Fixed 	operator*(Fixed const &rhs);
+		Fixed 	operator/(Fixed const &rhs);
 
 		int 	getRawBits(void) const;
 		void	setRawBits(int const raw);
