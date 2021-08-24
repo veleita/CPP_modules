@@ -6,7 +6,7 @@
 #    By: mzomeno <1veleita1@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/24 09:24:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/24 09:30:09 by zome             ###   ########.fr        #
+#    Updated: 2021/08/24 09:55:14 by zome             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = FixedTest
 
-SRCS = main.cpp
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
