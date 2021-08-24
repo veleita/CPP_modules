@@ -6,11 +6,12 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:44:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/24 10:46:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/24 12:24:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
 int main(void)
 {
 	Fixed		a;
@@ -31,3 +32,4 @@ int main(void)
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	
 	return 0;
+}

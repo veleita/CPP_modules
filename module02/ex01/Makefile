@@ -6,11 +6,11 @@
 #    By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/24 10:39:59 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/24 10:42:14 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/24 12:23:31 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OMPILER = clang++
+COMPILER = clang++
 FLAGS = -Wall -Wextra -Werror -I. -std=c++98 -g
 
 NAME = AdvancedFixedTest
