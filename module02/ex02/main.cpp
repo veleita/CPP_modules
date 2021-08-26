@@ -29,4 +29,14 @@ int main(void)
 	std::cout << a << " - " << b << " = " << a - b << std::endl;
 	std::cout << a << " * " << c << " = " << a * c << std::endl;
 	std::cout << a << " / " << c << " = " << a / c << std::endl;
+
+	std::cout << "a = " << a << std::endl;
+	std::cout << "a++ = "  << a++ << std::endl;
+	std::cout << "a = "  << a << std::endl;
+	std::cout << "++a = "  << ++a << std::endl;
+	
+	std::cout << "b = "  << b << std::endl;
+	std::cout << "b-- = "  << b-- << std::endl;
+	std::cout << "b = "  << b << std::endl;
+	std::cout << "--b = "  << --b << std::endl;
 }

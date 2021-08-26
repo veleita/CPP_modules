@@ -36,7 +36,6 @@ Fixed::Fixed(Fixed const &copy)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 //------ASIGNATION OPERATOR------//
@@ -113,6 +112,32 @@ Fixed	Fixed::operator/(Fixed const &rhs)
 	return (result);
 }
 
+Fixed	Fixed::operator++()	// Pre-increment
+{
+	this->_value += (1 << Fixed::_bits);
+	return (*this);
+}
+
+Fixed	Fixed::operator--()	// Pre-decrement
+{
+	this->_value -= (1 << Fixed::_bits);
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)	// Post-increment
+{
+	Fixed pre_state(*this);
+	this->_value += (1 << Fixed::_bits);
+	return (pre_state);
+}
+
+Fixed	Fixed::operator--(int)	// Post-decrement
+{
+	Fixed pre_state(*this);
+	this->_value -= (1 << Fixed::_bits);
+	return (pre_state);
+}
+
 //------GETTER AND SETTER------//
 
 int	Fixed::getRawBits(void) const
@@ -134,7 +159,7 @@ int	Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_value / (float)(1 << Fixed::_bits));
+		return ((float)this->_value / (float)(1 << Fixed::_bits));
 }		// We are reversing the conversion we made in the float constructor
 
 //------STREAM OPERATORS------//
