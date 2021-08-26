@@ -31,7 +31,6 @@ Fixed::Fixed(float const value) : _value(roundf(value * (1 << Fixed::_bits)))
 
 Fixed::Fixed(Fixed const &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;	
 	*this = copy;
 }
 
@@ -44,8 +43,6 @@ Fixed::~Fixed()
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
-	std::cout << "Assignation operator called" << std::endl;
-
 	this->_value = rhs.getRawBits();
 	return (*this);				// So we can nest operations (a = b = c)
 }
@@ -104,7 +101,7 @@ Fixed	Fixed::operator*(Fixed const &rhs)
 {	
 	Fixed	result(*this);
 
-	result.setRawBits(((long)this->_value * (long)rhs.getRawBits()) / (1 << Fixed::_bits));
+	result.setRawBits(((long)this->_value * (long)rhs.getRawBits()) >> Fixed::_bits);
 	return (result);
 }
 
@@ -112,7 +109,7 @@ Fixed	Fixed::operator/(Fixed const &rhs)
 {
 	Fixed	result(*this);
 
-	result.setRawBits(((long)this->_value * (1 << Fixed::_bits) / (long)rhs.getRawBits()));
+	result.setRawBits(((long)this->_value << Fixed::_bits) / (long)rhs.getRawBits());
 	return (result);
 }
 
