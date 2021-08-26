@@ -18,18 +18,23 @@ int main(void)
 	Fixed	b(2.5f);
 	Fixed	c(a);
 
+	std::cout << "-------COMPARISON OPERATORS-------" << std::endl;
 	std::cout << a << " > " << b << " ? " << (a > b) << std::endl;
 	std::cout << a << " < " << b << " ? " << (a < b) << std::endl;
 	std::cout << b << " >= " << c << " ? " << (b >= c) << std::endl;
 	std::cout << a << " <= " << c << " ? " << (a <= c) << std::endl;
 	std::cout << b << " == " << b << " ? " << (b == b) << std::endl;
 	std::cout << b << " != " << a << " ? " << (b != a) << std::endl;
+	std::cout << std::endl;
 
+	std::cout << "-------ARITHMETIC OPERATORS-------" << std::endl;
 	std::cout << a << " + " << b << " = " << a + b << std::endl;
 	std::cout << a << " - " << b << " = " << a - b << std::endl;
 	std::cout << a << " * " << c << " = " << a * c << std::endl;
 	std::cout << a << " / " << c << " = " << a / c << std::endl;
+	std::cout << std::endl;
 
+	std::cout << "-------INCREMENTAL/DECREMENTAL OPERATORS-------" << std::endl;
 	std::cout << "a = " << a << std::endl;
 	std::cout << "a++ = "  << a++ << std::endl;
 	std::cout << "a = "  << a << std::endl;
