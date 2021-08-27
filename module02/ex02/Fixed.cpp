@@ -12,6 +12,7 @@
 
 #include "Fixed.hpp"
 
+
 //------CONSTRUCTORS AND DESTRUCTOR------//
 
 Fixed::Fixed() : _value(0)
@@ -38,6 +39,7 @@ Fixed::~Fixed()
 {
 }
 
+
 //------ASIGNATION OPERATOR------//
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
@@ -45,6 +47,7 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 	this->_value = rhs.getRawBits();
 	return (*this);				// So we can nest operations (a = b = c)
 }
+
 
 //------COMPARISON OPERATORS------//
 
@@ -77,6 +80,7 @@ bool	Fixed::operator!=(Fixed const &rhs) const
 {
 	return (this->_value != rhs.getRawBits());
 }
+
 
 //------ARITHMETIC OPERATORS------//
 
@@ -138,6 +142,7 @@ Fixed	Fixed::operator--(int)	// Post-decrement
 	return (pre_state);
 }
 
+
 //------GETTER AND SETTER------//
 
 int	Fixed::getRawBits(void) const
@@ -150,6 +155,7 @@ void	Fixed::setRawBits(int const raw)
 	this->_value = raw;
 }
 
+
 //------TYPE CAST------//
 
 int	Fixed::toInt(void) const
@@ -161,6 +167,7 @@ float	Fixed::toFloat(void) const
 {
 		return ((float)this->_value / (float)(1 << Fixed::_bits));
 }		// We are reversing the conversion we made in the float constructor
+
 
 //------STREAM OPERATORS------//
 
