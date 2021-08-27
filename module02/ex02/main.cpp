@@ -44,4 +44,11 @@ int main(void)
 	std::cout << "b-- = "  << b-- << std::endl;
 	std::cout << "b = "  << b << std::endl;
 	std::cout << "--b = "  << --b << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "-------MIN/MAX FUNCTIONS-------" << std::endl;
+	std::cout << "Fixed::max(" << a << ", " << b << ") = " << Fixed::max(a, b) << std::endl;
+	std::cout << "Fixed::min(" << a << ", " << b << ") = " << Fixed::min(a, b) << std::endl;
+	std::cout << "max(" << a << ", " << b << ") = " << max(a, b) << std::endl;
+	std::cout << "max(" << a << ", " << b << ") = " << min(a, b) << std::endl;
 }
