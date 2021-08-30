@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:37:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/30 10:14:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/30 10:27:09 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ClapTrap::attack(std::string const &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "Oh no! ClapTrap " << this->_name << " has taken " <<\
+	std::cout << "Oh no! " << this->_name << " has taken " <<\
 	amount << " points of damage!" << std::endl;
 
 	this->_hitpoints -= amount;
@@ -48,7 +48,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "ClapTrap " << this->_name << " is being repaired. " <<\
+	std::cout << this->_name << " is being repaired. " <<\
 	"It recovers " << amount << " hitpoints." << std::endl;
 
 	this->_hitpoints += amount;
@@ -56,6 +56,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->_name << " has been destroyed forever." <<\
+	std::cout << this->_name << " has been destroyed forever." <<\
 	 std::endl;
 }
