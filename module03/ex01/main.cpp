@@ -6,19 +6,20 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:15:46 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/27 17:30:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/30 09:54:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap	CL4P_TP("Brian");
+	ScavTrap	SK4V_TP("Serena");
 
-	CL4P_TP.attack("pinhata");
-	CL4P_TP.takeDamage(30);
-	CL4P_TP.beRepaired(10);
+	SK4V_TP.attack("filthy poser");
+	SK4V_TP.takeDamage(50);
+	SK4V_TP.beRepaired(30);
+	SK4V_TP.guardGate();
 
 	return (0);
 }

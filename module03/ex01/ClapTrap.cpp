@@ -6,11 +6,17 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:37:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/27 18:03:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/30 10:14:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap() : _name(""), _hitpoints(10),
+					_energyPoints(10), _attackDamage(0)
+{
+	std::cout << "An anonymous ClapTrap has been created!" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10),
 					_energyPoints(10), _attackDamage(0)

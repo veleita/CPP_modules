@@ -6,12 +6,12 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:16:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/30 00:30:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/08/30 10:13:46 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 # include <iostream>
 
@@ -24,6 +24,7 @@ class ClapTrap
 		int		_attackDamage;
 
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap &copy);
 
