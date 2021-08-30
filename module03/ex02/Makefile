@@ -6,16 +6,16 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/29 14:40:16 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/30 09:57:57 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/08/30 10:32:53 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ScavTrap
+NAME = FragTrap
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 

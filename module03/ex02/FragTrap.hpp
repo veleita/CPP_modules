@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 17:15:46 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/30 10:48:05 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/08/30 10:33:43 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/08/30 10:35:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int main(void)
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class FragTrap : public ClapTrap 
 {
-	FragTrap	FR4G_TP("Cronk");
 
-	FR4G_TP.takeDamage(20);
-	FR4G_TP.attack("huge horrible monster");
-	FR4G_TP.beRepaired(20);
-	FR4G_TP.highFivesGuys();
-	FR4G_TP.takeDamage(50);
+	public:
+		FragTrap(std::string name);
+		FragTrap(FragTrap &copy);
 
-	return (0);
-}
+		void	attack(std::string const &target);
+		void	highFivesGuys(void);
+
+		~FragTrap();
+};
+
+#endif
