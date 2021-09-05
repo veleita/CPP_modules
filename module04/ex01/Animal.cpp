@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 16:31:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 17:34:09 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ Animal::~Animal()
 Dog::Dog()
 {
 	this->_type = "Dog";
+	this->_brain = new Brain();
 
 	std::cout << "This animal is a dog" << std::endl;
 }
@@ -81,6 +82,7 @@ Dog::Dog(Dog const &copy)
 Cat::Cat()
 {
 	this->_type = "Cat";
+	this->_brain = new Brain();
 
 	std::cout << "This animal is a cat" << std::endl;
 }
@@ -124,9 +126,13 @@ void	Cat::makeSound() const
 Dog::~Dog()
 {
 	std::cout << "Doggo got too excited and died" << std::endl;
+
+	delete _brain;
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat lost the last one of its 7 lives" << std::endl;
+
+	delete _brain;
 }

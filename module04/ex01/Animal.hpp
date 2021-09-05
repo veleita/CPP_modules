@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 14:39:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 16:14:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 17:32:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ANIMAL_H
 
 # include <iostream>
-
+# include "Brain.hpp"
 
 class Animal
 {
@@ -36,6 +36,9 @@ class Animal
 
 class Dog : public Animal
 {
+	private:
+		Brain	*_brain;
+
 	public:
 		Dog();
 		Dog(Dog const &copy);
@@ -49,6 +52,9 @@ class Dog : public Animal
 
 class Cat : public Animal
 {
+	private:
+		Brain	*_brain;
+
 	public:
 		Cat();
 		Cat(Cat const &copy);

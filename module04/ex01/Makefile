@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/05 16:52:40 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/05 17:34:23 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Polymorphism
 
-SRCS = main.cpp Animal.cpp
+SRCS = main.cpp Animal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 

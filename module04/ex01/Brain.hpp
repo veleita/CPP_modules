@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/05 16:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 17:32:15 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/09/05 17:01:34 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/09/05 17:38:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#ifndef BRAIN_H
+#define BRAIN_H
 
-int main()
+#include <iostream>
+#include <string>
+
+class Brain
 {
-	const Animal* doggo = new Dog();
-	const Animal* puss = new Cat();
+	
+	private:
+	    std::string _ideas[100];
 
-	delete doggo;
-	delete puss;
-	return 0;
-}
+	    bool 	checkIndex(int index) const;
+
+	public:
+    	Brain();
+    	Brain(const Brain &copy);
+
+    	Brain &operator=(const Brain &rhs);
+
+    	const std::string getIdeas(int index) const;
+    	void setIdeas(int index, const std::string str);
+    	
+		~Brain();
+};
+
+#endif
