@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 10:33:43 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/30 11:30:08 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 14:45:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class FragTrap : virtual public ClapTrap
 		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(FragTrap &copy);
+
+		FragTrap &operator=(FragTrap const &rhs);
 
 		void	attack(std::string const &target);
 		void	highFivesGuys(void);

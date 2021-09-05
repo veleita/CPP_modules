@@ -6,11 +6,24 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 00:31:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/08/30 10:25:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 14:38:53 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+
+//------CONSTRUCTORS------//
+
+ScavTrap::ScavTrap() : ClapTrap("Scavvy")
+{
+	this->_hitpoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+
+	std::cout << " This is not just a crappy ScavTrap! It's a ScavTrap!" \
+	<< std::endl;
+}
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
@@ -19,7 +32,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 
-	std::cout << " This is not just a crappy ClapTrap! It's a ScavTrap!" \
+	std::cout << " This is not just a crappy ScavTrap! It's a ScavTrap!" \
 	<< std::endl;
 }
 
@@ -27,6 +40,21 @@ ScavTrap::ScavTrap(ScavTrap &copy)
 {
 	*this = copy;
 }
+
+
+//------OPERATOR OVERLOADS------//
+
+ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
+{
+	this->_name = rhs.getName();
+	this->_hitpoints = rhs.getHP();
+	this->_energyPoints = rhs.getEP();
+	this->_attackDamage = rhs.getAD();
+	return (*this);
+}
+
+
+//------CLASS METHODS------//
 
 void	ScavTrap::attack(std::string const &target)
 {
@@ -42,6 +70,9 @@ void	ScavTrap::guardGate()
 	std::cout << "ScavTrap " << this->_name << " entered Gate keeper mode." \
 	<< std::endl;
 }
+
+
+//------DESTRUCTOR------//
 
 ScavTrap::~ScavTrap()
 {
