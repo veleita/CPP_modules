@@ -6,7 +6,7 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:41:40 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 12:27:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 13:42:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Fixed
 		Fixed(int const value);
 		Fixed(float const value);
 		Fixed(Fixed const &copy);
-		~Fixed();
 
 		Fixed &operator=(Fixed const &rhs);
 
@@ -36,6 +35,8 @@ class Fixed
 
 		float	toFloat(void) const;
 		int	toInt(void) const;
+		
+		~Fixed();
 };
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &value);

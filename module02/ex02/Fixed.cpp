@@ -6,14 +6,14 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 21:09:17 by zome             ###   ########.fr       */
+/*   Updated: 2021/09/05 13:36:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 
-//------CONSTRUCTORS AND DESTRUCTOR------//
+//------CONSTRUCTORS------//
 
 Fixed::Fixed() : _value(0)
 {
@@ -35,17 +35,18 @@ Fixed::Fixed(Fixed const &copy)
 	*this = copy;
 }
 
-Fixed::~Fixed()
-{
-}
 
-
-//------ASIGNATION OPERATOR------//
+//------OPERATOR OVERLOADS------//
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
 	this->_value = rhs.getRawBits();
 	return (*this);				// So we can nest operations (a = b = c)
+}
+
+std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
+{
+	return (lhs << rhs.toFloat());
 }
 
 
@@ -204,9 +205,8 @@ float	Fixed::toFloat(void) const
 }		// We are reversing the conversion we made in the float constructor
 
 
-//------STREAM OPERATORS------//
+//------DESTRUCTOR------//
 
-std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
+Fixed::~Fixed()
 {
-	return (lhs << rhs.toFloat());
 }

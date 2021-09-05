@@ -6,11 +6,14 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/09/05 13:16:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 13:38:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+
+//------CONSTRUCTORS------//
 
 Fixed::Fixed() : _value(0)
 {
@@ -24,10 +27,8 @@ Fixed::Fixed(Fixed const &copy)
 	*this = copy;
 }
 
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
+
+//------OPERATOR OVERLOADS------//
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
@@ -36,6 +37,9 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 	this->_value = rhs.getRawBits();
 	return (*this);				// So we can nest operations (a = b = c)
 }
+
+
+//------GETTER AND SETTER------//
 
 int	Fixed::getRawBits(void) const
 {
@@ -49,4 +53,12 @@ void	Fixed::setRawBits(int const raw)
 	std::cout << "setRawBits member function called" << std::endl;
 
 	this->_value = raw;
+}
+
+
+//------DESTRUCTOR------//
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
 }

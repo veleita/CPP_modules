@@ -6,11 +6,14 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 12:32:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 13:42:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+
+//------CONSTRUCTORS------//
 
 Fixed::Fixed() : _value(0)
 {
@@ -33,10 +36,8 @@ Fixed::Fixed(Fixed const &copy)
 	*this = copy;
 }
 
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
+
+//------OPERATOR OVERLOADS------//
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
@@ -45,6 +46,14 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 	this->_value = rhs.getRawBits();
 	return (*this);				// So we can nest operations (a = b = c)
 }
+
+std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
+{
+	return (lhs << rhs.toFloat());
+}
+
+
+//------GETTER AND SETTER------//
 
 int	Fixed::getRawBits(void) const
 {
@@ -56,6 +65,9 @@ void	Fixed::setRawBits(int const raw)
 	this->_value = raw;
 }
 
+
+//------TYPE CAST------//
+
 int	Fixed::toInt(void) const
 {
 	return (this->_value >> Fixed::_bits);
@@ -66,7 +78,10 @@ float	Fixed::toFloat(void) const
 	return ((float)this->_value / (float)(1 << Fixed::_bits));
 }		// We are reversing the conversion we made in the float constructor
 
-std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
+
+//------DESTRUCTOR------//
+
+Fixed::~Fixed()
 {
-	return (lhs << rhs.toFloat());
+	std::cout << "Destructor called" << std::endl;
 }
