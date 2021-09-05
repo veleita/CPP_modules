@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 16:31:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 16:42:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 /********************************/
 /*			BASE CLASS			*/
@@ -18,12 +18,12 @@
 
 //------CONSTRUCTORS------//
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
 	std::cout << "An animal has been created" << std::endl;
 }
 
-Animal::Animal(Animal const &copy)
+WrongAnimal::WrongAnimal(WrongAnimal const &copy)
 {
 	*this = copy;
 }
@@ -31,7 +31,7 @@ Animal::Animal(Animal const &copy)
 
 //------OPERATOR OVERLOADS------//
 
-Animal	&Animal::operator=(Animal const &rhs)
+WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &rhs)
 {
 	this->_type = rhs.getType();
 	return (*this);
@@ -39,7 +39,7 @@ Animal	&Animal::operator=(Animal const &rhs)
 
 //------GETTERS------//
 
-std::string	Animal::getType() const
+std::string	WrongAnimal::getType() const
 {
 	return (this->_type);
 }
@@ -47,14 +47,14 @@ std::string	Animal::getType() const
 
 //------CLASS METHODS------//
 
-void	Animal::makeSound() const
+void	WrongAnimal::makeSound() const
 {
 }
 
 
 //------DESTRUCTOR------//
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
 	std::cout << "Mother Earth has lost anothes living soul. Sad." << std::endl;
 }
@@ -66,26 +66,26 @@ Animal::~Animal()
 
 //------CONSTRUCTORS------//
 
-Dog::Dog()
+WrongDog::WrongDog()
 {
-	this->_type = "Dog";
+	this->_type = "WrongDog";
 
 	std::cout << "This animal is a dog" << std::endl;
 }
 
-Dog::Dog(Dog const &copy)
+WrongDog::WrongDog(WrongDog const &copy)
 {
 	*this = copy;
 }
 
-Cat::Cat()
+WrongCat::WrongCat()
 {
-	this->_type = "Cat";
+	this->_type = "WrongCat";
 
 	std::cout << "This animal is a cat" << std::endl;
 }
 
-Cat::Cat(Cat const &copy)
+WrongCat::WrongCat(WrongCat const &copy)
 {
 	*this = copy;
 }
@@ -93,13 +93,13 @@ Cat::Cat(Cat const &copy)
 
 //------OPERATOR OVERLOADS------//
 
-Dog	&Dog::operator=(Dog const &rhs)
+WrongDog	&WrongDog::operator=(WrongDog const &rhs)
 {
 	this->_type = rhs.getType();
 	return (*this);
 }
 
-Cat	&Cat::operator=(Cat const &rhs)
+WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 {
 	this->_type = rhs.getType();
 	return (*this);
@@ -108,12 +108,12 @@ Cat	&Cat::operator=(Cat const &rhs)
 
 //------CLASS METHODS------//
 
-void	Dog::makeSound() const
+void	WrongDog::makeSound() const
 {
 	std::cout << "Woof, woof!" << std::endl;
 }
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
 	std::cout << "Prrr... meow" << std::endl;
 }
@@ -121,12 +121,12 @@ void	Cat::makeSound() const
 
 //------DESTRUCTORS------//
 
-Dog::~Dog()
+WrongDog::~WrongDog()
 {
-	std::cout << "Doggo got too excited and died" << std::endl;
+	std::cout << "WrongDoggo got too excited and died" << std::endl;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	std::cout << "Cat lost the last one of its 7 lives" << std::endl;
+	std::cout << "WrongCat lost the last one of its 7 lives" << std::endl;
 }
