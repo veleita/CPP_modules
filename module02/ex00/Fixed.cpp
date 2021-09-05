@@ -6,7 +6,7 @@
 /*   By: zome </var/spool/mail/zome>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:45:42 by zome              #+#    #+#             */
-/*   Updated: 2021/08/24 10:00:58 by zome             ###   ########.fr       */
+/*   Updated: 2021/09/05 13:16:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ Fixed::Fixed() : _value(0)
 Fixed::Fixed(Fixed const &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;	
-	this->_value = copy.getRawBits();
+
+	*this = copy;
 }
 
 Fixed::~Fixed()
