@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 17:34:09 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/05 18:13:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ Dog::Dog()
 Dog::Dog(Dog const &copy)
 {
 	*this = copy;
+	this->_brain = new Brain();
+
+	for (int i = 0; i < 100; i++)
+	{
+		this->_brain[i] = copy._brain[i];
+	}
 }
 
 Cat::Cat()
@@ -90,6 +96,12 @@ Cat::Cat()
 Cat::Cat(Cat const &copy)
 {
 	*this = copy;
+	this->_brain = new Brain();
+
+	for (int i = 0; i < 100; i++)
+	{
+		this->_brain[i] = copy._brain[i];
+	}
 }
 
 
@@ -98,12 +110,24 @@ Cat::Cat(Cat const &copy)
 Dog	&Dog::operator=(Dog const &rhs)
 {
 	this->_type = rhs.getType();
+
+	for (int i = 0; i < 100; i++)
+	{
+		this->_brain[i] = rhs._brain[i];
+	}
+
 	return (*this);
 }
 
 Cat	&Cat::operator=(Cat const &rhs)
 {
 	this->_type = rhs.getType();
+
+	for (int i = 0; i < 100; i++)
+	{
+		this->_brain[i] = rhs._brain[i];
+	}
+
 	return (*this);
 }
 
@@ -127,12 +151,12 @@ Dog::~Dog()
 {
 	std::cout << "Doggo got too excited and died" << std::endl;
 
-	delete _brain;
+	delete this->_brain;
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat lost the last one of its 7 lives" << std::endl;
 
-	delete _brain;
+	delete this->_brain;
 }
