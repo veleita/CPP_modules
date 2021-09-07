@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 14:39:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/07 18:42:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/07 20:14:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include "Brain.hpp"
 
-class Animal
+class AAnimal
 {
 	protected:
 		std::string	_type;
@@ -29,7 +29,7 @@ class Animal
 
 		std::string	getType(void) const;
 
-		virtual void	makeSound() const;
+		virtual void	makeSound() const = 0;
 
 		virtual ~Animal();
 };

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/07 20:08:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/07 20:14:52 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,6 @@ Animal	&Animal::operator=(Animal const &rhs)
 std::string	Animal::getType() const
 {
 	return (this->_type);
-}
-
-
-//------CLASS METHODS------//
-
-void	Animal::makeSound() const
-{
 }
 
 
