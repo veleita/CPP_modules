@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 16:31:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/07 20:07:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	Animal::makeSound() const
 
 Animal::~Animal()
 {
-	std::cout << "Mother Earth has lost anothes living soul. Sad." << std::endl;
+	std::cout << "Mother Earth has lost another living soul. Sad." << std::endl;
 }
 
 
