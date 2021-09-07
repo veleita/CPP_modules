@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 18:26:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/07 19:30:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Animal::Animal()
 
 Animal::Animal(Animal const &copy)
 {
+	std::cout << "Copy constructor" << std::endl;
 	*this = copy;
 }
 
@@ -76,13 +77,14 @@ Dog::Dog()
 
 Dog::Dog(Dog const &copy)
 {
-	*this = copy;
 	this->_brain = new Brain();
 
 	for (int i = 0; i < 100; i++)
 	{
 		this->_brain[i] = copy._brain[i];
 	}
+	
+	*this = copy;
 }
 
 Cat::Cat()
@@ -95,13 +97,16 @@ Cat::Cat()
 
 Cat::Cat(Cat const &copy)
 {
-	*this = copy;
+	std::cout << "Copy constructor" << std::endl;
+	
 	this->_brain = new Brain();
 
 	for (int i = 0; i < 100; i++)
 	{
 		this->_brain[i] = copy._brain[i];
 	}
+	
+	*this = copy;
 }
 
 
@@ -131,6 +136,18 @@ Cat	&Cat::operator=(Cat const &rhs)
 	return (*this);
 }
 
+
+//------GETTERS------//
+
+Brain	*Dog::getBrain() const
+{
+	return (this->_brain);
+}
+
+Brain	*Cat::getBrain() const
+{
+	return (this->_brain);
+}
 
 //------CLASS METHODS------//
 

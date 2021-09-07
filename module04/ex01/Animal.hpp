@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 14:39:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 17:32:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/07 18:42:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ class Dog : public Animal
 
 		Dog	&operator=(Dog const &rhs);
 
+		Brain	*getBrain(void) const;
+
 		void	makeSound() const;
 
 		~Dog();
@@ -60,6 +62,8 @@ class Cat : public Animal
 		Cat(Cat const &copy);
 
 		Cat	&operator=(Cat const &rhs);
+
+		Brain	*getBrain(void) const;
 
 		void	makeSound() const;
 
