@@ -6,14 +6,14 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/29 14:40:16 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/08/30 10:54:40 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/07 19:37:32 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = FragTrap
+NAME = DiamondTrap
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
