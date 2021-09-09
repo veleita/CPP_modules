@@ -6,12 +6,15 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:11:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/09 18:25:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/09 19:06:52 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIA_HPP
 # define MATERIA_HPP
+
+# include "AMateria.hpp"
+# include <iostream>
 
 class ICharacter
 {
