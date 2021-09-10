@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/09 17:49:58 by zome             ###   ########.fr        #
+#    Updated: 2021/09/10 13:11:40 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = Interfaces
 
-SRCS = main.cpp
+SRCS = main.cpp Character.cpp Materia.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
