@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 20:11:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 20:22:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,28 @@ int main()
 	std::cout << "CHARACTER CONSTRUCTORS:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	ICharacter	*warrior = new Warrior();
-	ICharacter	*mage = new Mage();
+	ICharacter	*IWarrior = new Warrior();
+	ICharacter	*IMage = new Mage();
 	
-	std::cout << warrior->getName() << std::endl;
-	std::cout << mage->getName() << std::endl;
+	std::cout << IWarrior->getName() << std::endl;
+	std::cout << IMage->getName() << std::endl;
 
 	std::cout << std::endl;
 
 
-	std::cout << "USE MATERIA:" << std::endl;
+	std::cout << "CHARACTER COPY CONSTRUCTORS:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	cure->use(*warrior);
-	ice->use(*warrior);
+	Warrior	*warrior;
+	warrior = (Warrior*) IWarrior;				// Type casts
+	Mage *mage;
+	mage = (Mage*) IMage;
+
+	Warrior	*warriorCpy = new Warrior(*warrior);
+	ICharacter	*mageCpy = new Mage(*mage);
+	
+	std::cout << warriorCpy->getName() << std::endl;
+	std::cout << mageCpy->getName() << std::endl;
 
 	std::cout << std::endl;
 
@@ -68,12 +76,26 @@ int main()
 	std::cout << cureClone->getType() << std::endl;
 	std::cout << iceClone->getType() << std::endl;
 
+	std::cout << std::endl;
+
+
+	std::cout << "USE MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	cure->use(*warrior);
+	ice->use(*mage);
+
+	std::cout << std::endl;
+
 
 	delete cure;
 	delete ice;
 	delete cureCpy;
 	delete iceCpy;
 	delete warrior;
+	delete mage;
+	delete warriorCpy;
+	delete mageCpy;
 	delete iceClone;
 	delete cureClone;
 
