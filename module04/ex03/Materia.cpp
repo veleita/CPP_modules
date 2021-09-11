@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:39:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/10 13:04:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 12:07:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ AMateria::AMateria(std::string const & type) : _type(type)
 {
 }
 
-Materia::AMateria(AMateria const &copy) : _type(copy._type)
+AMateria::AMateria(AMateria const &copy) : _type(copy._type)
 {
 }
 
@@ -52,11 +52,13 @@ AMateria const &AMateria::operator=(AMateria const &rhs)
 
 Ice const &Ice::operator=(Ice const &rhs)
 {
+	this->_type = rhs._type;
 	return (*this);
 }
 
 Cure const &Cure::operator=(Cure const &rhs)
 {
+	this->_type = rhs._type;
 	return (*this);
 }
 
@@ -71,7 +73,7 @@ std::string const &AMateria::getType() const
 
 //------CLASS METHODS------//
 
-void	AMateria::use(ICharacter &target)
+void	AMateria::use(ICharacter &target) const
 {
 	std::cout << "* throws some kind of magic at " <<  target.getName() << " *" << std::endl;
 }
@@ -82,7 +84,7 @@ AMateria *Ice::clone() const
 	return (clone);
 }
 
-void	Ice::use(ICharacter &target)
+void	Ice::use(ICharacter &target) const
 {
 	std::cout << "* shoots an ice bolt at " <<  target.getName() << " *" << std::endl;
 }
@@ -93,7 +95,7 @@ AMateria *Cure::clone() const
 	return (clone);
 }
 
-void	Cure::use(ICharacter &target)
+void	Cure::use(ICharacter &target) const
 {
 	std::cout << "* heals " <<  target.getName() << "’s wounds *" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:02:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/10 13:06:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 12:05:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "Character.hpp"
 # include <iostream>
+
+class ICharacter;		// To avoid include errors
 
 class AMateria
 {
