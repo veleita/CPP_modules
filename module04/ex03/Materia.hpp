@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:02:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 12:05:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:28:52 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class AMateria
 		virtual AMateria* 	clone() const = 0;
 		virtual void 		use(ICharacter& target) const;
 
-		~AMateria() {};
+		virtual ~AMateria();
 };
 
 
@@ -52,7 +52,7 @@ class	Ice : public AMateria
 		AMateria	*clone() const;
 		void 		use(ICharacter &target) const;
 
-		virtual ~Ice() {};
+		virtual ~Ice();
 };
 
 
@@ -67,7 +67,7 @@ class	Cure : public AMateria
 		AMateria	*clone() const;
 		void 		use(ICharacter &target) const;
 
-		virtual ~Cure() {};
+		virtual ~Cure();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:39:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 12:07:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:32:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,19 @@ Cure::Cure(Cure const &copy) : AMateria(copy)
 
 AMateria const &AMateria::operator=(AMateria const &rhs)
 {
-	this->_type = rhs._type;
+	(void)rhs;
 	return (*this);
 }
 
 Ice const &Ice::operator=(Ice const &rhs)
 {
-	this->_type = rhs._type;
+	(void)rhs;
 	return (*this);
 }
 
 Cure const &Cure::operator=(Cure const &rhs)
 {
-	this->_type = rhs._type;
+	(void)rhs;
 	return (*this);
 }
 
@@ -98,4 +98,19 @@ AMateria *Cure::clone() const
 void	Cure::use(ICharacter &target) const
 {
 	std::cout << "* heals " <<  target.getName() << "’s wounds *" << std::endl;
+}
+
+
+//------DESTRUCTORS------//
+
+AMateria::~AMateria()
+{
+}
+
+Ice::~Ice()
+{
+}
+
+Cure::~Cure()
+{
 }
