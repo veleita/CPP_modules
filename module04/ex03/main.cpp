@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 19:23:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 20:11:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main()
 
 	std::cout << std::endl;
 
+
 	std::cout << "MATERIA COPY CONSTRUCTORS:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
@@ -35,6 +36,7 @@ int main()
 	std::cout << iceCpy->getType() << std::endl;
 
 	std::cout << std::endl;
+
 
 	std::cout << "CHARACTER CONSTRUCTORS:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
@@ -47,17 +49,33 @@ int main()
 
 	std::cout << std::endl;
 
+
 	std::cout << "USE MATERIA:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
 	cure->use(*warrior);
 	ice->use(*warrior);
 
+	std::cout << std::endl;
+
+
+	std::cout << "CLONE MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	AMateria	*iceClone	= ice->clone();
+	AMateria	*cureClone	= cure->clone();
+
+	std::cout << cureClone->getType() << std::endl;
+	std::cout << iceClone->getType() << std::endl;
+
+
 	delete cure;
 	delete ice;
 	delete cureCpy;
 	delete iceCpy;
 	delete warrior;
+	delete iceClone;
+	delete cureClone;
 
 	return (0);
 }
