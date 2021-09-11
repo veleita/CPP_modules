@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:59:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 19:23:36 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:36:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,14 @@ std::string const &Mage::getName() const
 std::string const &Warrior::getName() const
 {
     return this->_name;
+}
+
+//------GETTERS------//
+
+Mage::~Mage()
+{
+}
+
+Warrior::~Warrior()
+{
 }

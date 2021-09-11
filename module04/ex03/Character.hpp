@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:11:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 19:16:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:37:42 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Mage : public ICharacter
 
 		std::string const & getName(void) const;
 
-		~Mage() {};
+		virtual	~Mage();
 };
 
 class Warrior : public ICharacter
@@ -60,7 +60,7 @@ class Warrior : public ICharacter
 
 		std::string const & getName(void) const;
 
-		~Warrior() {};
+		virtual	~Warrior();
 };
 
 #endif
