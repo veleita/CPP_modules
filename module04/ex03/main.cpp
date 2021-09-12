@@ -6,11 +6,12 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 20:22:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:47:03 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Materia.hpp"
+#include "Character.hpp"
 
 int main()
 {
@@ -79,11 +80,30 @@ int main()
 	std::cout << std::endl;
 
 
+	std::cout << "EQUIP MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	warrior->equip(ice);
+	std::cout << std::endl;
+	mage->equip(cure);
+	std::cout << std::endl;
+	mage->equip(ice);
+	std::cout << std::endl;
+
+
+	std::cout << "UNEQUIP MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	mage->unequip(1);
+	std::cout << std::endl;
+
+
 	std::cout << "USE MATERIA:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	cure->use(*warrior);
-	ice->use(*mage);
+	warrior->use(0, *mage);
+	std::cout << std::endl;
+	mage->use(0, *mage);
 
 	std::cout << std::endl;
 
