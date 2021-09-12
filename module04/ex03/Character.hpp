@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:11:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 18:31:42 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:07:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ class Warrior : public ICharacter
 
 		Warrior const & operator=(Warrior const &);
 
+		std::string const & getName(void) const;
+	
 		virtual void 	equip(AMateria* m);
 		virtual void 	unequip(int idx);
 		virtual void 	use(int idx, ICharacter& target);
-
-		std::string const & getName(void) const;
 
 		virtual	~Warrior();
 };

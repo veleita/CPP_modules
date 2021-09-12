@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:59:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 18:47:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:15:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ Mage::Mage(std::string name): _name(name)
 
 Mage::Mage(Mage const & copy)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = copy._inventory[i];
+	}
+
 	*this = copy;	
 }
 
@@ -39,6 +44,11 @@ Warrior::Warrior(std::string name): _name(name)
 
 Warrior::Warrior(Warrior const & copy)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = copy._inventory[i];
+	}
+
 	*this = copy;	
 }
 
@@ -48,12 +58,24 @@ Warrior::Warrior(Warrior const & copy)
 Mage const	&Mage::operator=(Mage const &rhs)
 {
     this->_name = rhs.getName();
+	
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = rhs._inventory[i];
+	}
+
     return (*this);
 }
 
 Warrior const	&Warrior::operator=(Warrior const &rhs)
 {
     this->_name = rhs.getName();
+	
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = rhs._inventory[i];
+	}
+
     return (*this);
 }
 
@@ -90,8 +112,8 @@ void	showInventory(AMateria *inventory[4])
 
 void	Mage::equip(AMateria* m)
 {
-	std::cout << "Mage " << this->_name << " equips " << m->getType() \
-		<< std::endl;
+	std::cout << "* Mage " << this->_name << " equips " << m->getType() \
+		<< " *" << std::endl;
 
 	for (int i = 0; i < 4; ++i)
     {
@@ -107,8 +129,8 @@ void	Mage::equip(AMateria* m)
 
 void 	Mage::unequip(int idx)
 {
-	std::cout << "Mage " << this->_name << " unequips " \
-		<< this->_inventory[idx]->getType() << std::endl;
+	std::cout << "* Mage " << this->_name << " unequips " \
+		<< this->_inventory[idx]->getType() << " *" << std::endl;
 
 	if (idx < 4)
 		this->_inventory[idx] = NULL;
@@ -139,7 +161,7 @@ void 	Mage::use(int idx, ICharacter& target)
 
 void	Warrior::equip(AMateria* m)
 {
-	std::cout << "Warrior " << this->_name << " equips " << m->getType() \
+	std::cout << "* Warrior " << this->_name << " equips " << m->getType() \
 		<< " *" << std::endl;
 
 	for (int i = 0; i < 4; ++i)

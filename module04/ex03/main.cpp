@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 18:47:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:13:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main()
 	mage = (Mage*) IMage;
 
 	Warrior	*warriorCpy = new Warrior(*warrior);
-	ICharacter	*mageCpy = new Mage(*mage);
+	Mage	*mageCpy = new Mage(*mage);
 	
 	std::cout << warriorCpy->getName() << std::endl;
 	std::cout << mageCpy->getName() << std::endl;
@@ -98,15 +98,22 @@ int main()
 	std::cout << std::endl;
 
 
+	std::cout << "DEEP COPY:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	warriorCpy->equip(cure);
+	std::cout << std::endl;
+	mageCpy->equip(cure);
+
+	std::cout << std::endl;
+
+
 	std::cout << "USE MATERIA:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
 	warrior->use(0, *mage);
 	std::cout << std::endl;
 	mage->use(0, *mage);
-
-	std::cout << std::endl;
-
 
 	delete cure;
 	delete ice;
