@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:59:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 20:15:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:57:40 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,25 @@
 
 Mage::Mage(): _name("Rasmodius")
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = nullptr;
+	}
 }
 
 Mage::Mage(std::string name): _name(name)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = nullptr;
+	}
 }
 
 Mage::Mage(Mage const & copy)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		this->_inventory[i] = copy._inventory[i];
+		this->_inventory[i] = nullptr;
 	}
 
 	*this = copy;	
@@ -36,17 +44,25 @@ Mage::Mage(Mage const & copy)
 
 Warrior::Warrior(): _name("Rufus")
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = nullptr;
+	}
 }
 
 Warrior::Warrior(std::string name): _name(name)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		this->_inventory[i] = nullptr;
+	}
 }
 
 Warrior::Warrior(Warrior const & copy)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		this->_inventory[i] = copy._inventory[i];
+		this->_inventory[i] = nullptr;
 	}
 
 	*this = copy;	
@@ -61,7 +77,13 @@ Mage const	&Mage::operator=(Mage const &rhs)
 	
 	for (int i = 0; i < 4; i++)
 	{
-		this->_inventory[i] = rhs._inventory[i];
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		if (rhs._inventory[i])
+		{
+			this->_inventory[i] = rhs._inventory[i]->clone();
+			this->_inventory[i]->setType(rhs._inventory[i]->getType());
+		}
 	}
 
     return (*this);
@@ -73,7 +95,13 @@ Warrior const	&Warrior::operator=(Warrior const &rhs)
 	
 	for (int i = 0; i < 4; i++)
 	{
-		this->_inventory[i] = rhs._inventory[i];
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		if (rhs._inventory[i])
+		{
+			this->_inventory[i] = rhs._inventory[i]->clone();
+			this->_inventory[i]->setType(rhs._inventory[i]->getType());
+		}
 	}
 
     return (*this);
@@ -212,8 +240,22 @@ void 	Warrior::use(int idx, ICharacter& target)
 
 Mage::~Mage()
 {
+	std::cout << "Deleting inventory..." << std::endl;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 }
 
 Warrior::~Warrior()
 {
+	std::cout << "Deleting inventory..." << std::endl;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 }

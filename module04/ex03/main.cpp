@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 20:13:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 21:02:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,20 @@ int main()
 	std::cout << std::endl;
 	mage->use(0, *mage);
 
-	delete cure;
-	delete ice;
+	std::cout << std::endl;
+
+
+	std::cout << "DESTRUCTORS:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
 	delete cureCpy;
 	delete iceCpy;
 	delete warrior;
 	delete mage;
 	delete warriorCpy;
-	delete mageCpy;
-	delete iceClone;
-	delete cureClone;
+//	delete mageCpy;
+//	delete iceClone;
+//	delete cureClone;
 
 	return (0);
 }

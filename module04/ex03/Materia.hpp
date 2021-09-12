@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:02:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/11 20:27:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:46:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class AMateria
 		AMateria const &operator=(AMateria const &rhs);
 	
 		std::string const	&getType() const;
+		void				setType(std::string const);
 
 		virtual AMateria* 	clone() const = 0;
 		virtual void 		use(ICharacter& target) const;
