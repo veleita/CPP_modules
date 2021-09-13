@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:39:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 20:53:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/13 11:30:07 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ AMateria::AMateria(std::string const & type) : _type(type)
 
 AMateria::AMateria(AMateria const &copy) : _type(copy._type)
 {
+	*this = copy;
 }
 
 
@@ -46,7 +47,8 @@ Cure::Cure(Cure const &copy) : AMateria(copy)
 
 AMateria const &AMateria::operator=(AMateria const &rhs)
 {
-	(void)rhs;
+	this->_type = rhs._type;
+
 	return (*this);
 }
 

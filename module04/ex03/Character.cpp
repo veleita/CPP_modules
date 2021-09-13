@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:59:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/12 20:57:40 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/13 11:29:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ Mage const	&Mage::operator=(Mage const &rhs)
 		if (rhs._inventory[i])
 		{
 			this->_inventory[i] = rhs._inventory[i]->clone();
-			this->_inventory[i]->setType(rhs._inventory[i]->getType());
 		}
 	}
 
@@ -100,7 +99,6 @@ Warrior const	&Warrior::operator=(Warrior const &rhs)
 		if (rhs._inventory[i])
 		{
 			this->_inventory[i] = rhs._inventory[i]->clone();
-			this->_inventory[i]->setType(rhs._inventory[i]->getType());
 		}
 	}
 
