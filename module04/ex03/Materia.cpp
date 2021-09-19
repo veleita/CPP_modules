@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:39:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/19 16:36:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:07:15 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ Cure const &Cure::operator=(Cure const &rhs)
 }
 
 
-
 //------GETTERS------//
 
 std::string const &AMateria::getType() const
 {
 	return (this->_type);
 }
+
 
 //------CLASS METHODS------//
 

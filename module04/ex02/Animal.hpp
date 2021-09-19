@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 14:39:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/07 20:14:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:16:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ class AAnimal
 		std::string	_type;
 
 	public:
-		Animal();
-		Animal(Animal const &copy);
+		AAnimal();
+		AAnimal(AAnimal const &copy);
 
-		Animal	&operator=(Animal const &rhs);
+		AAnimal	&operator=(AAnimal const &rhs);
 
 		std::string	getType(void) const;
 
 		virtual void	makeSound() const = 0;
 
-		virtual ~Animal();
+		virtual ~AAnimal();
 };
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 	private:
 		Brain	*_brain;
@@ -52,7 +52,7 @@ class Dog : public Animal
 		~Dog();
 };
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 	private:
 		Brain	*_brain;

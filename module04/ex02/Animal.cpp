@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:44:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/07 20:14:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:16:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 //------CONSTRUCTORS------//
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
 	std::cout << "An animal has been created" << std::endl;
 }
 
-Animal::Animal(Animal const &copy)
+AAnimal::AAnimal(AAnimal const &copy)
 {
 	std::cout << "Copy constructor" << std::endl;
 	*this = copy;
@@ -32,7 +32,7 @@ Animal::Animal(Animal const &copy)
 
 //------OPERATOR OVERLOADS------//
 
-Animal	&Animal::operator=(Animal const &rhs)
+AAnimal	&AAnimal::operator=(AAnimal const &rhs)
 {
 	this->_type = rhs.getType();
 	return (*this);
@@ -40,7 +40,7 @@ Animal	&Animal::operator=(Animal const &rhs)
 
 //------GETTERS------//
 
-std::string	Animal::getType() const
+std::string	AAnimal::getType() const
 {
 	return (this->_type);
 }
@@ -48,7 +48,7 @@ std::string	Animal::getType() const
 
 //------DESTRUCTOR------//
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
 	std::cout << "Mother Earth has lost another living soul. Sad." << std::endl;
 }

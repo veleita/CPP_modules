@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 13:35:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/05 16:44:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:10:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main()
 	const WrongAnimal* wPuppy = new WrongDog();
 	const WrongAnimal* wKitten = new WrongCat();
 	std::cout << std::endl;
+	
 	
 	std::cout << "TYPES:" << std::endl;
 	std::cout << wPuppy->getType() << " " << std::endl;
