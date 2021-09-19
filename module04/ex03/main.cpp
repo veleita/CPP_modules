@@ -6,16 +6,17 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/19 15:14:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:06:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Materia.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
-	std::cout << "MATERIA CONSTRUCTORS:" << std::endl;
+	std::cout << "BASIC MATERIA" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
 	Cure 	*cure = new Cure();
@@ -24,22 +25,22 @@ int main()
 	std::cout << cure->getType() << std::endl;
 	std::cout << ice->getType() << std::endl;
 
-	std::cout << std::endl;
-
-
-	std::cout << "MATERIA COPY CONSTRUCTORS:" << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
 
 	AMateria 	*cureCpy = new Cure(*cure);
 	AMateria	*iceCpy = new Ice(*ice);
 	
-	std::cout << cureCpy->getType() << std::endl;
-	std::cout << iceCpy->getType() << std::endl;
+	std::cout << cureCpy->getType() << " copy" << std::endl;
+	std::cout << iceCpy->getType() << " copy" << std::endl;
+
+	delete cure;
+	delete ice;
+	delete cureCpy;
+	delete iceCpy;
 
 	std::cout << std::endl;
 
 
-	std::cout << "CHARACTER CONSTRUCTORS:" << std::endl;
+	std::cout << "CHARACTER CONSTRUCTORS" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
 	ICharacter	*IWarrior = new Warrior();
@@ -48,16 +49,12 @@ int main()
 	std::cout << IWarrior->getName() << std::endl;
 	std::cout << IMage->getName() << std::endl;
 
-	std::cout << std::endl;
-
-
-	std::cout << "CHARACTER COPY CONSTRUCTORS:" << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
 
 	Warrior	*warrior;
 	warrior = (Warrior*) IWarrior;				// Type casts
 	Mage *mage;
 	mage = (Mage*) IMage;
+
 
 	Warrior	*warriorCpy = new Warrior(*warrior);
 	Mage	*mageCpy = new Mage(*mage);
@@ -65,48 +62,57 @@ int main()
 	std::cout << warriorCpy->getName() << std::endl;
 	std::cout << mageCpy->getName() << std::endl;
 
+
 	std::cout << std::endl;
 
 
-	std::cout << "EQUIP MATERIA:" << std::endl;
+	std::cout << "MATERIA SOURCE CONSTRUCTORS" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	warrior->equip(ice);
-	std::cout << std::endl;
-	warrior->equip(cure);
-	std::cout << std::endl;
+	Grimoire	grimoire = Grimoire();
+	Grimoire	grimoireCpy = Grimoire(grimoire);
 
-	mage->equip(cureCpy);
-	std::cout << std::endl;
-	mage->equip(iceCpy);
 	std::cout << std::endl;
 
 
-	std::cout << "UNEQUIP MATERIA:" << std::endl;
+	std::cout << "LEARN MATERIA" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	grimoire.learnMateria(new Ice());
+	grimoire.learnMateria(new Cure());
+
+	std::cout << std::endl;
+
+
+	std::cout << "CREATE AND EQUIP MATERIA" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	AMateria	*spell;
+
+	spell = grimoire.createMateria("ice");
+	warrior->equip(spell);
+	std::cout << std::endl;
+	spell = grimoire.createMateria("cure");
+	mage->equip(spell);
+	std::cout << std::endl;
+	spell = grimoire.createMateria("ice");
+	mage->equip(spell);
+
+	std::cout << std::endl;
+
+
+	std::cout << "UNEQUIP MATERIA" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
 	mage->unequip(0);
 	std::cout << std::endl;
 
 
-	std::cout << "CLONE MATERIA:" << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
-
-	AMateria	*iceClone	= ice->clone();
-	AMateria	*cureClone	= cure->clone();
-
-	std::cout << cureClone->getType() << std::endl;
-	std::cout << iceClone->getType() << std::endl;
-
-	std::cout << std::endl;
-
-
 	std::cout << "DEEP COPY:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	warriorCpy->equip(cureClone);
-	std::cout << std::endl;
-	mageCpy->equip(iceClone);
+	spell = grimoire.createMateria("cure");
+	mageCpy->equip(spell);
 
 	std::cout << std::endl;
 

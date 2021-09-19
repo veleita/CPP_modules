@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:59:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/19 15:05:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 17:36:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,11 +214,12 @@ void 	Warrior::use(int idx, ICharacter& target)
 Mage::~Mage()
 {
 	for (int i = 0; i < 4; i++)
+	{
 		if (_inventory[i])
 		{
 			delete _inventory[i];
-//			_inventory[i] = NULL;
 		}
+	}
 
 	std::cout << "Mage " << this->_name << " has been deleted" << std::endl;
 }
