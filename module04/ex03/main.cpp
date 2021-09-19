@@ -6,7 +6,7 @@
 /*   By: mzomeno- <1veleita1@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/13 11:16:16 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/19 15:14:59 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,27 @@ int main()
 	std::cout << std::endl;
 
 
+	std::cout << "EQUIP MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	warrior->equip(ice);
+	std::cout << std::endl;
+	warrior->equip(cure);
+	std::cout << std::endl;
+
+	mage->equip(cureCpy);
+	std::cout << std::endl;
+	mage->equip(iceCpy);
+	std::cout << std::endl;
+
+
+	std::cout << "UNEQUIP MATERIA:" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	mage->unequip(0);
+	std::cout << std::endl;
+
+
 	std::cout << "CLONE MATERIA:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
@@ -80,30 +101,12 @@ int main()
 	std::cout << std::endl;
 
 
-	std::cout << "EQUIP MATERIA:" << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
-
-	warrior->equip(ice);
-	std::cout << std::endl;
-	mage->equip(cure);
-	std::cout << std::endl;
-	mage->equip(ice);
-	std::cout << std::endl;
-
-
-	std::cout << "UNEQUIP MATERIA:" << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
-
-	mage->unequip(1);
-	std::cout << std::endl;
-
-
 	std::cout << "DEEP COPY:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	warriorCpy->equip(cure);
+	warriorCpy->equip(cureClone);
 	std::cout << std::endl;
-	mageCpy->equip(cure);
+	mageCpy->equip(iceClone);
 
 	std::cout << std::endl;
 
@@ -113,6 +116,7 @@ int main()
 
 	warrior->use(0, *mage);
 	std::cout << std::endl;
+
 	mage->use(0, *mage);
 
 	std::cout << std::endl;
@@ -121,14 +125,12 @@ int main()
 	std::cout << "DESTRUCTORS:" << std::endl;
 	std::cout << "--------------------------------------" << std::endl;
 
-	delete cureCpy;
-	delete iceCpy;
 	delete warrior;
 	delete mage;
 	delete warriorCpy;
-//	delete mageCpy;
-//	delete iceClone;
-//	delete cureClone;
+	delete mageCpy;
+
+/* DO NOT DELETE MATERIAS, THE MATERIAS GET DELETED WHEN THE CHAR THAT HAS THEM EQUIPED IS DELETED */
 
 	return (0);
 }
