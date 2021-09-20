@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:25:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 14:22:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 14:42:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,29 @@ void	Bureaucrat::decrementGrade()
 		this->_grade--;
 }
 
+void	Bureaucrat::signForm(Form &doc) const
+{
+    std::string reason;
+
+    if (doc.getIsSigned() == true)
+    {
+        reason = "it's already been signed";
+    }
+    else if (doc.getGradeToSign() < this->_grade)
+    {
+        reason = this->_name + "doesn't match the required grade";
+    }
+    else
+    {
+        std::cout << this->_name << " signs " << \
+                     doc.getName() << std::endl;
+        doc.beSigned(this);
+        return ;
+    }
+    std::cout << this->_name << " cannot sign " << \
+                 doc.getName() << " because " << \
+                 reason << std::endl;
+}
 
 //------EXCEPTIONS------//
 

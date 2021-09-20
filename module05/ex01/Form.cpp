@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 14:22:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:20:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 //------CONSTRUCTORS------//
 
 Form::Form() : _name("Standard document"),
-	_gradeRequiredToSign(150), _gradeRequiredToSign(150)
+	_gradeRequiredToSign(150), _gradeRequiredToExec(150), _isSigned(false)
 {
 }
 
-Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(name)
+Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
+	_name(name),
+	_gradeRequiredToSign(gradeToSign), _gradeRequiredToExec(gradeToExec),
+	_isSigned(false)
 {
 	if (gradeToSign > 150 || gradeToExec > 150)
 		throw GradeTooHighException();
 	else if (gradeToSign < 1 || gradeToExec < 1)
 		throw GradeTooLowException();
-	else
-	{
-		this->_gradeRequiredToSign = gradeToSign;
-		this->_gradeRequiredToExec = gradeToExec;
-	}
 }
 
-Form::Form(Form const &copy)
+Form::Form(Form const &copy) :
+	_gradeRequiredToSign(copy._gradeRequiredToSign),
+	_gradeRequiredToExec(copy._gradeRequiredToExec)
+
 {
 	*this = copy;
 }
@@ -42,9 +43,6 @@ Form::Form(Form const &copy)
 
 Form	&Form::operator=(Form const & rhs)
 {
-	this->_name = rhs.getName();
-	this->_gradeRequiredToSign = rhs.getGradeToSign();
-	this->_gradeRequiredToExec = rhs.getGradeToExec();
 	this->_isSigned = rhs.getIsSigned();
 
 	return (*this);
@@ -54,8 +52,8 @@ std::ostream& operator<<(std::ostream& out, const Form &rhs)
 {
 	return out << rhs.getName() << ":" << std::endl <<\
 		"Is signed: " << rhs.getIsSigned() << std::endl <<\
-		"Grade required to sign: " << rhs.gradeRequiredToSign() << std::endl <<\
-		"Grade required to execute: " << rhs.gradeRequiredToExec() << std::endl;
+		"Grade required to sign: " << rhs.getGradeToSign() << std::endl <<\
+		"Grade required to execute: " << rhs.getGradeToExec() << std::endl;
 }
 
 
@@ -84,7 +82,7 @@ bool Form::getIsSigned() const
 
 //------CLASS METHODS------//
 
-void	Form::beSigned(Bureaucrat *bureaucrat)
+void	Form::beSigned(Bureaucrat const *bureaucrat)
 {
 	if (this->_isSigned == false)
 	{
@@ -113,3 +111,4 @@ const char *Form::GradeTooLowException::what() const throw()
 
 Form::~Form()
 {
+}

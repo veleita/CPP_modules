@@ -6,12 +6,16 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 14:22:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:02:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
+
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -23,7 +27,7 @@ class Form
 
 	public:
 		Form();
-		Form(const std::string name, int grade);
+		Form(const std::string name, int gradeToSign, int gradeToExec);
 		Form(Form const &copy);
 
 		Form & operator=(Form const & rhs);
@@ -33,7 +37,19 @@ class Form
 		int			getGradeToExec() const;
 		bool		getIsSigned() const;
 
-		void		beSigned(Bureaucrat *bureaucrat);
+		void		beSigned(Bureaucrat const *bureaucrat);
+		
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw ();
+		};
 
 		virtual	~Form();
 };
