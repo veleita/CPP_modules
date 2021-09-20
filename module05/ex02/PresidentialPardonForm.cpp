@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:22:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:47:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 //------CONSTRUCTORS------//
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	Form("PresidentialPardonForm", "default target", 25, 5)
+	AForm("PresidentialPardonForm", "default target", 25, 5)
 {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
-	Form("PresidentialPardonForm", target, 25, 5)
+	AForm("PresidentialPardonForm", target, 25, 5)
 {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy)
-    : Form(copy)
+    : AForm(copy)
 {
 }
 
 
 //------OPERATOR OVERLOADS------//
 
-Form	&Form::operator=(Form const & rhs)
+PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs)
 {
 	(void)rhs;
 
@@ -50,6 +50,6 @@ void PresidentialPardonForm::action() const
 
 //------DESTRUCTORS------//
 
-~PresidentialPardonForm::~PresidentialPardonForm()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 }

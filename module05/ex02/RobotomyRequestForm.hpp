@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:06:12 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 17:37:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:28:46 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,4 @@ class RobotomyRequestForm : public AForm
 		virtual ~RobotomyRequestForm();
 };
 
-#endif;
+#endif

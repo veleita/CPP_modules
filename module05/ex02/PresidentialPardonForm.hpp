@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:06:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:19:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:28:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,4 @@ class PresidentialPardonForm : public AForm
 		virtual ~PresidentialPardonForm();
 };
 
-#endif;
+#endif

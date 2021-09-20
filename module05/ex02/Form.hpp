@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:19:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:44:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ class AForm
 		bool				_isSigned;
 
 	public:
-		Form();
-		Form(const std::string name, int gradeToSign, int gradeToExec);
-		Form(Form const &copy);
+		AForm();
+		AForm(const std::string name, const std::string target,
+				int gradeToSign, int gradeToExec);
+		AForm(AForm const &copy);
 
-		Form & operator=(Form const & rhs);
+		AForm & operator=(AForm const & rhs);
 
 		std::string	getName() const;
 		std::string	getTarget() const;
@@ -55,9 +56,9 @@ class AForm
 				virtual const char *what() const throw ();
 		};
 
-		virtual	~Form();
+		virtual	~AForm();
 };
 
-std::ostream& operator<<(std::ostream& out, const Form &rhs);
+std::ostream& operator<<(std::ostream& out, const AForm &rhs);
 
 #endif

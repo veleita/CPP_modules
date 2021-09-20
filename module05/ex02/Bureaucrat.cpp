@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:25:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 14:42:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:30:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	Bureaucrat::decrementGrade()
 		this->_grade--;
 }
 
-void	Bureaucrat::signForm(Form &doc) const
+void	Bureaucrat::signForm(AForm &doc) const
 {
     std::string reason;
 
@@ -114,6 +114,7 @@ void	Bureaucrat::signForm(Form &doc) const
                  doc.getName() << " because " << \
                  reason << std::endl;
 }
+
 
 //------EXCEPTIONS------//
 
