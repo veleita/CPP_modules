@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 12:54:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:58:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int main()
 {
+	Bureaucrat	mister("Ronald", 100);
+
+	std::cout << mister << std::endl;
 	return (0);
 }

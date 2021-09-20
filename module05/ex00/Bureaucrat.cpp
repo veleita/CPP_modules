@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:25:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 12:52:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:59:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const & rhs)
 	return (*this);
 }
 
+std::ostream& operator<<(std::ostream& out, const Bureaucrat &rhs)
+{
+	return out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+}
 
 //------GETTERS AND SETTERS------//
 
