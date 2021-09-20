@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 16:49:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:18:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 //------CONSTRUCTORS------//
 
-Form::Form() : _name("Standard document"),
+Form::Form() : _name("Standard document"), _target("default target")
 	_gradeRequiredToSign(150), _gradeRequiredToExec(150), _isSigned(false)
 {
 }
 
-Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
-	_name(name),
+Form::Form(const std::string name, const std::string target,
+		int gradeToSign, int gradeToExec) :
+	_name(name), _target(target),
 	_gradeRequiredToSign(gradeToSign), _gradeRequiredToExec(gradeToExec),
 	_isSigned(false)
 {
@@ -31,8 +32,10 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
 }
 
 Form::Form(Form const &copy) :
+	_name(copy.getName()), _target(copy.getTarget())
 	_gradeRequiredToSign(copy._gradeRequiredToSign),
-	_gradeRequiredToExec(copy._gradeRequiredToExec)
+	_gradeRequiredToExec(copy._gradeRequiredToExec),
+	_isSigned(copy.getIsSigned())
 
 {
 	*this = copy;
@@ -62,6 +65,11 @@ std::ostream& operator<<(std::ostream& out, const Form &rhs)
 std::string Form::getName() const
 {
 	return (this->_name);
+}
+
+std::string Form::getTarget() const
+{
+	return (this->_target);
 }
 
 int Form::getGradeToSign() const

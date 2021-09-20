@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 17:37:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:19:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class AForm
 		Form & operator=(Form const & rhs);
 
 		std::string	getName() const;
+		std::string	getTarget() const;
 		int			getGradeToSign() const;
 		int			getGradeToExec() const;
 		bool		getIsSigned() const;
