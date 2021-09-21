@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:29:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:58:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 
 int main()
 {
-	AForm *presi = new PresidentialPardonForm("Zome");
+	std::cout << "OVERLOAD" << std::endl;
+	AForm *pardon = new PresidentialPardonForm();
+	std::cout << *pardon << std::endl << std::endl;
 
-	presi->action();
+	std::cout << "COPY CONSTRUCTORS" << std::endl;
+	PresidentialPardonForm const cast = PresidentialPardonForm("Zome");
+	PresidentialPardonForm pardonCpy = PresidentialPardonForm(cast);
+
+	std::cout << cast << std::endl;
+	pardonCpy.action();
 	return (0);
 }
