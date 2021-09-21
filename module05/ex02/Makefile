@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/21 14:40:14 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/21 15:34:13 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ NAME = MoreForms
 
 SRCS = main.cpp Bureaucrat.cpp Form.cpp \
 	   PresidentialPardonForm.cpp \
-	   ShrubberyCreationForm.cpp
+	   ShrubberyCreationForm.cpp \
+	   RobotomyRequestForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

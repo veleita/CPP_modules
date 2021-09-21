@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 15:14:33 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:36:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ int main()
 	std::cout << "OVERLOAD" << std::endl;
 	
 	AForm *pardon = new PresidentialPardonForm();
-	std::cout << *pardon << std::endl << std::endl;
+	std::cout << *pardon << std::endl;
 	
 	AForm *tree = new ShrubberyCreationForm();
-	std::cout << *tree << std::endl << std::endl;
+	std::cout << *tree << std::endl;
+
+	AForm *robot = new RobotomyRequestForm();
+	std::cout << *robot << std::endl;
+		
+	std::cout << std::endl;
+
 
 	std::cout << "COPY CONSTRUCTORS" << std::endl;
 
@@ -33,10 +39,22 @@ int main()
 	ShrubberyCreationForm const castSCF = ShrubberyCreationForm("MA");
 	ShrubberyCreationForm treeCpy = ShrubberyCreationForm(castSCF);
 
-	std::cout << pardonCpy << std::endl;
+	RobotomyRequestForm const castRRF = RobotomyRequestForm("Marvin");
+	RobotomyRequestForm robotCpy = RobotomyRequestForm(castRRF);
+
+	std::cout << pardonCpy;
 	pardonCpy.action();
+	std::cout << std::endl;
 	
-	std::cout << treeCpy << std::endl;
+	std::cout << treeCpy;
 	treeCpy.action();
+	std::cout << std::endl;
+	
+	std::cout << robotCpy;
+	robotCpy.action();
+
+	delete pardon;	
+	delete tree;	
+	delete robot;	
 	return (0);
 }
