@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:03:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:58:20 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //------CONSTRUCTORS------//
 
 RobotomyRequestForm::RobotomyRequestForm() :
-	AForm("RobotomyRequestForm", "default target", 72, 45)
+	AForm("RobotomyRequestForm", "default", 72, 45)
 {
 }
 
@@ -42,7 +42,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 
 //------CLASS METHODS------//
 
-void RobotomyRequestForm::action() const
+void RobotomyRequestForm::_action() const
 {
 	srand (time(NULL));
 	int randomizer = rand() % 100;
@@ -57,6 +57,12 @@ void RobotomyRequestForm::action() const
 	}
 	else
 		std::cout << "Robotomy has been a failure" << std::endl;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const &executor) const
+{
+	if (canExecute(executor))
+		this->_action();
 }
 
 

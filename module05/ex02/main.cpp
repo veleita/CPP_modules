@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:04:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:57:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int main()
 {
 	std::cout << "OVERLOAD" << std::endl;
 	
-	AForm *pardon = new PresidentialPardonForm();
+	AForm *pardon = new PresidentialPardonForm("Zome");
 	std::cout << *pardon << std::endl;
 	
-	AForm *tree = new ShrubberyCreationForm();
+	AForm *tree = new ShrubberyCreationForm("MA");
 	std::cout << *tree << std::endl;
 
-	AForm *robot = new RobotomyRequestForm();
+	AForm *robot = new RobotomyRequestForm("Marvin");
 	std::cout << *robot << std::endl;
 		
 	std::cout << std::endl;
@@ -33,32 +33,60 @@ int main()
 
 	std::cout << "COPY CONSTRUCTORS" << std::endl;
 
-	PresidentialPardonForm const castPPF = PresidentialPardonForm("Zome");
+	PresidentialPardonForm const castPPF = PresidentialPardonForm();
 	PresidentialPardonForm pardonCpy = PresidentialPardonForm(castPPF);
-
-	ShrubberyCreationForm const castSCF = ShrubberyCreationForm("MA");
-	ShrubberyCreationForm treeCpy = ShrubberyCreationForm(castSCF);
-
-	RobotomyRequestForm const castRRF = RobotomyRequestForm("Marvin");
-	RobotomyRequestForm robotCpy = RobotomyRequestForm(castRRF);
-
 	std::cout << pardonCpy;
-	pardonCpy.action();
 	std::cout << std::endl;
-	
+
+	ShrubberyCreationForm const castSCF = ShrubberyCreationForm();
+	ShrubberyCreationForm treeCpy = ShrubberyCreationForm(castSCF);
 	std::cout << treeCpy;
+	std::cout << std::endl;
+
+	RobotomyRequestForm const castRRF = RobotomyRequestForm();
+	RobotomyRequestForm robotCpy = RobotomyRequestForm(castRRF);
+	std::cout << robotCpy;
+	std::cout << std::endl;
+		
+	std::cout << std::endl;
+    
+
+	std::cout << "EXECUTE" << std::endl;
+
+	Bureaucrat const *boss = new Bureaucrat("Amancio", 4);
+
 	try
 	{
-		treeCpy.action();
-	}
+		pardon->beSigned(boss);
+		pardon->execute(*boss);	
+	}	
 	catch (std::exception& e)
 	{
 		std::cerr << e.what();
 	}
 	std::cout << std::endl;
-	
-	std::cout << robotCpy;
-	robotCpy.action();
+
+	try
+	{
+		tree->beSigned(boss);
+		tree->execute(*boss);
+	}	
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
+	}
+	std::cout << std::endl;
+
+	try
+	{
+		robot->beSigned(boss);
+		robot->execute(*boss);
+	}	
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
+	}
+	std::cout << std::endl;
 
 	delete pardon;	
 	delete tree;	

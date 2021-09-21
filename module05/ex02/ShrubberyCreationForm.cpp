@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:05:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:58:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //------CONSTRUCTORS------//
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm("ShrubberyCreationForm", "default target", 145, 137)
+	AForm("ShrubberyCreationForm", "default", 145, 137)
 {
 }
 
@@ -42,7 +42,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 //------CLASS METHODS------//
 
-void ShrubberyCreationForm::action() const
+void	ShrubberyCreationForm::_action() const
 {
 	std::string const tree =
 		"          _{\\ _{\\{\\/}/}/}__\n"\
@@ -85,8 +85,25 @@ void ShrubberyCreationForm::action() const
     {
         throw std::runtime_error("Could not write to the file");
     }
+	else
+		std::cout << this->getTarget() << "_shrubbery file created successfully"\
+		   	<< std::endl;
 }
 
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	if (canExecute(executor))
+	{
+		try
+		{
+			this->_action();
+		}
+		catch (std::exception& e)
+		{
+			std::cerr << e.what();
+		}
+	}	
+}
 
 //------DESTRUCTORS------//
 

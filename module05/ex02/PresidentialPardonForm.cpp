@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 13:38:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:58:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //------CONSTRUCTORS------//
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	AForm("PresidentialPardonForm", "default target", 25, 5)
+	AForm("PresidentialPardonForm", "random dude", 25, 5)
 {
 }
 
@@ -42,9 +42,15 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 
 //------CLASS METHODS------//
 
-void PresidentialPardonForm::action() const
+void PresidentialPardonForm::_action() const
 {
     std::cout << getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
+{
+	if (canExecute(executor))
+		this->_action();
 }
 
 

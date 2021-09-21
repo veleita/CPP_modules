@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 15:13:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:36:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class ShrubberyCreationForm : public AForm
 {
 	private:
     	std::string const	_target;
+		virtual void		_action() const;
 
 	public:
     	ShrubberyCreationForm();
@@ -28,7 +29,7 @@ class ShrubberyCreationForm : public AForm
 		
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm&);
 		
-		virtual void		action() const;
+		void	execute(Bureaucrat const &executor) const;
 		
 		virtual ~ShrubberyCreationForm();
 };
