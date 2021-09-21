@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:45:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:15:03 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ AForm	&AForm::operator=(AForm const & rhs)
 std::ostream& operator<<(std::ostream& out, const AForm &rhs)
 {
 	return out << rhs.getName() << ":" << std::endl <<\
+		"Target: " << rhs.getTarget() << std::endl <<\
 		"Is signed: " << rhs.getIsSigned() << std::endl <<\
 		"Grade required to sign: " << rhs.getGradeToSign() << std::endl <<\
 		"Grade required to execute: " << rhs.getGradeToExec() << std::endl;

@@ -6,18 +6,20 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:28:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:13:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+# include "Form.hpp"
+# include <fstream>
+
 class ShrubberyCreationForm : public AForm
 {
 	private:
     	std::string const	_target;
-		virtual void		action() const;
 
 	public:
     	ShrubberyCreationForm();
@@ -25,6 +27,8 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(ShrubberyCreationForm const &copy);
 		
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm&);
+		
+		virtual void		action() const;
 		
 		virtual ~ShrubberyCreationForm();
 };

@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/20 18:45:56 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/21 14:40:14 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = MoreForms
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp \
+	   PresidentialPardonForm.cpp \
+	   ShrubberyCreationForm.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 

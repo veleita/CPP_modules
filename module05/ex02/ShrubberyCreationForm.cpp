@@ -6,25 +6,25 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 13:40:29 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:17:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationFormForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 //------CONSTRUCTORS------//
 
-ShrubberyCreationFormForm::ShrubberyCreationFormForm() :
-	AForm("ShrubberyCreationFormForm", "default target", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() :
+	AForm("ShrubberyCreationForm", "default target", 145, 137)
 {
 }
 
-ShrubberyCreationFormForm::ShrubberyCreationFormForm(std::string const target) :
-	AForm("ShrubberyCreationFormForm", target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
+	AForm("ShrubberyCreationForm", target, 145, 137)
 {
 }
 
-ShrubberyCreationFormForm::ShrubberyCreationFormForm(const ShrubberyCreationFormForm &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
     : AForm(copy)
 {
 }
@@ -32,7 +32,7 @@ ShrubberyCreationFormForm::ShrubberyCreationFormForm(const ShrubberyCreationForm
 
 //------OPERATOR OVERLOADS------//
 
-ShrubberyCreationFormForm	&ShrubberyCreationFormForm::operator=(ShrubberyCreationFormForm const &rhs)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
 {
 	(void)rhs;
 
@@ -40,23 +40,56 @@ ShrubberyCreationFormForm	&ShrubberyCreationFormForm::operator=(ShrubberyCreatio
 }
 
 
-//------GETTERS AND SETTERS------//
-
-
-
 //------CLASS METHODS------//
 
-void ShrubberyCreationFormForm::action() const
+void ShrubberyCreationForm::action() const
 {
+	std::string const tree =
+		"          _{\\ _{\\{\\/}/}/}__\n"\
+		"        {/{/\\}{/{/\\}(\\}{/\\} _\n"\
+		"     {/{/\\}{/{/\\}(_)\\}{/{/\\}  _\n"\
+		"  {\\{/(\\}\\}{/{/\\}\\}{/){/\\}\\} /\\}\n"\
+		"   {/{/(_)/}{\\{/)\\}{\\(_){/}/}/}/}\n"\
+		"   _{\\{/{/{\\{/{/(_)/}/}/}{\\(/}/}/}\n"\
+		"{/{/{\\{\\{\\(/}{\\{\\/}/}{\\}(_){\\/}\\}\n"\
+		" _{\\{/{\\{/(_)\\}/}{/{/{/\\}\\})\\}{/\\}\n"\
+		" {/{/{\\{\\(/}{/{\\{\\{\\/})/}{\\(_)/}/}\\}\n"\
+		"  {\\{\\/}(_){\\{\\{\\/}/}(_){\\/}{\\/}/})/}\n"\
+		"  {/{\\{\\/}{/{\\{\\{\\/}/}{\\{\\/}/}\\}(_)\n"\
+		"  {/{\\{\\/}{/){\{\\{\\/}/}{\{\\(/}/}\\}/}\n"\
+		"   {/{\\{\\/}(_){\\{\{\\(/}/}{\\(_)/}/}\\}\n"\
+		"    {/({/{\\{/{\\{\\/}(_){\\/}/}\\}/}(\\}\n"\
+		"     (_){/{\\/}{\\{\\/}/}{\\{\\)/}/}(_)\n"\
+		"      {/{/{\\{\\/}{/{\\{\\{\\(_)/}\n"\
+		"         {/{\\{\\{\\/}/}{\\{\\}/}\n"\
+		"           {){/ {\\/}{\\/} \\}\\}\n"\
+		"            (_)  \\.-'.-/\n"\
+		"        __...--- |'-.-'| --...\n"\
+		" _...--          |     |       \n"\
+		"     ' .  . '    |.'-._| '  . .  '   \n"\
+		"  '-  '    .--'  | '-.'|    .  '  . '\n"\
+		"        ' ..     |'-_.-|\n"\
+		".  '  .       _.-|-._ -|-._  .  '  .\n"\
+		"            .'   |'- .-|   '.\n"\
+		"..-'   ' .  '.   `-._.-´   .'  '  - .\n"\
+		" .-' '        '-._______.-'     '  .";
+	
+	std::ofstream shrubberyFile(this->getTarget() + "_shrubbery");
+    
+	if (!shrubberyFile)
+    {
+        throw std::runtime_error("The file could not be opened.");
+    }
+    shrubberyFile << tree;
+    if (shrubberyFile.fail() || shrubberyFile.bad())
+    {
+        throw std::runtime_error("Could not write to the file");
+    }
 }
-
-
-//------EXCEPTIONS------//
-
 
 
 //------DESTRUCTORS------//
 
-ShrubberyCreationFormForm::~ShrubberyCreationFormForm()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
