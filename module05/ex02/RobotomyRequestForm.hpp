@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:06:12 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:28:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:00:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ class RobotomyRequestForm : public AForm
 {
 	private:
     	std::string const	_target;
-		virtual void		action() const;
 
 	public:
     	RobotomyRequestForm();
@@ -25,6 +24,8 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(RobotomyRequestForm const &copy);
 		
 		RobotomyRequestForm &operator=(const RobotomyRequestForm&);
+		
+		virtual void		action() const;
 		
 		virtual ~RobotomyRequestForm();
 };
