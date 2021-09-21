@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 18:47:57 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:06:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 
 //------CLASS METHODS------//
 
-AForm	*RobotomyRequestForm::clone() const
+AForm	*RobotomyRequestForm::clone(std::string target) const
 {
-	RobotomyRequestForm *clone = new RobotomyRequestForm(*this);
+	RobotomyRequestForm *clone = new RobotomyRequestForm(target);
 	return (clone);
 }
 

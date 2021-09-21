@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 18:48:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:06:07 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 
 //------CLASS METHODS------//
 
-AForm	*PresidentialPardonForm::clone() const
+AForm	*PresidentialPardonForm::clone(std::string target) const
 {
-	PresidentialPardonForm *clone = new PresidentialPardonForm(*this);
+	PresidentialPardonForm *clone = new PresidentialPardonForm(target);
 	return (clone);
 }
 

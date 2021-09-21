@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 18:58:29 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:04:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class AForm
 		int			getGradeToExec() const;
 		bool		getIsSigned() const;
 
-		virtual AForm* 	clone() const = 0;
+		virtual AForm* 	clone(std::string target) const = 0;
 		
 		void			beSigned(Bureaucrat const *bureaucrat);
 		bool			canExecute(Bureaucrat const &executor) const;

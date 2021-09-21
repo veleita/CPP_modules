@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:33:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 18:53:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:08:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Intern::Intern(Intern const &copy)
 
 Intern const &Intern::operator=(Intern const &rhs)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		this->_formCatalogue[i] = rhs._formCatalogue[i];
 	}
@@ -42,19 +42,12 @@ Intern const &Intern::operator=(Intern const &rhs)
 
 //------CLASS METHODS------//
 
-void	Intern::makeForm(std::string formName, std::string target)
+AForm	*Intern::makeForm(std::string formName, std::string target)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		if (this->_formCatalogue[i]->getType() == type)
-			return this->_formCatalogue[i]->clone();
-	}
-}
-
-AMateria	*Intern::createMateria(std::string const & type)
-{
-		if (this->_formCatalogue[i] == NULL)
-			break ;
+		if (this->_formCatalogue[i]->getName() == formName)
+			return this->_formCatalogue[i]->clone(target);
 	}
 
 	return (NULL);
@@ -65,7 +58,7 @@ AMateria	*Intern::createMateria(std::string const & type)
 
 Intern::~Intern()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		delete _formCatalogue[i];
 	}

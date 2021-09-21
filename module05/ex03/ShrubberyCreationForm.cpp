@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 18:46:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:06:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 //------CLASS METHODS------//
 
-AForm	*ShrubberyCreationForm::clone() const
+AForm	*ShrubberyCreationForm::clone(std::string target) const
 {
-	ShrubberyCreationForm *clone = new ShrubberyCreationForm(*this);
+	ShrubberyCreationForm *clone = new ShrubberyCreationForm(target);
 	return (clone);
 }
 
