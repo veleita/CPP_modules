@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 15:36:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:04:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,14 @@ int main()
 	std::cout << std::endl;
 	
 	std::cout << treeCpy;
-	treeCpy.action();
+	try
+	{
+		treeCpy.action();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 	std::cout << std::endl;
 	
 	std::cout << robotCpy;
