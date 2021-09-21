@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:57:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:14:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main()
 
 	try
 	{
-		pardon->beSigned(boss);
+		boss->signForm(*pardon);
 		pardon->execute(*boss);	
 	}	
 	catch (std::exception& e)
@@ -69,7 +69,7 @@ int main()
 	try
 	{
 		tree->beSigned(boss);
-		tree->execute(*boss);
+		boss->executeForm(*tree);
 	}	
 	catch (std::exception& e)
 	{
@@ -80,7 +80,7 @@ int main()
 	try
 	{
 		robot->beSigned(boss);
-		robot->execute(*boss);
+		boss->executeForm(*robot);
 	}	
 	catch (std::exception& e)
 	{
