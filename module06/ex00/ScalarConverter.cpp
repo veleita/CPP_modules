@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 18:18:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/22 18:29:15 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:46:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 ScalarConverter::ScalarConverter() : _input(42) 
 {
+	this->_typeIdentifiers = {
+		&ScalarConverter::isChar, 
+		&ScalarConverter::isInt, 
+		&ScalarConverter::isFloat, 
+		&ScalarConverter::isDouble
+	};
 }
 
 ScalarConverter::ScalarConverter(std::string input) : _input(input)
