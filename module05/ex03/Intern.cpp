@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:33:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 19:08:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/22 11:10:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,17 @@ AForm	*Intern::makeForm(std::string formName, std::string target)
 		if (this->_formCatalogue[i]->getName() == formName)
 			return this->_formCatalogue[i]->clone(target);
 	}
+	
+	throw FormNotFoundException();
+//	return (NULL);
+}
 
-	return (NULL);
+
+//------EXCEPTIONS------//
+
+const char *Intern::FormNotFoundException::what() const throw()
+{
+	return ("ERROR: form not found.");
 }
 
 
