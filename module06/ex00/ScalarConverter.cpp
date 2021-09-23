@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr> (                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 18:18:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/23 17:06:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/23 18:08:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,19 @@ void	ScalarConverter::_displayChar()
 	catch(std::invalid_argument&)
 	{
 		std::cout << "impossible" << std::endl;
+		return;
 	}
 	catch (std::out_of_range&)
 	{
 		std::cout << "Non displayable" << std::endl;
+		return;
 	}
 
 	if (isprint(_charVal))
-		std::cout << static_cast <char> (_charVal) << std::endl;
+		std::cout << "'" << static_cast <char> (_charVal) << "'";
 	else
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "Non displayable";
+	std::cout << std::endl;
 }
 
 void	ScalarConverter::_displayInt()
@@ -95,16 +98,17 @@ void	ScalarConverter::_displayInt()
 	try
 	{
 		this->_intVal = static_cast <int> (std::stoi(this->_input));
-		std::cout << this->_intVal << std::endl;
+		std::cout << this->_intVal;
 	}
 	catch(std::invalid_argument&)
 	{
-		std::cout << "impossible" << std::endl;
+		std::cout << "impossible";
 	}
 	catch (std::out_of_range&)
 	{
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "Non displayable";
 	}
+	std::cout << std::endl;
 }
 
 void	ScalarConverter::_displayFloat()
@@ -114,16 +118,20 @@ void	ScalarConverter::_displayFloat()
 	try
 	{
 		this->_floatVal = static_cast <float> (std::stof(this->_input));
-		std::cout << this->_floatVal << std::endl;
+		std::cout << this->_floatVal;
+		if (this->_floatVal == static_cast <int> (this->_floatVal))
+			std::cout << ".0";
+		std::cout << "f";
 	}
 	catch(std::invalid_argument&)
 	{
-		std::cout << "impossible" << std::endl;
+		std::cout << "impossible";
 	}
 	catch (std::out_of_range&)
 	{
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "Non displayable";
 	}
+	std::cout << std::endl;
 }
 
 void	ScalarConverter::_displayDouble()
@@ -132,24 +140,28 @@ void	ScalarConverter::_displayDouble()
 	
 	try
 	{
-		this->_intVal = static_cast <double> (std::stod(this->_input));
-		std::cout << this->_doubleVal << std::endl;
+		this->_doubleVal = static_cast <double> (std::stod(this->_input));
+		std::cout << this->_doubleVal;
+
+		if (this->_doubleVal == static_cast <int> (this->_doubleVal))
+			std::cout << ".0";
 	}
 	catch(std::invalid_argument&)
 	{
-		std::cout << "impossible" << std::endl;
+		std::cout << "impossible";
 	}
 	catch (std::out_of_range&)
 	{
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "Non displayable";
 	}
+	std::cout << std::endl;
 }
 
 
 void	ScalarConverter::display()
 {
 	for (int i = 0; i < NUM_TYPES; i++)
-		std::cout << this->_displayTypes[i];
+		(this->*_displayTypes[i])();
 }
 
 

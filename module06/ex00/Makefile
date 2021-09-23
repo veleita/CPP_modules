@@ -6,17 +6,16 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/23 16:40:21 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/23 17:54:46 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = ScalarConversion
 
 SRCS = main.cpp ScalarConverter.cpp
-
 OBJS = $(SRCS:.cpp=.o)
 
 
@@ -41,7 +40,7 @@ re: fclean all
 
 
 test: re
-	./$(NAME)
+	./$(NAME) 42
 
 
 .PHONY: all clean fclean re test
