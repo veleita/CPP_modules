@@ -6,14 +6,23 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 18:18:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/22 18:46:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/23 13:18:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() : _input(42) 
+
+//------CONSTRUCTORS------//
+
+ScalarConverter::ScalarConverter() 
 {
+}
+
+ScalarConverter::ScalarConverter(std::string input)
+{
+	this->_input = input;
+
 	this->_typeIdentifiers = {
 		&ScalarConverter::isChar, 
 		&ScalarConverter::isInt, 
@@ -22,15 +31,13 @@ ScalarConverter::ScalarConverter() : _input(42)
 	};
 }
 
-ScalarConverter::ScalarConverter(std::string input) : _input(input)
-{
-}
-
 ScalarConverter::ScalarConverter(ScalarConverter &copy)
 {
 	*this = copy;
 }
 
+
+//------OPERATOR OVERLOADS------//
 
 ScalarConverter & operator=(ScalarConverter const & rhs)
 {
@@ -38,13 +45,74 @@ ScalarConverter & operator=(ScalarConverter const & rhs)
 }
 
 
+//------GETTERS AND SETTERS------//
+
 void	ScalarConverter::getInput()
 {
 	return (this->_input);
 }
 
+void	ScalarConverter::setInput(std::string input)
+{
+	this->_input = input;
+}
 
-void	ScalarConverter::Display()
+//------CLASS METHODS------//
+
+bool	ScalarConverter::_isChar() const
+{
+}
+
+bool	ScalarConverter::_isInt() const
+{
+}
+
+bool	ScalarConverter::_isFloat() const
+{
+}
+
+bool	ScalarConverter::_isDouble() const
+{
+}
+
+int		ScalarConverter::_detectDataType()
+{
+	for (int i = 0; i < NUM_TYPES; i++)
+	{
+		if (this->_typeIdentifiers[i] == true)
+			return (i);
+	}
+
+	throw UnknownTypeException();
+}
+
+char	ScalarConverter::_getChar()
+{
+}
+
+int		ScalarConverter::_getInt()
+{
+}
+
+float	ScalarConverter::_getFloat()
+{
+}
+
+double	ScalarConverter::_getDouble()
+{
+}
+
+void	ScalarConverter::makeConversions()
+{
+	this->_typeID = detectDataType();
+
+	this->_charVal = getChar();
+	this->_intVal = getInt();
+	this->_floatVal = getFloat();
+	this->_doubleVal = getDouble();
+}
+
+void	ScalarConverter::display()
 {
 	std::cout <<\
 		"char:" << this->_charVal <<\
@@ -54,6 +122,17 @@ void	ScalarConverter::Display()
 		std::endl;
 }
 
+
+
+//------EXCEPTIONS------//
+
+const char *ScalarConverter::UnknownTypeException::what() const throw()
+{
+	return ("ERROR: Unknown type.");
+}
+
+
+//------DESTRUCTOR------//
 
 ScalarConverter::~ScalarConverter()
 {
