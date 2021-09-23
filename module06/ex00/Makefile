@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/22 18:24:46 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/09/23 16:40:21 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = ScalarConversion
 
-SRCS = main.cpp scalarConverter.cpp
+SRCS = main.cpp ScalarConverter.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 

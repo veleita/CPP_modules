@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 18:14:43 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/23 15:11:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:05:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # define NUM_TYPES 4
 
-typedef	void	(scalarConverter::voidFunctionTable)(void);
+# include <iostream>
 
-class scalarConverter
+class ScalarConverter
 {
 	private:
 
@@ -28,9 +28,7 @@ class scalarConverter
 		float		_floatVal;
 		double		_doubleVal;
 
-		bool		_errorNonDisplayable;
-
-		voidFunctionTable const		_displayTypes[NUM_TYPES];
+		void		(ScalarConverter::*_displayTypes[4])(void);
 
 		ScalarConverter();				// Just for the sake of canonical form
 		
@@ -45,10 +43,12 @@ class scalarConverter
 		ScalarConverter(std::string input);
 		ScalarConverter(ScalarConverter &copy);
 
+		ScalarConverter &operator=(ScalarConverter const & rhs);
+
 		std::string	getInput() const;
 		void		setInput(std::string input);
 
-		void		display() const;
+		void		display();
 
 		~ScalarConverter();
 };

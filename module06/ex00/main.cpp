@@ -6,13 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:07:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/22 18:19:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/23 16:40:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "ScalarConverter.hpp"
 
-int main(char **argv, int argc)
+int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
@@ -21,7 +22,10 @@ int main(char **argv, int argc)
 	}
 	else
 	{
-		std::string input = static_cast <const std::string> argv[1];
+		std::string input = static_cast <const std::string> (argv[1]);
+
+		ScalarConverter	scalarConverter(input);
+		scalarConverter.display();
 		return (0);
 	}
 }
