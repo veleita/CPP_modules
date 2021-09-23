@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 18:14:43 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/23 13:19:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/23 15:11:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,29 @@
 
 # define NUM_TYPES 4
 
-typedef	bool	(scalarConverter::booleanFunctionTable)(void);
+typedef	void	(scalarConverter::voidFunctionTable)(void);
 
 class scalarConverter
 {
 	private:
 
-		std::string	const	_input;
+		std::string	_input;
 
-		functionTable 	_typeIdentifiers[NUM_TYPES];
-
-		int			_typeID;
-		enum class	_dataTypes
-		{
-			typeChar,
-			typeInt,
-			typeFloat,
-			typeDouble
-		};
-		
 		char		_charVal;
 		int			_intVal;
 		float		_floatVal;
 		double		_doubleVal;
 
+		bool		_errorNonDisplayable;
+
+		voidFunctionTable const		_displayTypes[NUM_TYPES];
 
 		ScalarConverter();				// Just for the sake of canonical form
 		
-		int		_detectDataType();
-
-		bool	_isChar() const;
-		bool	_isInt() const;
-		bool	_isFloat() const;
-		bool	_isDouble() const;
-
-		char	_getChar();
-		int		_getInt();
-		float	_getFloat();
-		double	_getDouble();
+		void	_displayChar();
+		void	_displayInt();
+		void	_displayFloat();
+		void	_displayDouble();
 
 
 	public:
@@ -60,17 +45,10 @@ class scalarConverter
 		ScalarConverter(std::string input);
 		ScalarConverter(ScalarConverter &copy);
 
-		std::string	getInput();
+		std::string	getInput() const;
 		void		setInput(std::string input);
 
-		void		makeConversions();
 		void		display() const;
-
-		class UnknownTypeException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
 
 		~ScalarConverter();
 };
