@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 19:44:52 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/27 18:33:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/27 19:22:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int main( void )
 
 	std::cout << "OPERATORS" << std::endl;
 	std::cout << "-------------------" << std::endl;
+
+	stringArray[0] = "bunny";
+	stringArray[1] = "rabbit";
+	stringArray[2] = "foo foo";
+	for (int i = 0; i < 3; i++)
+		std::cout << stringArray[i] << std::endl;
 
 	std::cout << std::endl;
 
