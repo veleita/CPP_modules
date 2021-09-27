@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 19:44:52 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/27 16:57:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/27 18:33:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main( void )
 	std::cout << "CONSTRUCTORS" << std::endl;
 	std::cout << "-------------------" << std::endl;
 
-	Array<>			emptyArray = Array<>();
+	Array<>			emptyArray;
 	
 	Array<std::string>	stringArray(3);
 	Array<int>			intArray(3);

@@ -6,12 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:43:13 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/27 17:04:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/27 18:48:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
+
+# include <stdexcept>
 
 template< typename T = int >
 class Array
@@ -28,12 +30,12 @@ class Array
 
 		Array<T>(Array<T> &copy)
 		{
-			int len = copy.size();
+			this->_len = copy.size();
 
-			this->_array = new T[len];
-			for (int i = 0; i < len; i++)
+			this->_array = new T[this->_len];
+			for (int i = 0; i < this->_len; i++)
 			{
-				this[i] = copy[i];
+				(*this)[i] = copy[i];
 			}
 		}
 
@@ -42,12 +44,12 @@ class Array
 		{
 			delete this->_array;
 
-			int len = rhs.size();
+			this->_len = rhs.size();
 
-			this->_array = new T[len];
-			for (int i = 0; i < len; i++)
+			this->_array = new T[this->_len];
+			for (int i = 0; i < this->_len; i++)
 			{
-				this[i] = rhs[i];
+				(*this)[i] = rhs[i];
 			}
 
 			return (*this);
@@ -71,7 +73,7 @@ class Array
 		class	OutOfLimitsException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw ();
+				virtual const char *what() const throw() {	return("ERROR: Out of limits");	};
 		};
 
 		~Array()
