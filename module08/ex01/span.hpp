@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:11:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/28 17:41:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/29 12:53:03 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,18 @@ class Span
 
 		Span	&operator=(Span	const &rhs);
 
-		std::multiset	getNumbers() const;
-		unsigned int	getN() const;
+		std::multiset<int>	getNumbers() const;
+		unsigned int		getN() const;
 
 		void		addNumber(int num);
 		template <typename Iterator>
 			void	addNumber(Iterator begin, Iterator end);
+
+		bool	Span::onlyOneNumber() const;
+		
+		unsigned int	shortestSpan() const;
+		unsigned int	longestSpan() const;
+		
 
 		~Span();
 };

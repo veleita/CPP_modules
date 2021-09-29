@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:12:52 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/28 18:09:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/29 12:52:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,19 @@ unsigned int	Span::getN() const
 }
 
 
+//------ERROR HANDLING------//
+
+bool	Span::onlyOneNumber()
+{
+	if (this->_numbers.size() == 1)
+	{
+		throw std::logic_error("There is only one number.");
+		return true;
+	}
+	else
+		return false;
+}
+
 //------MEMBER FUNCTIONS------//
 
 void	Span::addNumber(int num)
@@ -67,14 +80,43 @@ void	Span::addNumber(int num)
 
 void	Span::addNumber(Iterator begin, Iterator end)
 {
-	if (this->_numbers.size() == this->_N)
+	int avaiableSpace = this->_N - this->_numbers.size();
+	if (avaiableSpace > std::distance(begin, end))
 	{
-		throw std::out_of_range("Can't store any more numbers.");
+		throw std::out_of_range("Can't store that many numbers.\n" + \
+				"Currently avaiable space for " + avaiableSpace + " ints.");
 	}
 	else
 	{
-		this->_numbers.insert(num);
+		this->_numbers.insert(begin, end);
 	}
+}
+
+unsigned int	Span::shortestSpan() const
+{
+	if (onlyOneNumber() == false)
+	{
+		unsigned int shortestSpan = UINT_MAX;
+		std::multiset<int>::iterator it = this->_numbers.begin();
+		std::multiset<int>::iterator prev = it;
+		while (it != this->_numbers.end())
+		{
+			std::advance(it, 1);
+			shortestSpan = std::min(shortestSpan, 
+					static_cast<unsigned int>(*it - *prev));
+		}
+		return shortestSpan;
+	}
+	else
+		return -1;
+}
+
+unsigned int	Span::longestSpan() const
+{
+	if (onlyOneNumber() == false)
+		return (*(this->_numbers.rbegin()) - *(this->_numbers.begin()));
+	else
+		return -1;
 }
 
 //------DESTRUCTORS------//
