@@ -6,14 +6,15 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:11:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/29 12:53:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:15:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-#include <set>
+# include <set>
+# include <climits>
 
 class Span
 {
@@ -37,8 +38,7 @@ class Span
 		template <typename Iterator>
 			void	addNumber(Iterator begin, Iterator end);
 
-		bool	Span::onlyOneNumber() const;
-		
+		bool			onlyOneNumber() const;	
 		unsigned int	shortestSpan() const;
 		unsigned int	longestSpan() const;
 		

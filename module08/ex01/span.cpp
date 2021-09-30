@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:12:52 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/29 12:52:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:16:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Span::Span(unsigned int N) : _N(N)
 {
 }
 
-Span::Span(Spa	&copy)
+Span::Span(Span	const &copy)
 {
 	*this = copy;
 }
@@ -31,16 +31,18 @@ Span::Span(Spa	&copy)
 
 //------OPERATOR OVERLOADS------//
 
-Span	Span::&operator=(Span	const &rhs)
+Span	&Span::operator=(Span	const &rhs)
 {
 	this->_N = rhs.getN();
 	this->_numbers = rhs.getNumbers();
+
+	return (*this);
 }
 
 
 //------GETTERS------//
 
-std::multiset	Span::getNumbers() const
+std::multiset<int>	Span::getNumbers() const
 {
 	return (this->_numbers);
 }
@@ -53,7 +55,7 @@ unsigned int	Span::getN() const
 
 //------ERROR HANDLING------//
 
-bool	Span::onlyOneNumber()
+bool	Span::onlyOneNumber() const
 {
 	if (this->_numbers.size() == 1)
 	{
@@ -78,13 +80,13 @@ void	Span::addNumber(int num)
 	}
 }
 
+template <typename Iterator>
 void	Span::addNumber(Iterator begin, Iterator end)
 {
 	int avaiableSpace = this->_N - this->_numbers.size();
 	if (avaiableSpace > std::distance(begin, end))
 	{
-		throw std::out_of_range("Can't store that many numbers.\n" + \
-				"Currently avaiable space for " + avaiableSpace + " ints.");
+		throw std::out_of_range("Can't store that many numbers.");
 	}
 	else
 	{
