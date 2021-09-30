@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:12:52 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/30 12:16:08 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/30 13:30:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,12 @@ void	Span::addNumber(int num)
 		this->_numbers.insert(num);
 	}
 }
-
+/*
 template <typename Iterator>
 void	Span::addNumber(Iterator begin, Iterator end)
 {
-	int avaiableSpace = this->_N - this->_numbers.size();
-	if (avaiableSpace > std::distance(begin, end))
-	{
-		throw std::out_of_range("Can't store that many numbers.");
-	}
-	else
-	{
-		this->_numbers.insert(begin, end);
-	}
 }
-
+*/
 unsigned int	Span::shortestSpan() const
 {
 	if (onlyOneNumber() == false)
@@ -106,6 +97,7 @@ unsigned int	Span::shortestSpan() const
 			std::advance(it, 1);
 			shortestSpan = std::min(shortestSpan, 
 					static_cast<unsigned int>(*it - *prev));
+			prev = it;
 		}
 		return shortestSpan;
 	}
