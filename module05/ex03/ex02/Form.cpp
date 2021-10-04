@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:12:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:39:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 //------CONSTRUCTORS------//
 
-Form::Form() : _name("Standard document"),
+AForm::AForm() : _name("Standard document"), _target("default target"),
 	_gradeRequiredToSign(150), _gradeRequiredToExec(150), _isSigned(false)
 {
 }
 
-Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
-	_name(name),
+AForm::AForm(const std::string name, const std::string target,
+		int gradeToSign, int gradeToExec) :
+	_name(name), _target(target),
 	_gradeRequiredToSign(gradeToSign), _gradeRequiredToExec(gradeToExec),
 	_isSigned(false)
 {
@@ -30,8 +31,8 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
 		throw GradeTooLowException();
 }
 
-Form::Form(Form const &copy) :
-	_name(copy.getName()),
+AForm::AForm(AForm const &copy) :
+	_name(copy.getName()), _target(copy.getTarget()),
 	_gradeRequiredToSign(copy._gradeRequiredToSign),
 	_gradeRequiredToExec(copy._gradeRequiredToExec),
 	_isSigned(copy.getIsSigned())
@@ -43,16 +44,17 @@ Form::Form(Form const &copy) :
 
 //------OPERATOR OVERLOADS------//
 
-Form	&Form::operator=(Form const & rhs)
+AForm	&AForm::operator=(AForm const & rhs)
 {
 	this->_isSigned = rhs.getIsSigned();
 
 	return (*this);
 }
 
-std::ostream& operator<<(std::ostream& out, const Form &rhs)
+std::ostream& operator<<(std::ostream& out, const AForm &rhs)
 {
 	return out << rhs.getName() << ":" << std::endl <<\
+		"Target: " << rhs.getTarget() << std::endl <<\
 		"Is signed: " << rhs.getIsSigned() << std::endl <<\
 		"Grade required to sign: " << rhs.getGradeToSign() << std::endl <<\
 		"Grade required to execute: " << rhs.getGradeToExec() << std::endl;
@@ -61,22 +63,27 @@ std::ostream& operator<<(std::ostream& out, const Form &rhs)
 
 //------GETTERS AND SETTERS------//
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return (this->_name);
 }
 
-int Form::getGradeToSign() const
+std::string AForm::getTarget() const
+{
+	return (this->_target);
+}
+
+int AForm::getGradeToSign() const
 {
 	return (this->_gradeRequiredToSign);
 }
 
-int Form::getGradeToExec() const
+int AForm::getGradeToExec() const
 {
 	return (this->_gradeRequiredToExec);
 }
 
-bool Form::getIsSigned() const
+bool AForm::getIsSigned() const
 {
 	return (this->_isSigned);
 }
@@ -84,7 +91,7 @@ bool Form::getIsSigned() const
 
 //------CLASS METHODS------//
 
-void	Form::beSigned(Bureaucrat const *bureaucrat)
+void	AForm::beSigned(Bureaucrat const *bureaucrat)
 {
 	if (this->_isSigned == false)
 	{
@@ -95,22 +102,42 @@ void	Form::beSigned(Bureaucrat const *bureaucrat)
 	}
 }
 
+bool	AForm::canExecute(Bureaucrat const &executor) const
+{
+	if (this->_isSigned == false)
+	{
+		throw FormNotSignedException();
+		return false;
+	}	
+	else if (executor.getGrade() > this->_gradeRequiredToExec)
+	{
+		throw GradeTooHighException();
+		return false;
+	}
+	else
+		return true;
+}
 
 //------EXCEPTIONS------//
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("ERROR: Grade too high.");
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("ERROR: Grade too low, must be greater than 0.");
+}
+
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("ERROR: The form is not signed.");
 }
 
 
 //------DESTRUCTORS------//
 
-Form::~Form()
+AForm::~AForm()
 {
 }
