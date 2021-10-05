@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 16:02:38 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:31:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Form
 		int			getGradeToExec() const;
 		bool		getIsSigned() const;
 
-		void		beSigned(Bureaucrat const *bureaucrat);
+		void	beSigned(Bureaucrat const *bureaucrat);
 		
 		class GradeTooHighException : public std::exception
 		{
@@ -46,6 +46,12 @@ class Form
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw ();
+		};
+
+		class AlreadySignedException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw ();

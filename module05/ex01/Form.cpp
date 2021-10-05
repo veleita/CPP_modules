@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 18:12:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:35:33 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExec) :
 	_isSigned(false)
 {
 	if (gradeToSign > 150 || gradeToExec > 150)
-		throw GradeTooHighException();
-	else if (gradeToSign < 1 || gradeToExec < 1)
 		throw GradeTooLowException();
+	else if (gradeToSign < 1 || gradeToExec < 1)
+		throw GradeTooHighException();
 }
 
 Form::Form(Form const &copy) :
@@ -89,10 +89,14 @@ void	Form::beSigned(Bureaucrat const *bureaucrat)
 	if (this->_isSigned == false)
 	{
 		if (bureaucrat->getGrade() > this->_gradeRequiredToSign)
-			throw GradeTooHighException();
+		{
+			throw Form::GradeTooLowException();
+		}
 		else
 			this->_isSigned = true;
 	}
+	else
+		throw Form::AlreadySignedException();
 }
 
 
@@ -100,14 +104,18 @@ void	Form::beSigned(Bureaucrat const *bureaucrat)
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("ERROR: Grade too high.");
+	return ("ERROR: Grade too high, it must be a positive number");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("ERROR: Grade too low, must be greater than 0.");
+	return ("the form requires a higher grade");
 }
 
+const char *Form::AlreadySignedException::what() const throw()
+{
+	return ("this form has already been signed.");
+}
 
 //------DESTRUCTORS------//
 
