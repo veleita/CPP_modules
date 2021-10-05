@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:42:49 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/20 16:41:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:59:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main()
     try
     {
         mister.setGrade(150);
-        mister.incrementGrade();
+        mister.decrementGrade();
     }
     catch(const std::exception& e)
     {
@@ -57,7 +57,7 @@ int main()
     try
     {
         mister.setGrade(1);
-        mister.decrementGrade();
+        mister.incrementGrade();
     }
     catch(const std::exception& e)
     {
