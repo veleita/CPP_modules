@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/06 15:38:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:48:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	{
 		std::cerr << e.what();
 	}	
+}
+
+AForm	*RobotomyRequestForm::clone(std::string target) const
+{
+	RobotomyRequestForm *clone = new RobotomyRequestForm(target);
+	return (clone);
 }
 
 

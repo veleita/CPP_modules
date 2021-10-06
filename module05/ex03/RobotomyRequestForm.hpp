@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:06:12 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/06 15:37:05 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:44:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm &operator=(const RobotomyRequestForm&);
 		
 		void	execute(Bureaucrat const &executor) const;
+		AForm	*clone(std::string target) const;
 		
 		virtual ~RobotomyRequestForm();
 };

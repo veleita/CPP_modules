@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/05 18:39:38 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:13:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	{
 		std::cerr << e.what();
 	}	
+}
+
+AForm	*PresidentialPardonForm::clone(std::string target) const
+{
+	PresidentialPardonForm *clone = new PresidentialPardonForm(target);
+	return (clone);
 }
 
 

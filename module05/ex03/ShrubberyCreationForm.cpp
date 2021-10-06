@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/05 18:35:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:43:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,13 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		std::cerr << e.what();
 	}	
 }
+
+AForm	*ShrubberyCreationForm::clone(std::string target) const
+{
+	ShrubberyCreationForm *clone = new ShrubberyCreationForm(target);
+	return (clone);
+}
+
 
 //------DESTRUCTORS------//
 

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:06:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/04 17:40:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:46:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class PresidentialPardonForm : public AForm
 		
 		PresidentialPardonForm &operator=(const PresidentialPardonForm&);
 		
+		AForm	*clone(std::string target) const;
 		void	execute(Bureaucrat const &executor) const;
 		
 		virtual ~PresidentialPardonForm();

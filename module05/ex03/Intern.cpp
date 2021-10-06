@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:33:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/22 11:10:12 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:12:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 //------CONSTRUCTORS------//
 
-Intern::Intern()
+Intern::Intern() 
 {
-	this->_formCatalogue[0] = new ShrubberyCreationForm();
-	this->_formCatalogue[1] = new RobotomyRequestForm();
-	this->_formCatalogue[2] = new PresidentialPardonForm();
+	_formNames[0] = "shrubbery creation";
+	_formNames[1] = "presidential pardon";
+	_formNames[2] = "robotomy request";
+	
+	_formObjs[0] = &ShrubberyCreationForm::clone;
+	_formObjs[1] = &PresidentiaPardonForm::clone;
+	_formObjs[2] = &RobotomyRequestForm::clone;
 }
 
 Intern::Intern(Intern const &copy)
 {
-	*this = copy;
 }
 
 
@@ -31,11 +34,6 @@ Intern::Intern(Intern const &copy)
 
 Intern const &Intern::operator=(Intern const &rhs)
 {
-	for (int i = 0; i < 3; i++)
-	{
-		this->_formCatalogue[i] = rhs._formCatalogue[i];
-	}
-
 	return (*this);
 }
 
@@ -44,12 +42,12 @@ Intern const &Intern::operator=(Intern const &rhs)
 
 AForm	*Intern::makeForm(std::string formName, std::string target)
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < NUM_FORMS; i++)
 	{
-		if (this->_formCatalogue[i]->getName() == formName)
-			return this->_formCatalogue[i]->clone(target);
+		if (formNames[i] == formName)
+			return (new formClasses[i]);
 	}
-	
+
 	throw FormNotFoundException();
 //	return (NULL);
 }
@@ -67,10 +65,11 @@ const char *Intern::FormNotFoundException::what() const throw()
 
 Intern::~Intern()
 {
+	/*
 	for (int i = 0; i < 3; i++)
 	{
 		delete _formCatalogue[i];
 	}
-
+*/
 	std::cout << "Intern has been deleted" << std::endl;
 }
