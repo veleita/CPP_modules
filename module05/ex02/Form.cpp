@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:58:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:39:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:44:47 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,32 +107,39 @@ bool	AForm::canExecute(Bureaucrat const &executor) const
 	if (this->_isSigned == false)
 	{
 		throw FormNotSignedException();
-		return false;
 	}	
 	else if (executor.getGrade() > this->_gradeRequiredToExec)
 	{
-		throw GradeTooHighException();
-		return false;
+		throw GradeTooLowException();
 	}
 	else
-		return true;
+	{
+        std::cout << executor.getName() << " signs " << this->_name \
+			<< std::endl;
+		return (true);
+	}
 }
 
 //------EXCEPTIONS------//
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("ERROR: Grade too high.");
+	return ("ERROR: Grade too high, must be a positive number.");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("ERROR: Grade too low, must be greater than 0.");
+	return ("the form requires a greater grade.");
+}
+
+const char *AForm::AlreadySignedException::what() const throw()
+{
+	return ("this form has already been signed.");
 }
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-	return ("ERROR: The form is not signed.");
+	return ("the form is not signed.");
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:58:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/06 15:38:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 void RobotomyRequestForm::_action() const
 {
 	srand (time(NULL));
-	int randomizer = rand() % 100;
+	int randomizer = rand() % 2;
 
-	if (randomizer >= 50)
+	if (randomizer == 1)
 	{
 		std::cout << "* BZZZzzz shhHFFFF bop bip bip ....BEEEEP BFHRRKS!!$&# *"\
 			<< std::endl;
 		
-		std::cout << this->_target << "has been robotomized successfully"\
+		std::cout << this->getTarget() << " has been robotomized successfully"\
 			<< std::endl;
 	}
 	else
@@ -61,8 +61,15 @@ void RobotomyRequestForm::_action() const
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (canExecute(executor))
+	try
+	{
+		std::cout << executor.getName() << " tries the robotomy." << std::endl;
 		this->_action();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
+	}	
 }
 
 

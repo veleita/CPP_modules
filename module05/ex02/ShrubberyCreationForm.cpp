@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:58:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:35:46 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,14 @@ void	ShrubberyCreationForm::_action() const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (canExecute(executor))
+	try
 	{
-		try
-		{
-			this->_action();
-		}
-		catch (std::exception& e)
-		{
-			std::cerr << e.what();
-		}
+		this->_action();
+		std::cout << executor.getName() << " planted a gorgeous little tree!" << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
 	}	
 }
 

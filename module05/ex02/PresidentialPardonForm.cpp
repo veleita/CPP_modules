@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:58:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:39:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,15 @@ void PresidentialPardonForm::_action() const
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	if (canExecute(executor))
+	try
+	{
+		std::cout << executor.getName() << " has requested the president's pardon." << std::endl;
 		this->_action();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what();
+	}	
 }
 
 

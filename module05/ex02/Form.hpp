@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:59:07 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:43:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:19:05 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ class AForm
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw ();
+		};
+
+		class AlreadySignedException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw ();

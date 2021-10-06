@@ -6,12 +6,12 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/30 13:34:56 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/09/21 15:34:13 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/10/06 15:27:48 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = MoreForms
 
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)
