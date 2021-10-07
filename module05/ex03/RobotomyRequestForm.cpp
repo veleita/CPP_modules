@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/06 17:48:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/07 12:54:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 //------CONSTRUCTORS------//
 
 RobotomyRequestForm::RobotomyRequestForm() :
-	AForm("RobotomyRequestForm", "default", 72, 45)
+	AForm("robotomy request", "default", 72, 45)
 {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const target) :
-	AForm("RobotomyRequestForm", target, 72, 45)
+	AForm("robotomy request", target, 72, 45)
 {
 }
 

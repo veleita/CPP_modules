@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:02:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/06 17:43:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/07 12:55:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 //------CONSTRUCTORS------//
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm("ShrubberyCreationForm", "default", 145, 137)
+	AForm("shrubbery creation", "default", 145, 137)
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
-	AForm("ShrubberyCreationForm", target, 145, 137)
+	AForm("shrubbery creation", target, 145, 137)
 {
 }
 

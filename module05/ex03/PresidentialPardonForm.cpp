@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:05:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/06 17:13:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/10/07 12:55:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 //------CONSTRUCTORS------//
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	AForm("PresidentialPardonForm", "random dude", 25, 5)
+	AForm("presidential pardon", "random dude", 25, 5)
 {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
-	AForm("PresidentialPardonForm", target, 25, 5)
+	AForm("presidential pardon", target, 25, 5)
 {
 }
 
