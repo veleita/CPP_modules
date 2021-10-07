@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/01 12:49:48 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/10/01 13:22:37 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/10/04 16:16:38 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/10/07 15:09:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
+#include "mutantstack.hpp"
 
 int main()
 {
 	MutantStack<int> mstack;
 	
-	mstack.push(5);
+	mstack.push(42);
 	mstack.push(17);
 	
 	std::cout << mstack.top() << std::endl;
@@ -34,11 +37,9 @@ int main()
 	
 	while (it != ite)
 	{
-		std::cout << *it << std::endl;
+		std::cout << "iter:" << *it << std::endl;
 		++it;
 	}
-	
-	std::stack<int> s(mstack);
-	
-	return 0;
+
+	return (0);
 }
