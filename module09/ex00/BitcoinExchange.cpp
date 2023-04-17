@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:09:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:22:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void    BitcoinExchange::setDatabase(std::string filepath)
 
 bool    isValidLine(std::string line)
 {
-    (void)line;
+    if (line.length() < 14)
+        return(false);
     return(true);
 }
 

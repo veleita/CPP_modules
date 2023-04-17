@@ -6,12 +6,12 @@
 #    By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 19:44:20 by mzomeno-          #+#    #+#              #
-#    Updated: 2023/03/27 19:44:24 by mzomeno-         ###   ########.fr        #
+#    Updated: 2023/04/17 17:13:41 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 NAME = btc
 
