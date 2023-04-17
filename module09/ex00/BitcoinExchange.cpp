@@ -6,57 +6,78 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/04/17 13:14:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:09:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-std::string getDate(std::string database)
+std::string getDate(std::string line)
 {
-    return database.substr(0,10);
+    return line.substr(0,10);
 }
 
-float getRate(std::string database)
+float getValue(std::string line)
 {
     std::stringstream   convert;
     float               rate = 0.0;
 
-    convert << database.substr(11);
+    convert << line.substr(11);
     convert >> rate;
     return rate;
 }
 
-void    BitcoinExchange::_loadDatabase()
+void    BitcoinExchange::setDatabase(std::string filepath)
 {
     std::ifstream   input;
     std::string     dataRow;
     std::string     date;
     float           rate;
 
-    input.open("./data.csv");
+    input.open(filepath);
     while (!input.eof())
     {
         input >> dataRow;
         date = getDate(dataRow);
-        rate = getRate(dataRow);
+        rate = getValue(dataRow);
         _database.insert(std::make_pair(date,rate));
     }
     input.close();
 }
 
-void    BitcoinExchange::_readInput(std::string inputFile)
+bool    isValidLine(std::string line)
+{
+    (void)line;
+    return(true);
+}
+
+float   BitcoinExchange::getResultFromLine(std::string date, float value)
+{
+    std::map<std::string, float>::iterator it = _database.lower_bound(date);
+    float result = value * (*it).second;
+    return(result);
+}
+
+void    BitcoinExchange::getResultsFromFile(std::string inputFile)
 {
     std::ifstream   input;
+    std::string     line;
+    std::string     date;
+    float           value;
+    float           result;
+    
     input.open(inputFile);
-}
-
-void    BitcoinExchange::_parseInput()
-{
-}
-
-void    BitcoinExchange::printOutput()
-{
+    while (!input.eof())
+    {
+        input >> line;
+        if (isValidLine(line) == false)
+            continue;
+        date = getDate(line);
+        value = getValue(line);
+        result = getResultFromLine(date, value);
+        std::cout << date << " => " << value << " = " << result << std::endl;
+    }
+    input.close();
 }
 
 std::map<std::string , float>   BitcoinExchange::getDatabase()
@@ -66,10 +87,8 @@ std::map<std::string , float>   BitcoinExchange::getDatabase()
 
 BitcoinExchange::BitcoinExchange (std::string inputFile)
 {
-    this->_loadDatabase();
-    this->_readInput(inputFile);
-    this->_parseInput();
-    this->printOutput();
+    this->setDatabase("./data.csv");
+    this->getResultsFromFile(inputFile); 
 }
 
 BitcoinExchange::BitcoinExchange (const BitcoinExchange &copy)
