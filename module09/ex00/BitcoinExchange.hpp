@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:53:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:22:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:22:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <stdlib.h>
+#include <ctype.h>
 
 class BitcoinExchange
 {

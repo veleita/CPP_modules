@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:22:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:47:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,91 @@ void    BitcoinExchange::setDatabase(std::string filepath)
     input.close();
 }
 
+bool    isValidFormat(std::string line)
+{
+    size_t idx = line.find("|");
+
+    if (found == std::string::npos || line[idx + 1] != ' ' || line[idx - 1] != ' ')
+        return(false);
+    else
+        return(true)
+}
+
+bool    invalidDateCharacters(std::string date)
+{
+    if (date[4] != '-' || date[7] != '-'])
+        return(true);
+
+    for (n = 0; n < 4; n++)
+        if (!std::isdigit(date[n]))
+            return(true);
+
+    for (n = 5; n < 7; n++)
+        if (!std::isdigit(date[n]))
+            return(true);
+
+    for (n = 8; n < 10; n++)
+        if (!std::isdigit(date[n]))
+            return(true);
+    
+    return(false)
+}
+
+int     getMaxDay(int month)
+{
+    if (month < 8)
+        if (month/2 != 0)
+            return(31);
+        else
+            return(30);
+    else if (month/2 != 0)
+            return(30);
+        else
+            return(31);
+    
+    if (month == 2)
+        return(28);
+}
+
+bool    invalidDateValues(std::string date)
+{
+    int day, month, year, max_day;
+    std::stringstream y, m, d;
+
+    y << date.substr(0,4);
+    m << date.substr(5,2);
+    d << date.substr(8,2);
+    y >> year;
+    m >> month;
+    d >> day;
+
+    max_day = getMaxDay(month);
+    if (day > max_day || month > 12)
+        return(true);
+}
+
+bool    isValidDate(std::string date)
+{
+    if (invalidDateCharacters(date) || invalidDateValues(date))
+        return(false);
+}
+
+bool    isValidValue(float value)
+{
+
+}
+
 bool    isValidLine(std::string line)
 {
-    if (line.length() < 14)
+    std::string date = line.substr(0,10);
+
+    if (line.length() < 14 ||
+            isValidFormat(line) == false ||
+            isValidDate(date) == false)
+    {
+        std::cerr << "Error: bad input " << line << "\n";
         return(false);
+    }
     return(true);
 }
 
