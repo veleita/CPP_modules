@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/04/24 19:47:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:25:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ std::string getDate(std::string line)
     return line.substr(0,10);
 }
 
-float getValue(std::string line)
+float myStof(std::string string)
 {
-    std::stringstream   convert;
+    std::stringstream   convert(string);
     float               rate = 0.0;
 
-    convert << line.substr(11);
-    convert >> rate;
+	convert >> rate;
     return rate;
 }
 
@@ -39,7 +38,7 @@ void    BitcoinExchange::setDatabase(std::string filepath)
     {
         input >> dataRow;
         date = getDate(dataRow);
-        rate = getValue(dataRow);
+        rate = myStof(dataRow.substr(11));
         _database.insert(std::make_pair(date,rate));
     }
     input.close();
@@ -49,17 +48,20 @@ bool    isValidFormat(std::string line)
 {
     size_t idx = line.find("|");
 
-    if (found == std::string::npos || line[idx + 1] != ' ' || line[idx - 1] != ' ')
+    if (idx == std::string::npos || 
+			line[idx + 1] != ' ' || 
+			line[idx - 1] != ' ')
         return(false);
     else
-        return(true)
+        return(true);
 }
 
 bool    invalidDateCharacters(std::string date)
 {
-    if (date[4] != '-' || date[7] != '-'])
+    if (date[4] != '-' || date[7] != '-')
         return(true);
 
+	int n;
     for (n = 0; n < 4; n++)
         if (!std::isdigit(date[n]))
             return(true);
@@ -72,7 +74,7 @@ bool    invalidDateCharacters(std::string date)
         if (!std::isdigit(date[n]))
             return(true);
     
-    return(false)
+    return(false);
 }
 
 int     getMaxDay(int month)
@@ -106,26 +108,32 @@ bool    invalidDateValues(std::string date)
     max_day = getMaxDay(month);
     if (day > max_day || month > 12)
         return(true);
+	else
+		return(false);
 }
 
 bool    isValidDate(std::string date)
 {
     if (invalidDateCharacters(date) || invalidDateValues(date))
         return(false);
+	else
+		return(true);
 }
 
 bool    isValidValue(float value)
 {
-
+	if (value > 0 && value < 1000)
+		return(true);
+	else
+		return(false);
 }
 
-bool    isValidLine(std::string line)
+bool    isValidLine(std::string line, std::string date, float value)
 {
-    std::string date = line.substr(0,10);
-
     if (line.length() < 14 ||
             isValidFormat(line) == false ||
-            isValidDate(date) == false)
+            isValidDate(date) == false ||
+			isValidValue(value) == false)
     {
         std::cerr << "Error: bad input " << line << "\n";
         return(false);
@@ -149,13 +157,14 @@ void    BitcoinExchange::getResultsFromFile(std::string inputFile)
     float           result;
     
     input.open(inputFile);
+	std::getline(input, line);	// skip first line (date | value)
     while (!input.eof())
     {
-        input >> line;
-        if (isValidLine(line) == false)
-            continue;
+		std::getline(input, line);
         date = getDate(line);
-        value = getValue(line);
+        value = myStof(line.substr(13));
+        if (isValidLine(line, date, value) == false)
+            continue;
         result = getResultFromLine(date, value);
         std::cout << date << " => " << value << " = " << result << std::endl;
     }
