@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/06/05 13:25:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:03:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ float myStof(std::string string)
 
 	convert >> rate;
     return rate;
+}
+
+float	getValue(std::string line)
+{
+    size_t idx = line.find("|");
+	std::string value_s;
+    if (idx != std::string::npos)
+		value_s = line.substr(idx);
+	return myStof(value_s);
 }
 
 void    BitcoinExchange::setDatabase(std::string filepath)
@@ -47,7 +56,6 @@ void    BitcoinExchange::setDatabase(std::string filepath)
 bool    isValidFormat(std::string line)
 {
     size_t idx = line.find("|");
-
     if (idx == std::string::npos || 
 			line[idx + 1] != ' ' || 
 			line[idx - 1] != ' ')
@@ -162,7 +170,7 @@ void    BitcoinExchange::getResultsFromFile(std::string inputFile)
     {
 		std::getline(input, line);
         date = getDate(line);
-        value = myStof(line.substr(13));
+        value = getValue(line);
         if (isValidLine(line, date, value) == false)
             continue;
         result = getResultFromLine(date, value);
