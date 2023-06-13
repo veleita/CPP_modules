@@ -6,11 +6,12 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:03:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:32:36 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <math.h>
 
 std::string getDate(std::string line)
 {
@@ -20,19 +21,14 @@ std::string getDate(std::string line)
 float myStof(std::string string)
 {
     std::stringstream   convert(string);
-    float               rate = 0.0;
+    float               full_rate = 0.00;
+	float				rounded_rate = 0.00;
 
-	convert >> rate;
-    return rate;
-}
-
-float	getValue(std::string line)
-{
-    size_t idx = line.find("|");
-	std::string value_s;
-    if (idx != std::string::npos)
-		value_s = line.substr(idx);
-	return myStof(value_s);
+	convert >> full_rate;
+	full_rate *= 100;
+	rounded_rate = floor(full_rate + 0.5);
+	rounded_rate /= 100;
+    return rounded_rate;
 }
 
 void    BitcoinExchange::setDatabase(std::string filepath)
@@ -51,6 +47,15 @@ void    BitcoinExchange::setDatabase(std::string filepath)
         _database.insert(std::make_pair(date,rate));
     }
     input.close();
+}
+
+float	getValue(std::string line)
+{
+    size_t idx = line.find("|");
+	std::string value_s;
+    if (idx != std::string::npos)
+		value_s = line.substr(idx + 2);
+	return myStof(value_s);
 }
 
 bool    isValidFormat(std::string line)
@@ -130,28 +135,42 @@ bool    isValidDate(std::string date)
 
 bool    isValidValue(float value)
 {
-	if (value > 0 && value < 1000)
-		return(true);
-	else
+	if (value < 0)
+	{
+        std::cerr << "Error: not a positive number.\n";
 		return(false);
+	}
+	if (value > 1000)
+	{
+        std::cerr << "Error: too large a number.\n";
+		return(false);
+	}
+	else
+		return(true);
 }
 
 bool    isValidLine(std::string line, std::string date, float value)
 {
+	if (line == "")
+		return(false);
     if (line.length() < 14 ||
             isValidFormat(line) == false ||
-            isValidDate(date) == false ||
-			isValidValue(value) == false)
+            isValidDate(date) == false)	
     {
-        std::cerr << "Error: bad input " << line << "\n";
+        std::cerr << "Error: bad input => " << line << "\n";
         return(false);
     }
-    return(true);
+	else if (isValidValue(value) == false)
+		return (false);
+	else
+    	return(true);
 }
 
 float   BitcoinExchange::getResultFromLine(std::string date, float value)
 {
     std::map<std::string, float>::iterator it = _database.lower_bound(date);
+	if ((*it).first != date)
+		it--;
     float result = value * (*it).second;
     return(result);
 }
@@ -186,7 +205,7 @@ std::map<std::string , float>   BitcoinExchange::getDatabase()
 
 BitcoinExchange::BitcoinExchange (std::string inputFile)
 {
-    this->setDatabase("./data.csv");
+    this->setDatabase("./limitedData.csv");
     this->getResultsFromFile(inputFile); 
 }
 
