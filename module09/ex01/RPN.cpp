@@ -1,4 +1,4 @@
-#include "rpn.hpp"
+#include "RPN.hpp"
 
 rpn ::rpn ()
 {
@@ -18,7 +18,7 @@ rpn::~rpn ()
 /*--------------------------------------------------------*/
 rpn & rpn::operator = (const rpn &a)
 {
-	*this = a;
+	this->_numbers = a._numbers;
 	return (*this);
 }
 
@@ -35,7 +35,7 @@ int rpn::CalculateResult(int operand_1, int operand_2, char operator_char)
 		case '/':
 		{
 			if (operand_2 == 0)
-				throw std::invalid_argument("Floating Point Exception Dividing by Zero\n");
+				throw std::invalid_argument("Floating Point Exception Dividing by Zero");
 			else
 				return (operand_2 / operand_1);
 		}
@@ -47,16 +47,17 @@ int rpn::CalculateResult(int operand_1, int operand_2, char operator_char)
 void    rpn::ProcessOperation(std::string input)
 {
 	std::string operators = "+/*-";
-	size_t 		operator_counter, operand_counter = 0;
+	size_t 		operator_counter, operand_counter;
 	int			operand;
 	char		operator_c;
 
+	operator_counter = operand_counter = 0;
 	for (size_t i = 0; i < input.length() ; i++)
 	{
 		if (isdigit(input[i]))
 		{
 			operand = input[i] - '0';
-			num++;
+			operand_counter++;
 			this->_numbers.push(operand);
 		}
 		else if (operators.find(input[i]) != std::string::npos)
@@ -65,14 +66,14 @@ void    rpn::ProcessOperation(std::string input)
 			operator_c = input[i];
 			operand = _numbers.top();
 			_numbers.pop();
-			_numbers.top() = CalculationResult(operand, _numbers.top(), operator_c);
+			_numbers.top() = CalculateResult(operand, _numbers.top(), operator_c);
 		}
 		else if (isspace(input[i]))
 			continue;
 		else
-			throw std::invalid_argument("Error\n");
+			throw std::invalid_argument("Error");
 	}
 	if (operator_counter != operand_counter - 1)
-		throw std::invalid_argument("Unmatching number of operands and operators\n");
+		throw std::invalid_argument("Unmatching number of operands and operators");
 	std::cout << _numbers.top() << "\n";
 }
