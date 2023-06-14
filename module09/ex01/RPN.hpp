@@ -5,20 +5,20 @@
 #include <stdexcept>
 #include <stack>
 
-class rpn
+class RPN
 {
     private:
         std::stack<int>     _numbers;
         int     CalculateResult(int operand_1, int operand_2, char operator_char);
 
 	public:
-        rpn ();
-        rpn (const rpn &a);
-        rpn & operator = (const rpn &a);
+        RPN ();
+        RPN (const RPN &a);
+        RPN & operator = (const RPN &a);
 
         void    ProcessOperation(std::string input);
         
-		~rpn ();
+		~RPN ();
 };
 
 #endif

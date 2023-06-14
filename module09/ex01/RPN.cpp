@@ -1,28 +1,28 @@
 #include "RPN.hpp"
 
-rpn ::rpn ()
+RPN ::RPN ()
 {
 }
 
 /*--------------------------------------------------------*/
-rpn::rpn (const rpn &a)
+RPN::RPN (const RPN &a)
 {
 	this->operator=(a);
 }
 
 /*--------------------------------------------------------*/
-rpn::~rpn ()
+RPN::~RPN ()
 {
 }
 
 /*--------------------------------------------------------*/
-rpn & rpn::operator = (const rpn &a)
+RPN & RPN::operator = (const RPN &a)
 {
 	this->_numbers = a._numbers;
 	return (*this);
 }
 
-int rpn::CalculateResult(int operand_1, int operand_2, char operator_char)
+int RPN::CalculateResult(int operand_1, int operand_2, char operator_char)
 {
 	switch (operator_char)
 	{
@@ -44,7 +44,7 @@ int rpn::CalculateResult(int operand_1, int operand_2, char operator_char)
 }
 
 
-void    rpn::ProcessOperation(std::string input)
+void    RPN::ProcessOperation(std::string input)
 {
 	std::string operators = "+/*-";
 	size_t 		operator_counter, operand_counter;

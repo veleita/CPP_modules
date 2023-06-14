@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/06/13 16:32:36 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:15:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,12 @@ bool    isValidValue(float value)
 {
 	if (value < 0)
 	{
-        std::cerr << "Error: not a positive number.\n";
+        std::cout << "Error: not a positive number.\n";
 		return(false);
 	}
 	if (value > 1000)
 	{
-        std::cerr << "Error: too large a number.\n";
+        std::cout << "Error: too large a number.\n";
 		return(false);
 	}
 	else
@@ -157,7 +157,7 @@ bool    isValidLine(std::string line, std::string date, float value)
             isValidFormat(line) == false ||
             isValidDate(date) == false)	
     {
-        std::cerr << "Error: bad input => " << line << "\n";
+        std::cout << "Error: bad input => " << line << "\n";
         return(false);
     }
 	else if (isValidValue(value) == false)
