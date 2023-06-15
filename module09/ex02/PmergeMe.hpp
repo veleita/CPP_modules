@@ -10,8 +10,10 @@
 class PmergeMe
 {
 	private:
-		std::list<int> 		_numberList;
-		std::vector<int>	_numberVector;
+		char **_list;
+		std::list< std::pair<int, int> > 		_numberList;
+		std::vector< std::pair<int, int> >	_numberVector;
+
 		int					_listLength;
 		clock_t				_execTimeList;
 		clock_t				_execTimeVector;
@@ -21,8 +23,10 @@ class PmergeMe
 		PmergeMe(PmergeMe const &copy);
 		PmergeMe	&operator=(PmergeMe	const &rhs);
 
-		clock_t		parseList(char **argv);
-		clock_t		parseVector(char **argv);
+		clock_t		parseList();
+		clock_t		parseVector();
+		clock_t		sortList();
+		clock_t		sortVector();
 		void		printBefore();
 		void		sort();
 		void		printAfter();
