@@ -1,28 +1,31 @@
 #include "PmergeMe.hpp"
 
-std::list<int>	parseList(int listLength, char **argv)
+clock_t	PmergeMe::parseList(char **argv)
 {
-	for (int i = 1; i < listLength; i++)
+	clock_t t = std::clock();
+	for (int i = 0; i < this->_listLength; i++)
 		this->_numberList.push_back(std::atoi(argv[i]));
-	return numberList;
+	return clock() - t;
 }
 
-std::vector<int>	parseVector(int listLength, char **argv)
+clock_t	PmergeMe::parseVector(char **argv)
 {
-	for (int i = 1; i < listLength; i++)
+	clock_t t = std::clock();
+	for (int i = 0; i < this->_listLength; i++)
 		this->_numberVector.push_back(std::atoi(argv[i]));
-	return numberVector;
+	return clock() - t;
 }
 
 PmergeMe::PmergeMe(int listLength, char **list)
 {
-	this->_numberList = parseList(list);
-	this->_numberVector = parseVector(list);
+	this->_listLength = listLength - 1;
+	this->_execTimeList = parseList(list);
+	this->_execTimeVector = parseVector(list);
 }
 
 PmergeMe::PmergeMe(PmergeMe const &copy)
 {
-	*this = copy
+	*this = copy;
 }
 
 PmergeMe	&PmergeMe::operator=(PmergeMe	const &rhs)
@@ -34,6 +37,10 @@ PmergeMe	&PmergeMe::operator=(PmergeMe	const &rhs)
 
 void		PmergeMe::printBefore()
 {
+	std::cout << "Before:	";
+	for (int i = 0; i < this->_listLength; i++)
+		std::cout << this->_numberVector[i] << " ";
+	std::cout << std::endl;
 }
 
 void		PmergeMe::sort()

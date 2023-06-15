@@ -12,13 +12,17 @@ class PmergeMe
 	private:
 		std::list<int> 		_numberList;
 		std::vector<int>	_numberVector;
+		int					_listLength;
 		clock_t				_execTimeList;
 		clock_t				_execTimeVector;
 
 	public:
-		PmergeMe(char **argv);
+		PmergeMe(int listLength, char **argv);
 		PmergeMe(PmergeMe const &copy);
 		PmergeMe	&operator=(PmergeMe	const &rhs);
+
+		clock_t		parseList(char **argv);
+		clock_t		parseVector(char **argv);
 		void		printBefore();
 		void		sort();
 		void		printAfter();
