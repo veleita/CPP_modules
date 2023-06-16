@@ -51,45 +51,49 @@ void		swapPair(std::pair<int, int> &pair)
 	pair.second = tmp;
 }
 
-void	mergeSort(std::list< std::pair<int, int> > list, int begin_idx, int middle_idx, int end_idx)
+void	listMergeSort(std::list< std::pair<int, int> >::iterator begin,
+		std::list< std::pair<int, int> >::iterator middle,
+		std::list< std::pair<int, int> >::iterator end)
 {
-    int left_it = end_idx - middle_idx;
-    int right_it = middle_idx - begin_idx + 1;
-
-    int[] LA = Arrays.copyOfRange(A, p, q +1);
-    int[] RA = Arrays.copyOfRange(A, q+1, r +1);
-    int RIDX = 0;
-    int LIDX = 0;
-    for (int i = p; i < r - p + 1; i++) {
-        if (RIDX == n2) {
-            A[i] = LA[LIDX];
-            LIDX++;
-        } else if (LIDX == n1) {
-            A[i] = RA[RIDX];
-            RIDX++;
-        } else if (RA[RIDX] > LA[LIDX]) {
-            A[i] = LA[LIDX];
-            LIDX++;
-        } else {
-            A[i] = RA[RIDX];
-            RIDX++;
+	std::list< std::pair<int, int> > left(begin, middle);
+	std::list< std::pair<int, int> > right(++middle, end);
+    std::list< std::pair<int, int> >::iterator left_it = left.begin();
+    std::list< std::pair<int, int> >::iterator right_it = right.begin();
+	
+    for ( ; begin != end; begin++)
+	{
+        if (right_it == end || right_it->first > left_it->first)
+		{
+            begin = left_it;
+            left_it++;
+        }
+		else
+		{
+            begin = right_it;
+            right_it++;
         }
     }
 }
 
-void	sort(std::list< std::pair<int, int> > list, int begin_idx, int end_idx)
+void	listSort(std::list< std::pair<int, int> > list, int begin_idx, int end_idx)
 {
-	int middle_idx = (end_idx - begin_idx) / 2
-    if (end_idx - begin_idx > 2)
+    if (end_idx - begin_idx > 1)
 	{
-        sort(list, begin_idx, middle_idx);
-        sort(list, middle_idx + 1, end_idx);
-        mergeSort(list, begin_idx, middle_idx, end_idx);
+		int middle_idx = (end_idx - begin_idx) / 2;
+    	std::list< std::pair<int, int> >::iterator begin = std::next(list.begin(), begin_idx);
+    	std::list< std::pair<int, int> >::iterator middle = std::next(begin, middle_idx);
+    	std::list< std::pair<int, int> >::iterator end = std::next(begin, end_idx);
+        
+		listSort(list, begin_idx, middle_idx);
+        listSort(list, middle_idx + 1, end_idx);
+        listMergeSort(begin, middle, end);
     }
+	/*
 	else
 	{
         insertionSort(A, p, r);
     }
+	*/
 }
 
 clock_t		PmergeMe::sortList()
@@ -101,7 +105,7 @@ clock_t		PmergeMe::sortList()
 		if (it->first > it->second)
 			swapPair(*it);
 	
-	for (it = this->_numberList.begin(); it != this->_numberList.end(); it++)
+	listSort(this->_numberList, 0, this->_numberList.size());
 /*	
 	std::list<int> largerElements;
 	
