@@ -56,20 +56,20 @@ void	listMergeSort(std::list< std::pair<int, int> >::iterator begin,
 		std::list< std::pair<int, int> >::iterator end)
 {
 	std::list< std::pair<int, int> > left(begin, middle);
-	std::list< std::pair<int, int> > right(++middle, end);
+	std::list< std::pair<int, int> > right(middle, end);
     std::list< std::pair<int, int> >::iterator left_it = left.begin();
     std::list< std::pair<int, int> >::iterator right_it = right.begin();
 	
     for ( ; begin != end; begin++)
 	{
-        if (right_it == end || right_it->first > left_it->first)
+        if (right_it == right.end() || right_it->first > left_it->first)
 		{
-            begin = left_it;
+            *begin = *left_it;
             left_it++;
         }
 		else
 		{
-            begin = right_it;
+            *begin = *right_it;
             right_it++;
         }
     }
@@ -79,13 +79,13 @@ void	listSort(std::list< std::pair<int, int> > list, int begin_idx, int end_idx)
 {
     if (end_idx - begin_idx > 1)
 	{
-		int middle_idx = (end_idx - begin_idx) / 2;
-    	std::list< std::pair<int, int> >::iterator begin = std::next(list.begin(), begin_idx);
-    	std::list< std::pair<int, int> >::iterator middle = std::next(begin, middle_idx);
-    	std::list< std::pair<int, int> >::iterator end = std::next(begin, end_idx);
+		int middle_idx = begin_idx + ((end_idx - begin_idx) / 2);
         
-		listSort(list, begin_idx, middle_idx);
-        listSort(list, middle_idx + 1, end_idx);
+		listSort(list, begin_idx, middle_idx);	// divide left
+        listSort(list, middle_idx - 1, end_idx - 1);	// divide right
+    	std::list< std::pair<int, int> >::iterator begin = std::next(list.begin(), begin_idx);
+    	std::list< std::pair<int, int> >::iterator middle = std::next(list.begin(), middle_idx + 1);
+    	std::list< std::pair<int, int> >::iterator end = std::next(list.begin(), end_idx + 1);
         listMergeSort(begin, middle, end);
     }
 	/*
