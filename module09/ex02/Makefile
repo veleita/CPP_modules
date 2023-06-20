@@ -6,7 +6,7 @@
 #    By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 19:44:20 by mzomeno-          #+#    #+#              #
-#    Updated: 2023/06/20 15:34:42 by mzomeno-         ###   ########.fr        #
+#    Updated: 2023/06/20 17:26:23 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 NAME = PmergeMe
 
-SRCS = main.cpp PmergeMe.cpp sortList.cpp 
+SRCS = main.cpp PmergeMe.cpp sortList.cpp sortVector.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 
