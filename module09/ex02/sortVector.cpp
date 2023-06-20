@@ -27,15 +27,15 @@ void	vectorMergeSort(std::vector< std::pair<int, int> >& vector, int begin_idx, 
 	std::vector< std::pair<int, int> > right(std::next(vector.begin(), middle_idx), std::next(vector.begin(), end_idx));
     
 	for (int i = begin_idx; i < end_idx; i++) {
-        if (left.size() > 0 && (right.size() == 0 || right.back().first > left.back().first))
+        if (left.size() > 0 && (right.size() == 0 || right.front().first > left.front().first))
 		{
-            *std::next(vector.begin(), i) = left.back();
-            left.pop_back();
+            *std::next(vector.begin(), i) = left.front();
+            left.erase(left.begin());
         }
 		else
 		{
-            *std::next(vector.begin(), i) = right.back();
-            right.pop_back();
+            *std::next(vector.begin(), i) = right.front();
+            right.erase(right.begin());
         }
     }
 }
@@ -44,8 +44,8 @@ void	vectorRecursiveSort(std::vector< std::pair<int, int> > &vector, int begin_i
 {
     if (end_idx - begin_idx > 1)
 	{
-		int middle_idx = begin_idx + ((end_idx - begin_idx) / 2);
-        
+		int middle_idx = (end_idx + begin_idx) / 2;
+		
 		vectorRecursiveSort(vector, begin_idx, middle_idx);	// divide left
         vectorRecursiveSort(vector, middle_idx, end_idx);	// divide right
         vectorMergeSort(vector, begin_idx, middle_idx, end_idx);
