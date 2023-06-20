@@ -98,6 +98,19 @@ void		PmergeMe::sort()
 
 void		PmergeMe::printAfter()
 {
+	std::cout << "After:	";
+	for (unsigned int i = 0; i < this->_orderedVector.size(); i++)
+		std::cout << this->_orderedVector[i] << " ";
+	std::cout << std::endl;
+	/*
+	for (std::list<int>::iterator it = this->_orderedList.begin(); it != this->_orderedList.end(); it++)
+		std::cout << *it << " ";
+	*/
+	std::cout << " Time to process a range of " << this->_listLength << 
+		" elements with std::vector : " << this->_execTimeVector << "s\n";
+	std::cout << " Time to process a range of " << this->_listLength << 
+		" elements with std::list : " << this->_execTimeList << "s\n";
+	std::cout << std::endl;
 }
 
 PmergeMe::~PmergeMe()
