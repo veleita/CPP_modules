@@ -60,7 +60,14 @@ clock_t		PmergeMe::sortList()
 		if (it->first < it->second)
 			swapPair(*it);
 	
-	listRecursiveSort(this->_numberList, 0, this->_numberList.size());
+	if (this->_numberVector.size() % 2 != 0)	
+	{
+		this->_numberList.push_front(std::make_pair(INT_MIN, INT_MIN));
+		listRecursiveSort(this->_numberList, 0, this->_numberList.size());
+		this->_numberList.pop_front();
+	}
+	else
+		listRecursiveSort(this->_numberList, 0, this->_numberList.size());
     this->_orderedList = listInsertionSort(this->_numberList);
 	return clock() - t;
 }
@@ -71,7 +78,14 @@ clock_t		PmergeMe::sortVector()
 	for (unsigned int i = 0; i < this->_numberVector.size(); i++)
 		if (this->_numberVector[i].first < this->_numberVector[i].second)
 			swapPair(this->_numberVector[i]);
-	vectorRecursiveSort(this->_numberVector, 0, this->_numberVector.size());
+	if (this->_numberVector.size() % 2 != 0)	
+	{
+		this->_numberVector.push_back(std::make_pair(INT_MIN, INT_MIN));
+		vectorRecursiveSort(this->_numberVector, 0, this->_numberVector.size());
+		this->_numberVector.erase(this->_numberVector.begin());
+	}
+	else
+		vectorRecursiveSort(this->_numberVector, 0, this->_numberVector.size());
     this->_orderedVector = vectorInsertionSort(this->_numberVector);
 	return clock() - t;
 }
