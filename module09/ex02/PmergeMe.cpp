@@ -55,15 +55,6 @@ clock_t		PmergeMe::sortList()
 	
 	listRecursiveSort(this->_numberList, 0, this->_numberList.size());
     listInsertionSort(this->_numberList);
-/*	
-	std::list<int> largerElements;
-	
-	// Sort every pair and fill list with the larger elements
-		largerElements.push_back(*it);
-
-	// Sort the first elements of the pairs
-	for (it = this->_numberList.begin(); it != this->_numberList.end(); std::advance(it, 2))
-*/
 	return clock() - t;
 }
 

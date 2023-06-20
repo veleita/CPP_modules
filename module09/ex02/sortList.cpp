@@ -26,22 +26,6 @@ void listInsertionSort(std::list< std::pair<int, int> >& initialList)
 		}
 		finalList.push_back(i->first);
 	}
-	
-	/*
-    for (int i = begin_idx; i < end_idx; i++)
-	{
-        // Get the value at index (i+1)
-        int current_value = *std::next(list.begin(), i + 1);
-        int j = i + 1;
-        // Shift elements to the right to make space for the current element
-        while (*std::next(A.begin(), j - 1) > tempVal) {
-            *std::next(A.begin(), j) = *std::next(A.begin(), j - 1);
-            j--;
-        }
-        // Insert the current element at its correct position
-        *std::next(A.begin(), j) = tempVal;
-  }
-  */
 }
 
 void	listMergeSort(std::list< std::pair<int, int> >& list, int begin_idx, int middle_idx, int end_idx)
