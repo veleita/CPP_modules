@@ -44,61 +44,17 @@ void		PmergeMe::printBefore()
 	std::cout << std::endl;
 }
 
-void		swapPair(std::pair<int, int> &pair)
-{
-	int tmp = pair.first;
-	pair.first = pair.second;
-	pair.second = tmp;
-}
-
-void	listMergeSort(std::list< std::pair<int, int> >& list, int begin_idx, int middle_idx, int end_idx)
-{
-    
-	std::list< std::pair<int, int> > left(std::next(list.begin(), begin_idx), std::next(list.begin(), middle_idx));
-	std::list< std::pair<int, int> > right(std::next(list.begin(), middle_idx), std::next(list.begin(), end_idx));
-    
-	for (int i = begin_idx; i < end_idx; i++) {
-        if (left.size() > 0 && (right.size() == 0 || right.front().first > left.front().first))
-		{
-            *std::next(list.begin(), i) = left.front();
-            left.pop_front();
-        }
-		else
-		{
-            *std::next(list.begin(), i) = right.front();
-            right.pop_front();
-        }
-    }
-}
-
-void	listSort(std::list< std::pair<int, int> > &list, int begin_idx, int end_idx)
-{
-    if (end_idx - begin_idx > 1)
-	{
-		int middle_idx = begin_idx + ((end_idx - begin_idx) / 2);
-        
-		listSort(list, begin_idx, middle_idx);	// divide left
-        listSort(list, middle_idx, end_idx);	// divide right
-        listMergeSort(list, begin_idx, middle_idx, end_idx);
-    }
-	/*
-	else
-	{
-        insertionSort(A, p, r);
-    }
-	*/
-}
-
 clock_t		PmergeMe::sortList()
 {
 	clock_t t = std::clock();
 	std::list< std::pair<int, int> >::iterator it;
 
 	for (it = this->_numberList.begin(); it != this->_numberList.end(); it++)
-		if (it->first > it->second)
+		if (it->first < it->second)
 			swapPair(*it);
 	
-	listSort(this->_numberList, 0, this->_numberList.size());
+	listRecursiveSort(this->_numberList, 0, this->_numberList.size());
+    listInsertionSort(this->_numberList);
 /*	
 	std::list<int> largerElements;
 	

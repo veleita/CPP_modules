@@ -7,6 +7,8 @@
 # include <iostream>
 # include <cstdlib>
 
+# include "sortList.hpp"
+
 class PmergeMe
 {
 	private:
