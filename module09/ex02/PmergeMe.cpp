@@ -44,6 +44,13 @@ void		PmergeMe::printBefore()
 	std::cout << std::endl;
 }
 
+void		swapPair(std::pair<int, int> &pair)
+{
+	int tmp = pair.first;
+	pair.first = pair.second;
+	pair.second = tmp;
+}
+
 clock_t		PmergeMe::sortList()
 {
 	clock_t t = std::clock();
@@ -54,13 +61,18 @@ clock_t		PmergeMe::sortList()
 			swapPair(*it);
 	
 	listRecursiveSort(this->_numberList, 0, this->_numberList.size());
-    listInsertionSort(this->_numberList);
+    this->_orderedList = listInsertionSort(this->_numberList);
 	return clock() - t;
 }
 
 clock_t		PmergeMe::sortVector()
 {
 	clock_t t = std::clock();
+	for (unsigned int i = 0; i < this->_numberVector.size(); i++)
+		if (this->_numberVector[i].first < this->_numberVector[i].second)
+			swapPair(this->_numberVector[i]);
+	vectorRecursiveSort(this->_numberVector, 0, this->_numberVector.size());
+    this->_orderedVector = vectorInsertionSort(this->_numberVector);
 	return clock() - t;
 }
 

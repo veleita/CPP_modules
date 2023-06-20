@@ -8,13 +8,16 @@
 # include <cstdlib>
 
 # include "sortList.hpp"
+# include "sortVector.hpp"
 
 class PmergeMe
 {
 	private:
 		char **_list;
 		std::list< std::pair<int, int> > 		_numberList;
-		std::vector< std::pair<int, int> >	_numberVector;
+		std::vector< std::pair<int, int> >		_numberVector;
+		std::list<int> 							_orderedList;
+		std::vector<int>						_orderedVector;
 
 		int					_listLength;
 		clock_t				_execTimeList;

@@ -1,22 +1,13 @@
 #include "sortList.hpp"
 
-
-void		swapPair(std::pair<int, int> &pair)
-{
-	int tmp = pair.first;
-	pair.first = pair.second;
-	pair.second = tmp;
-}
-
-void listInsertionSort(std::list< std::pair<int, int> >& initialList)
+std::list<int>	listInsertionSort(std::list< std::pair<int, int> >& initialList)
 {
 	std::list< std::pair<int, int> >::iterator i	= initialList.begin();
 	std::list<int> finalList(1, i->second);
 
 	for ( ; i != initialList.end() ; i++)
 	{
-		std::list<int>::iterator j = finalList.begin();
-		for ( ; j != finalList.end(); j++)
+		for (std::list<int>::iterator j = finalList.begin() ; j != finalList.end(); j++)
 		{
 			if (i->second < *j)
 			{
@@ -26,6 +17,7 @@ void listInsertionSort(std::list< std::pair<int, int> >& initialList)
 		}
 		finalList.push_back(i->first);
 	}
+	return finalList;
 }
 
 void	listMergeSort(std::list< std::pair<int, int> >& list, int begin_idx, int middle_idx, int end_idx)
