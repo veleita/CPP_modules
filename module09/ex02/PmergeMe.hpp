@@ -14,6 +14,7 @@ class PmergeMe
 {
 	private:
 		char **_list;
+		int	_spareNumber;
 		std::list< std::pair<int, int> > 		_numberList;
 		std::vector< std::pair<int, int> >		_numberVector;
 		std::list<int> 							_orderedList;

@@ -1,20 +1,29 @@
 #include "sortList.hpp"
+#include <iostream>
 
 std::list<int>	listInsertionSort(std::list< std::pair<int, int> >& initialList)
 {
 	std::list< std::pair<int, int> >::iterator i	= initialList.begin();
 	std::list<int> finalList(1, i->second);
+	finalList.push_back(i->first);
+	i++;
+	bool push_second;
 
 	for ( ; i != initialList.end() ; i++)
 	{
-		for (std::list<int>::iterator j = finalList.begin() ; j != finalList.end(); j++)
+		push_second = false;
+		for (std::list<int>::iterator j = finalList.begin() ; j != finalList.cend(); j++)
 		{
 			if (i->second < *j)
 			{
 				finalList.insert(j, i->second);
 				break;
 			}
+			else if (std::next(j, 1) == finalList.end())
+				push_second = true;
 		}
+		if (push_second)
+			finalList.push_back(i->second);
 		finalList.push_back(i->first);
 	}
 	return finalList;

@@ -7,7 +7,8 @@ int main(int argc, char **argv)
 		std::cout << "Error\n";	
 		return 1;
 	}
-	PmergeMe	sorter(argc, ++argv);
+	argv++;
+	PmergeMe	sorter(argc, argv);
 	sorter.printBefore();
 	sorter.sort();
 	sorter.printAfter();

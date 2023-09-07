@@ -3,18 +3,25 @@
 std::vector<int> vectorInsertionSort(std::vector< std::pair<int, int> >& initialVector)
 {
 	std::vector<int> finalVector(1, initialVector[0].second);
+	finalVector.push_back(initialVector[0].first);
+	bool push_second;
 
-	for ( unsigned int i = 0; i < initialVector.size() ; i++)
+	for ( unsigned int i = 1; i < initialVector.size() ; i++)
 	{
+		push_second = false;
 		for (unsigned int j = 0; j < finalVector.size(); j++)
 		{
+			std::vector<int>::iterator it = std::next(finalVector.begin(), j);
 			if (initialVector[i].second < finalVector[j])
 			{
-				std::vector<int>::iterator it = std::next(finalVector.begin(), j);
 				finalVector.insert(it, initialVector[i].second);
 				break;
 			}
+			else if (std::next(it, 1) == finalVector.end())
+				push_second = true;
 		}
+		if (push_second)
+			finalVector.push_back(initialVector[i].second);
 		finalVector.push_back(initialVector[i].first);
 	}
 	return finalVector;

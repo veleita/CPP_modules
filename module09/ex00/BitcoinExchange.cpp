@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/06/14 17:15:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:32:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,6 @@ float myStof(std::string string)
 	rounded_rate = floor(full_rate + 0.5);
 	rounded_rate /= 100;
     return rounded_rate;
-}
-
-void    BitcoinExchange::setDatabase(std::string filepath)
-{
-    std::ifstream   input;
-    std::string     dataRow;
-    std::string     date;
-    float           rate;
-
-    input.open(filepath);
-    while (!input.eof())
-    {
-        input >> dataRow;
-        date = getDate(dataRow);
-        rate = myStof(dataRow.substr(11));
-        _database.insert(std::make_pair(date,rate));
-    }
-    input.close();
-}
-
-float	getValue(std::string line)
-{
-    size_t idx = line.find("|");
-	std::string value_s;
-    if (idx != std::string::npos)
-		value_s = line.substr(idx + 2);
-	return myStof(value_s);
-}
-
-bool    isValidFormat(std::string line)
-{
-    size_t idx = line.find("|");
-    if (idx == std::string::npos || 
-			line[idx + 1] != ' ' || 
-			line[idx - 1] != ' ')
-        return(false);
-    else
-        return(true);
 }
 
 bool    invalidDateCharacters(std::string date)
@@ -133,6 +95,57 @@ bool    isValidDate(std::string date)
 		return(true);
 }
 
+void    BitcoinExchange::setDatabase(std::string filepath)
+{
+    std::ifstream   input;
+    std::string     dataRow;
+    std::string     date;
+    float           rate;
+
+    input.open(filepath);
+	if (!input.is_open())
+	{
+		std::cout << "Error: could not open file.";
+		exit(1);
+	}
+    while (!input.eof())
+    {
+        input >> dataRow;
+        date = getDate(dataRow);
+		if (!isValidDate(date))
+		{
+			std::cout << "Error: invalid database.";
+			exit(1);
+		}
+        rate = myStof(dataRow.substr(11));
+        _database.insert(std::make_pair(date,rate));
+    }
+    input.close();
+}
+
+float	getValue(std::string line)
+{
+    size_t idx = line.find("|");
+	std::string value_s;
+    if (idx != std::string::npos)
+		value_s = line.substr(idx + 2);
+	for (unsigned int i = 0; i < value_s.size(); i++)
+		if (!std::isdigit(value_s[i]))
+        	std::cout << "Error: not a number.\n";
+	return myStof(value_s);
+}
+
+bool    isValidFormat(std::string line)
+{
+    size_t idx = line.find("|");
+    if (idx == std::string::npos || 
+			line[idx + 1] != ' ' || 
+			line[idx - 1] != ' ')
+        return(false);
+    else
+        return(true);
+}
+
 bool    isValidValue(float value)
 {
 	if (value < 0)
@@ -184,6 +197,11 @@ void    BitcoinExchange::getResultsFromFile(std::string inputFile)
     float           result;
     
     input.open(inputFile);
+	if (!input.is_open())
+	{
+		std::cout << "Error: could not open file.";
+		return ;
+	}
 	std::getline(input, line);	// skip first line (date | value)
     while (!input.eof())
     {
@@ -203,9 +221,11 @@ std::map<std::string , float>   BitcoinExchange::getDatabase()
     return this->_database;
 }
 
-BitcoinExchange::BitcoinExchange (std::string inputFile)
+BitcoinExchange::BitcoinExchange () {}
+
+BitcoinExchange::BitcoinExchange (std::string inputFile, std::string database)
 {
-    this->setDatabase("./limitedData.csv");
+    this->setDatabase(database);
     this->getResultsFromFile(inputFile); 
 }
 

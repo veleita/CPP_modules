@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <stack>
+#include <locale> // isdigit
+
+bool is_number(const std::string& s);
 
 class RPN
 {

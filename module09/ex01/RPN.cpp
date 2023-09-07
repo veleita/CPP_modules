@@ -22,6 +22,13 @@ RPN & RPN::operator = (const RPN &a)
 	return (*this);
 }
 
+bool is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 int RPN::CalculateResult(int operand_1, int operand_2, char operator_char)
 {
 	switch (operator_char)
@@ -54,7 +61,9 @@ void    RPN::ProcessOperation(std::string input)
 	operator_counter = operand_counter = 0;
 	for (size_t i = 0; i < input.length() ; i++)
 	{
-		if (isdigit(input[i]))
+		if (isspace(input[i]))
+			continue;
+		else if (isnumber(input[i]))
 		{
 			operand = input[i] - '0';
 			operand_counter++;
@@ -66,10 +75,10 @@ void    RPN::ProcessOperation(std::string input)
 			operator_c = input[i];
 			operand = _numbers.top();
 			_numbers.pop();
+			if (_numbers.empty())
+				throw std::invalid_argument("Unmatching number of operands and operators");
 			_numbers.top() = CalculateResult(operand, _numbers.top(), operator_c);
 		}
-		else if (isspace(input[i]))
-			continue;
 		else
 			throw std::invalid_argument("Error");
 	}
