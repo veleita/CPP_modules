@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:32:28 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:11:33 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ bool    invalidDateCharacters(std::string date)
 int     getMaxDay(int month)
 {
     if (month < 8)
-        if (month/2 != 0)
-            return(31);
-        else
-            return(30);
-    else if (month/2 != 0)
+        if (month%2 == 0)
             return(30);
         else
             return(31);
+    else if (month%2 == 0)
+            return(31);
+        else
+            return(30);
     
     if (month == 2)
         return(28);
@@ -108,13 +108,15 @@ void    BitcoinExchange::setDatabase(std::string filepath)
 		std::cout << "Error: could not open file.";
 		exit(1);
 	}
+    input >> dataRow; // skip first line
     while (!input.eof())
     {
-        input >> dataRow;
+    	input >> dataRow;
         date = getDate(dataRow);
 		if (!isValidDate(date))
 		{
-			std::cout << "Error: invalid database.";
+			std::cout << date;
+			std::cout << "  Error: invalid database.";
 			exit(1);
 		}
         rate = myStof(dataRow.substr(11));

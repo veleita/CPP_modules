@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:53:22 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:35:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:17:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class BitcoinExchange
 
     public:
         BitcoinExchange ();
-		BitcoinExchange (std::string inputFile, std::string database = "./data.csv");
+		BitcoinExchange (std::string inputFile, std::string database = "data/data.csv");
         BitcoinExchange (const BitcoinExchange &copy);
         BitcoinExchange & operator = (const BitcoinExchange &rhs);
         ~BitcoinExchange ();
