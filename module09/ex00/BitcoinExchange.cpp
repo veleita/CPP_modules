@@ -6,7 +6,7 @@
 /*   By: mzomeno- <mzomeno-@42madrid.student.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:36:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2023/09/07 14:11:33 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:40:36 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ bool    invalidDateCharacters(std::string date)
 {
     if (date[4] != '-' || date[7] != '-')
         return(true);
+	
+	if (date[0] == '0')
+		return(true);
 
 	int n;
     for (n = 0; n < 4; n++)
@@ -52,8 +55,15 @@ bool    invalidDateCharacters(std::string date)
     return(false);
 }
 
-int     getMaxDay(int month)
+int     getMaxDay(int year, int month)
 {
+    if (month == 2)
+	{
+		if (year%4 == 0 && (year%100 != 0 || year%400 == 0))
+        	return(29);
+		else
+        	return(28);
+	}
     if (month < 8)
         if (month%2 == 0)
             return(30);
@@ -63,9 +73,6 @@ int     getMaxDay(int month)
             return(31);
         else
             return(30);
-    
-    if (month == 2)
-        return(28);
 }
 
 bool    invalidDateValues(std::string date)
@@ -80,7 +87,7 @@ bool    invalidDateValues(std::string date)
     m >> month;
     d >> day;
 
-    max_day = getMaxDay(month);
+    max_day = getMaxDay(year, month);
     if (day > max_day || month > 12)
         return(true);
 	else
@@ -103,9 +110,9 @@ void    BitcoinExchange::setDatabase(std::string filepath)
     float           rate;
 
     input.open(filepath);
-	if (!input.is_open())
+	if (!input.is_open() && input.good())
 	{
-		std::cout << "Error: could not open file.";
+		std::cout << "Error: could not open database file.\n";
 		exit(1);
 	}
     input >> dataRow; // skip first line
@@ -116,7 +123,7 @@ void    BitcoinExchange::setDatabase(std::string filepath)
 		if (!isValidDate(date))
 		{
 			std::cout << date;
-			std::cout << "  Error: invalid database.";
+			std::cout << "Error: invalid database.\n";
 			exit(1);
 		}
         rate = myStof(dataRow.substr(11));
@@ -125,37 +132,37 @@ void    BitcoinExchange::setDatabase(std::string filepath)
     input.close();
 }
 
-float	getValue(std::string line)
+std::string	getValue(std::string line)
 {
     size_t idx = line.find("|");
 	std::string value_s;
-    if (idx != std::string::npos)
+    if (idx != std::string::npos && idx != line.size() - 1)
 		value_s = line.substr(idx + 2);
-	for (unsigned int i = 0; i < value_s.size(); i++)
-		if (!std::isdigit(value_s[i]))
-        	std::cout << "Error: not a number.\n";
-	return myStof(value_s);
+	return value_s;
 }
 
 bool    isValidFormat(std::string line)
 {
-    size_t idx = line.find("|");
-    if (idx == std::string::npos || 
-			line[idx + 1] != ' ' || 
-			line[idx - 1] != ' ')
-        return(false);
-    else
-        return(true);
+    return (line.find(" | ") == 10);
 }
 
-bool    isValidValue(float value)
+bool    isValidValue(std::string value)
 {
-	if (value < 0)
+	int decimal_point = 0;
+	for (unsigned int i = 0; i < value.size(); i++)
+	{
+		if (value[i] == '.')
+			decimal_point++;
+		if (!(std::isdigit(value[i]) || value[i] == '.') || decimal_point > 1)
+			return(false);
+	}
+	double num = myStof(value);
+	if (num < 0)
 	{
         std::cout << "Error: not a positive number.\n";
 		return(false);
 	}
-	if (value > 1000)
+	if (num > 1000)
 	{
         std::cout << "Error: too large a number.\n";
 		return(false);
@@ -164,19 +171,18 @@ bool    isValidValue(float value)
 		return(true);
 }
 
-bool    isValidLine(std::string line, std::string date, float value)
+bool    isValidLine(std::string line, std::string date, std::string value)
 {
 	if (line == "")
 		return(false);
     if (line.length() < 14 ||
             isValidFormat(line) == false ||
-            isValidDate(date) == false)	
+            isValidDate(date) == false ||
+			isValidValue(value) == false)	
     {
         std::cout << "Error: bad input => " << line << "\n";
         return(false);
     }
-	else if (isValidValue(value) == false)
-		return (false);
 	else
     	return(true);
 }
@@ -184,7 +190,7 @@ bool    isValidLine(std::string line, std::string date, float value)
 float   BitcoinExchange::getResultFromLine(std::string date, float value)
 {
     std::map<std::string, float>::iterator it = _database.lower_bound(date);
-	if ((*it).first != date)
+	if ((*it).first != date && it != _database.begin())
 		it--;
     float result = value * (*it).second;
     return(result);
@@ -195,13 +201,13 @@ void    BitcoinExchange::getResultsFromFile(std::string inputFile)
     std::ifstream   input;
     std::string     line;
     std::string     date;
-    float           value;
+    std::string     value;
     float           result;
     
     input.open(inputFile);
-	if (!input.is_open())
+	if (!input.is_open() && input.good())
 	{
-		std::cout << "Error: could not open file.";
+		std::cout << "Error: could not open file.\n";
 		return ;
 	}
 	std::getline(input, line);	// skip first line (date | value)
@@ -212,7 +218,7 @@ void    BitcoinExchange::getResultsFromFile(std::string inputFile)
         value = getValue(line);
         if (isValidLine(line, date, value) == false)
             continue;
-        result = getResultFromLine(date, value);
+        result = getResultFromLine(date, myStof(value));
         std::cout << date << " => " << value << " = " << result << std::endl;
     }
     input.close();
@@ -225,9 +231,9 @@ std::map<std::string , float>   BitcoinExchange::getDatabase()
 
 BitcoinExchange::BitcoinExchange () {}
 
-BitcoinExchange::BitcoinExchange (std::string inputFile, std::string database)
+BitcoinExchange::BitcoinExchange (std::string inputFile)
 {
-    this->setDatabase(database);
+    this->setDatabase("data.csv");
     this->getResultsFromFile(inputFile); 
 }
 

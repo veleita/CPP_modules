@@ -15,6 +15,7 @@ class PmergeMe
 	private:
 		char **_list;
 		int	_spareNumber;
+		bool _addSpareNum;
 		std::list< std::pair<int, int> > 		_numberList;
 		std::vector< std::pair<int, int> >		_numberVector;
 		std::list<int> 							_orderedList;
@@ -25,6 +26,7 @@ class PmergeMe
 		clock_t				_execTimeVector;
 
 	public:
+		PmergeMe();
 		PmergeMe(int listLength, char **argv);
 		PmergeMe(PmergeMe const &copy);
 		PmergeMe	&operator=(PmergeMe	const &rhs);

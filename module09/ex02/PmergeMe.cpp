@@ -1,8 +1,26 @@
 #include "PmergeMe.hpp"
+#include <string.h>
+#include <locale>
+
+bool	invalidOutput(char **list)
+{
+	for (int i = 0; list[i] != NULL; i++)
+	{
+		for (int j = 0; list[i][j] != '\0'; j++)
+			if (!isdigit(list[i][j]) || std::atoi(list[i]) < 0)
+				return true;
+	}
+	return false;
+}
 
 clock_t	PmergeMe::parseList()
 {
 	clock_t t = std::clock();
+	if (this->_listLength < 2)
+	{
+		this->_orderedList.push_back((std::atoi(_list[0])));
+		return clock() - t;
+	}
 	for (int i = 0; i < this->_listLength; i += 2)
 		this->_numberList.push_back(std::make_pair(std::atoi(_list[i]), std::atoi(_list[i + 1])));
 	return clock() - t;
@@ -11,6 +29,11 @@ clock_t	PmergeMe::parseList()
 clock_t	PmergeMe::parseVector()
 {
 	clock_t t = std::clock();
+	if (this->_listLength < 2)
+	{
+		this->_orderedVector.push_back((std::atoi(_list[0])));
+		return clock() - t;
+	}
 	for (int i = 0; i < this->_listLength; i += 2)
 		this->_numberVector.push_back(std::make_pair(std::atoi(_list[i]), std::atoi(_list[i + 1])));
 	return clock() - t;
@@ -18,10 +41,17 @@ clock_t	PmergeMe::parseVector()
 
 PmergeMe::PmergeMe(int listLength, char **list)
 {
+	if (invalidOutput(list))
+	{
+		std::cout << "Error\n";	
+		exit(1);
+	}
 	this->_listLength = listLength - 1;
 	this->_list = list;
-	if (this->_listLength % 2 != 0)// Odd list length
+	this->_addSpareNum = false;
+	if (this->_listLength > 1 && this->_listLength % 2 != 0)// Odd list length
 	{
+		this->_addSpareNum = true;
 		this->_spareNumber = std::atoi(_list[_listLength - 1]);
 		this->_listLength--;
 	}
@@ -44,7 +74,7 @@ PmergeMe	&PmergeMe::operator=(PmergeMe	const &rhs)
 void		PmergeMe::printBefore()
 {
 	std::cout << "Before:	";
-	for (int i = 0; i < this->_listLength; i++)
+	for (int i = 0; _list[i] != '\0'; i++)
 		std::cout << this->_list[i] << " ";
 	std::cout << std::endl;
 }
@@ -74,7 +104,7 @@ clock_t		PmergeMe::sortList()
 	else
 		listRecursiveSort(this->_numberList, 0, this->_numberList.size());
     this->_orderedList = listInsertionSort(this->_numberList);
-	if (this->_spareNumber)
+	if (this->_addSpareNum)
 	{
 		std::list<int>::iterator i;
 		for (i = _orderedList.begin(); i != _orderedList.end(); i++)
@@ -104,7 +134,7 @@ clock_t		PmergeMe::sortVector()
 	else
 		vectorRecursiveSort(this->_numberVector, 0, this->_numberVector.size());
     this->_orderedVector = vectorInsertionSort(this->_numberVector);
-	if (this->_spareNumber)
+	if (this->_addSpareNum)
 	{
 		std::vector<int>::iterator i;
 		for (i = _orderedVector.begin(); i != _orderedVector.end(); i++)
@@ -121,6 +151,8 @@ clock_t		PmergeMe::sortVector()
 
 void		PmergeMe::sort()
 {
+	if (this->_listLength < 2)
+		return;
 	this->_execTimeList += sortList();
 	this->_execTimeVector += sortVector();
 }

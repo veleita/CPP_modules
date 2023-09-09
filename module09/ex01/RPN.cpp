@@ -31,23 +31,33 @@ bool is_number(const std::string& s)
 
 int RPN::CalculateResult(int operand_1, int operand_2, char operator_char)
 {
+	double result;
 	switch (operator_char)
 	{
 		case '+':
-			return (operand_1 + operand_2);
+			result = (double)operand_1 + operand_2;
+			break;
 		case '-':
-			return (operand_2 - operand_1);
+			result = (double)operand_2 - operand_1;
+			break;
 		case '*':
-			return (operand_1 * operand_2);
+			result = (double)operand_1 * operand_2;
+			break;
 		case '/':
 		{
-			if (operand_2 == 0)
+			if (operand_1 == 0)
 				throw std::invalid_argument("Floating Point Exception Dividing by Zero");
 			else
-				return (operand_2 / operand_1);
+				result = operand_2 / operand_1;
 		}
 	}
-	return (0);
+	if (result > INT_MAX || result < INT_MIN)
+	{
+		throw std::overflow_error("Int Overflow");
+		return (1);
+	}
+	else
+		return (result);
 }
 
 
@@ -80,7 +90,7 @@ void    RPN::ProcessOperation(std::string input)
 			_numbers.top() = CalculateResult(operand, _numbers.top(), operator_c);
 		}
 		else
-			throw std::invalid_argument("Error");
+			throw std::invalid_argument("Invalid argument");
 	}
 	if (operator_counter != operand_counter - 1)
 		throw std::invalid_argument("Unmatching number of operands and operators");
